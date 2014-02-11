@@ -21,6 +21,9 @@
 		4E156DE918A81E7E009F28C8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E156DCB18A81E7E009F28C8 /* UIKit.framework */; };
 		4E156DF118A81E7E009F28C8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E156DEF18A81E7E009F28C8 /* InfoPlist.strings */; };
 		4E156DF318A81E7E009F28C8 /* RadioGuerrillaPlayerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E156DF218A81E7E009F28C8 /* RadioGuerrillaPlayerTests.m */; };
+		4E156DFF18A95E67009F28C8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E156DFE18A95E67009F28C8 /* AVFoundation.framework */; };
+		4E156E0218AAD037009F28C8 /* RGAudioSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E156E0118AAD037009F28C8 /* RGAudioSessionManager.m */; };
+		4E156E0618AAD0CB009F28C8 /* RGPlayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E156E0518AAD0CB009F28C8 /* RGPlayController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,12 @@
 		4E156DEE18A81E7E009F28C8 /* RadioGuerrillaPlayerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RadioGuerrillaPlayerTests-Info.plist"; sourceTree = "<group>"; };
 		4E156DF018A81E7E009F28C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4E156DF218A81E7E009F28C8 /* RadioGuerrillaPlayerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RadioGuerrillaPlayerTests.m; sourceTree = "<group>"; };
+		4E156DFC18A821A3009F28C8 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		4E156DFE18A95E67009F28C8 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		4E156E0018AAD037009F28C8 /* RGAudioSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RGAudioSessionManager.h; path = AudioSession/RGAudioSessionManager.h; sourceTree = "<group>"; };
+		4E156E0118AAD037009F28C8 /* RGAudioSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RGAudioSessionManager.m; path = AudioSession/RGAudioSessionManager.m; sourceTree = "<group>"; };
+		4E156E0418AAD0CB009F28C8 /* RGPlayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RGPlayController.h; path = AudioSession/RGPlayController.h; sourceTree = "<group>"; };
+		4E156E0518AAD0CB009F28C8 /* RGPlayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RGPlayController.m; path = AudioSession/RGPlayController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E156DFF18A95E67009F28C8 /* AVFoundation.framework in Frameworks */,
 				4E156DCA18A81E7E009F28C8 /* CoreGraphics.framework in Frameworks */,
 				4E156DCC18A81E7E009F28C8 /* UIKit.framework in Frameworks */,
 				4E156DC818A81E7E009F28C8 /* Foundation.framework in Frameworks */,
@@ -82,6 +92,7 @@
 		4E156DBB18A81E7E009F28C8 = {
 			isa = PBXGroup;
 			children = (
+				4E156E0318AAD040009F28C8 /* AudioSession */,
 				4E156DCD18A81E7E009F28C8 /* RadioGuerrillaPlayer */,
 				4E156DEC18A81E7E009F28C8 /* RadioGuerrillaPlayerTests */,
 				4E156DC618A81E7E009F28C8 /* Frameworks */,
@@ -101,6 +112,8 @@
 		4E156DC618A81E7E009F28C8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4E156DFE18A95E67009F28C8 /* AVFoundation.framework */,
+				4E156DFC18A821A3009F28C8 /* MediaPlayer.framework */,
 				4E156DC718A81E7E009F28C8 /* Foundation.framework */,
 				4E156DC918A81E7E009F28C8 /* CoreGraphics.framework */,
 				4E156DCB18A81E7E009F28C8 /* UIKit.framework */,
@@ -150,6 +163,17 @@
 				4E156DEF18A81E7E009F28C8 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4E156E0318AAD040009F28C8 /* AudioSession */ = {
+			isa = PBXGroup;
+			children = (
+				4E156E0018AAD037009F28C8 /* RGAudioSessionManager.h */,
+				4E156E0118AAD037009F28C8 /* RGAudioSessionManager.m */,
+				4E156E0418AAD0CB009F28C8 /* RGPlayController.h */,
+				4E156E0518AAD0CB009F28C8 /* RGPlayController.m */,
+			);
+			name = AudioSession;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,7 +273,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E156E0218AAD037009F28C8 /* RGAudioSessionManager.m in Sources */,
 				4E156DDE18A81E7E009F28C8 /* ViewController.m in Sources */,
+				4E156E0618AAD0CB009F28C8 /* RGPlayController.m in Sources */,
 				4E156DD818A81E7E009F28C8 /* AppDelegate.m in Sources */,
 				4E156DD418A81E7E009F28C8 /* main.m in Sources */,
 			);
