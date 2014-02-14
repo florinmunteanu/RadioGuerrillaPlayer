@@ -24,6 +24,10 @@
 
 @implementation RGAudioSessionManager
 
+NSString* const playingKeyPath = @"playing";
+NSString* const statusKeyPath = @"status";
+NSString* const metadataKeyPath = @"timedMetadata";
+
 typedef enum { NoExtraKnowledge, WillPlay } AudioSessionStateMatchingOptions;
 
 - (id)initWithPlayController:(RGPlayController *)playController
@@ -32,30 +36,16 @@ typedef enum { NoExtraKnowledge, WillPlay } AudioSessionStateMatchingOptions;
     
     self.playController = playController;
     
-    [self.playController addObserver:self forKeyPath:@"playing" options:NSKeyValueObservingOptionInitial|NSKeyValueObservingOptionPrior context:NULL];
+    [self.playController addObserver:self forKeyPath:playingKeyPath options:NSKeyValueObservingOptionInitial|NSKeyValueObservingOptionPrior context:NULL];
     return self;
 }
 
 - (void)dealloc
 {
-    [self.playController removeObserver:self forKeyPath:@"playing"];
+    [self.playController removeObserver:self forKeyPath:playingKeyPath];
+    [self.songPlayer removeObserver:self forKeyPath:statusKeyPath];
+    [[self.songPlayer currentItem] removeObserver:self forKeyPath:metadataKeyPath];
 }
-
-/*
-- (void)playingChanged:(NSDictionary *)change
-{
-    BOOL isPrior = [change[NSKeyValueChangeNotificationIsPriorKey] boolValue];
-    
-    if (isPrior && self.playController.playing == NO)
-    {
-        [self matchAudioSessionWithPlayState:WillPlay];
-    }
-    else if (isPrior == NO)
-    {
-        [self matchAudioSessionWithPlayState:NoExtraKnowledge];
-    }
-}
- */
 
 - (void)matchAudioSessionWithPlayState:(AudioSessionStateMatchingOptions)options
 {
@@ -98,21 +88,32 @@ typedef enum { NoExtraKnowledge, WillPlay } AudioSessionStateMatchingOptions;
         return;
     }
     
+    [self createBackgroundTask];
+    [self createPlayer];
+    [self addObservers];
+}
+
+- (void)createBackgroundTask
+{
     self.backgroundTask = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
         NSLog(@"Warning: Still playing music, but background task expired.");
         
         [[UIApplication sharedApplication] endBackgroundTask:self.backgroundTask];
         self.backgroundTask = UIBackgroundTaskInvalid;
     }];
-    
+}
+
+- (void)createPlayer
+{
     NSString* liveStreamUrl = @"http://live.eliberadio.ro:8002";
-    AVPlayer* player = [[AVPlayer alloc]initWithURL:[NSURL URLWithString:liveStreamUrl]];
-    self.songPlayer = player;
-    //[[NSNotificationCenter defaultCenter] addObserver:self
-    //                                         selector:@selector(playerItemDidReachEnd:)
-    //                                             name:AVPlayerItemDidPlayToEndTimeNotification
-    //                                           object:[self.songPlayer currentItem]];
-    [self.songPlayer addObserver:self forKeyPath:@"status" options:0 context:nil];
+    self.songPlayer = [[AVPlayer alloc]initWithURL:[NSURL URLWithString:liveStreamUrl]];
+}
+
+- (void)addObservers
+{
+    [self.songPlayer addObserver:self forKeyPath:statusKeyPath options:0 context:nil];
+    
+    [[self.songPlayer currentItem] addObserver:self forKeyPath:metadataKeyPath options:NSKeyValueObservingOptionNew context:nil];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -134,7 +135,7 @@ typedef enum { NoExtraKnowledge, WillPlay } AudioSessionStateMatchingOptions;
             NSLog(@"AVPlayer Unknown");
         }
     }
-    else if (object == self.playController && [keyPath isEqualToString:@"playing"])
+    else if (object == self.playController && [keyPath isEqualToString:playingKeyPath])
     {
         BOOL isPrior = [change[NSKeyValueChangeNotificationIsPriorKey] boolValue];
         
@@ -147,6 +148,21 @@ typedef enum { NoExtraKnowledge, WillPlay } AudioSessionStateMatchingOptions;
             [self matchAudioSessionWithPlayState:NoExtraKnowledge];
         }
 
+    }
+    else if (object == [self.songPlayer currentItem] && [keyPath isEqualToString:metadataKeyPath])
+    {
+        [self readMetadata:(AVPlayerItem *)object];
+    }
+}
+
+- (void)readMetadata:(AVPlayerItem *)playerItem
+{
+    for (AVMetadataItem* metadata in playerItem.timedMetadata)
+    {
+        if ([metadata.commonKey isEqualToString:@"title"])
+        {
+            self.playController.currentSong = metadata.stringValue;
+        }
     }
 }
 

@@ -12,4 +12,6 @@
 
 @property (nonatomic) BOOL playing;
 
+@property (strong, nonatomic) NSString* currentSong;
+
 @end
