@@ -14,4 +14,6 @@
 
 @property (strong, nonatomic) NSString* currentSong;
 
+@property (strong, nonatomic) NSString* currentArtist;
+
 @end

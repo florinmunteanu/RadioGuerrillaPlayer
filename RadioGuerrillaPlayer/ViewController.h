@@ -12,4 +12,8 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *playActionButton;
 
+@property (weak, nonatomic) IBOutlet UILabel *songLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *artistLabel;
+
 @end

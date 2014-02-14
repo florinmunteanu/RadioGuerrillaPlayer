@@ -24,6 +24,11 @@
 		4E156DFF18A95E67009F28C8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E156DFE18A95E67009F28C8 /* AVFoundation.framework */; };
 		4E156E0218AAD037009F28C8 /* RGAudioSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E156E0118AAD037009F28C8 /* RGAudioSessionManager.m */; };
 		4E156E0618AAD0CB009F28C8 /* RGPlayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E156E0518AAD0CB009F28C8 /* RGPlayController.m */; };
+		4E156EEA18AEAA49009F28C8 /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E156EE618AEAA49009F28C8 /* pause.png */; };
+		4E156EEB18AEAA49009F28C8 /* pause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E156EE718AEAA49009F28C8 /* pause@2x.png */; };
+		4E156EEC18AEAA49009F28C8 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E156EE818AEAA49009F28C8 /* play.png */; };
+		4E156EED18AEAA49009F28C8 /* play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E156EE918AEAA49009F28C8 /* play@2x.png */; };
+		4E156EEF18AEAC13009F28C8 /* radio-guerrilla-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E156EEE18AEAC13009F28C8 /* radio-guerrilla-logo.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +67,11 @@
 		4E156E0118AAD037009F28C8 /* RGAudioSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RGAudioSessionManager.m; path = AudioSession/RGAudioSessionManager.m; sourceTree = "<group>"; };
 		4E156E0418AAD0CB009F28C8 /* RGPlayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RGPlayController.h; path = AudioSession/RGPlayController.h; sourceTree = "<group>"; };
 		4E156E0518AAD0CB009F28C8 /* RGPlayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RGPlayController.m; path = AudioSession/RGPlayController.m; sourceTree = "<group>"; };
+		4E156EE618AEAA49009F28C8 /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pause.png; path = Images/pause.png; sourceTree = "<group>"; };
+		4E156EE718AEAA49009F28C8 /* pause@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pause@2x.png"; path = "Images/pause@2x.png"; sourceTree = "<group>"; };
+		4E156EE818AEAA49009F28C8 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = play.png; path = Images/play.png; sourceTree = "<group>"; };
+		4E156EE918AEAA49009F28C8 /* play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "play@2x.png"; path = "Images/play@2x.png"; sourceTree = "<group>"; };
+		4E156EEE18AEAC13009F28C8 /* radio-guerrilla-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "radio-guerrilla-logo.png"; path = "Images/radio-guerrilla-logo.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +102,7 @@
 		4E156DBB18A81E7E009F28C8 = {
 			isa = PBXGroup;
 			children = (
+				4E156EE518AEAA22009F28C8 /* Images */,
 				4E156E0318AAD040009F28C8 /* AudioSession */,
 				4E156DCD18A81E7E009F28C8 /* RadioGuerrillaPlayer */,
 				4E156DEC18A81E7E009F28C8 /* RadioGuerrillaPlayerTests */,
@@ -176,6 +187,18 @@
 			name = AudioSession;
 			sourceTree = "<group>";
 		};
+		4E156EE518AEAA22009F28C8 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				4E156EEE18AEAC13009F28C8 /* radio-guerrilla-logo.png */,
+				4E156EE618AEAA49009F28C8 /* pause.png */,
+				4E156EE718AEAA49009F28C8 /* pause@2x.png */,
+				4E156EE818AEAA49009F28C8 /* play.png */,
+				4E156EE918AEAA49009F28C8 /* play@2x.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -252,9 +275,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E156EED18AEAA49009F28C8 /* play@2x.png in Resources */,
 				4E156DE018A81E7E009F28C8 /* Images.xcassets in Resources */,
 				4E156DD218A81E7E009F28C8 /* InfoPlist.strings in Resources */,
+				4E156EEB18AEAA49009F28C8 /* pause@2x.png in Resources */,
+				4E156EEF18AEAC13009F28C8 /* radio-guerrilla-logo.png in Resources */,
+				4E156EEA18AEAA49009F28C8 /* pause.png in Resources */,
 				4E156DDB18A81E7E009F28C8 /* Main.storyboard in Resources */,
+				4E156EEC18AEAA49009F28C8 /* play.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,6 +514,7 @@
 				4E156DF818A81E7E009F28C8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4E156DF918A81E7E009F28C8 /* Build configuration list for PBXNativeTarget "RadioGuerrillaPlayerTests" */ = {
 			isa = XCConfigurationList;
@@ -494,6 +523,7 @@
 				4E156DFB18A81E7E009F28C8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

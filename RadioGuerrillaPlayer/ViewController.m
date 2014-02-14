@@ -14,10 +14,6 @@
 
 @interface ViewController ()
 
-//@property (strong, nonatomic) AVPlayer* songPlayer;
-
-//@property (nonatomic) UIBackgroundTaskIdentifier backgroundTask;
-
 @property (strong, nonatomic) RGPlayController* playController;
 
 @property (strong, nonatomic) RGAudioSessionManager* audioSessionManager;
@@ -54,78 +50,42 @@
     }
 }
 
-- (void)setPlayTitle:(NSString *)title
+- (void)setPlayTitle:(NSS tring *)title
 {
     [self.playActionButton setTitle:title forState:UIControlStateNormal];
     [self.playActionButton setTitle:title forState:UIControlStateSelected];
     [self.playActionButton setTitle:title forState:UIControlStateHighlighted];
 }
 
-/*
--(void)playselectedsong
+- (void)viewWillAppear:(BOOL)animated
 {
-    //https://developer.apple.com/library/ios/qa/qa1668/_index.html
+    [self.playController addObserver:self forKeyPath:@"currentSong" options:NSKeyValueObservingOptionNew context:NULL];
+    [self.playController addObserver:self forKeyPath:@"currentArtist" options:NSKeyValueObservingOptionNew context:NULL];
     
-    NSError* errors = nil;
-    AVAudioSession* audioSession = [AVAudioSession sharedInstance];
-    //setCategory:AVAudioSessionCategoryPlayback
-    [audioSession setCategory:AVAudioSessionCategoryPlayback withOptions:AVAudioSessionCategoryOptionMixWithOthers error:&errors];
-    if (errors)
-    {
-        NSLog(@"%@", errors);
-        return;
-    }
-    [audioSession setActive:YES error:&errors];
-    if (errors)
-    {
-        NSLog(@"%@", errors);
-        return;
-    }
-    
-    self.backgroundTask = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
-        NSLog(@"Warning: Still playing music, but background task expired.");
-        
-        [[UIApplication sharedApplication] endBackgroundTask:self.backgroundTask];
-        self.backgroundTask = UIBackgroundTaskInvalid;
-    }];
-    
-    AVPlayer *player = [[AVPlayer alloc]initWithURL:[NSURL URLWithString:@"http://live.eliberadio.ro:8002"]];
-    self.songPlayer = player;
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(playerItemDidReachEnd:)
-                                                 name:AVPlayerItemDidPlayToEndTimeNotification
-                                               object:[self.songPlayer currentItem]];
-    [self.songPlayer addObserver:self forKeyPath:@"status" options:0 context:nil];
-    //[NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(updateProgress:) userInfo:nil repeats:YES];
-    
-    
-    
+    [super viewWillAppear:animated];
 }
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+
+- (void)viewWillDisappear:(BOOL)animated
 {
-    if (object == self.songPlayer && [keyPath isEqualToString:@"status"])
+    [self.playController removeObserver:self forKeyPath:@"currentSong"];
+    [self.playController removeObserver:self forKeyPath:@"currentArtist"];
+    
+    [super viewWillDisappear:animated];
+}
+
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if (object == self.playController)
     {
-        if (self.songPlayer.status == AVPlayerStatusFailed)
+        if ([keyPath isEqualToString:@"currentSong"])
         {
-            NSLog(@"AVPlayer Failed");
+            self.songLabel.text = self.playController.currentSong;
         }
-        else if (self.songPlayer.status == AVPlayerStatusReadyToPlay)
+        else if ([keyPath isEqualToString:@"currentArtist"])
         {
-            NSLog(@"AVPlayerStatusReadyToPlay");
-            [self.songPlayer play];
-            
-        }
-        else if (self.songPlayer.status == AVPlayerItemStatusUnknown)
-        {
-            NSLog(@"AVPlayer Unknown");
+            self.artistLabel.text = self.playController.currentArtist;
         }
     }
 }
 
-- (void)playerItemDidReachEnd:(NSNotification *)notification {
-    
-    //  code here to play next sound file
-    
-}
-*/
 @end
