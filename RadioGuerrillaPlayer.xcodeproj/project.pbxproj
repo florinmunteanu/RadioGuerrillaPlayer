@@ -34,6 +34,11 @@
 		4E899A5718AFFD92008FCB04 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E899A5618AFFD92008FCB04 /* Reachability.m */; };
 		4E899A5A18B0BB1A008FCB04 /* ArtistInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E899A5918B0BB1A008FCB04 /* ArtistInfo.m */; };
 		4E899A5D18B0E64E008FCB04 /* ArtistInfoResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E899A5C18B0E64E008FCB04 /* ArtistInfoResponse.m */; };
+		4E899A6018B136BD008FCB04 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4E899A5E18B136BD008FCB04 /* Model.xcdatamodeld */; };
+		4E899A7618B14238008FCB04 /* FavoriteSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E899A7518B14238008FCB04 /* FavoriteSong.m */; };
+		4E899A7918B14239008FCB04 /* Artist.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E899A7818B14238008FCB04 /* Artist.m */; };
+		4E899A7C18B14317008FCB04 /* Artist+Guerrilla.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E899A7B18B14317008FCB04 /* Artist+Guerrilla.m */; };
+		4E899A7F18B14343008FCB04 /* FavoriteSong+Guerrilla.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E899A7E18B14343008FCB04 /* FavoriteSong+Guerrilla.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +91,16 @@
 		4E899A5918B0BB1A008FCB04 /* ArtistInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtistInfo.m; sourceTree = "<group>"; };
 		4E899A5B18B0E64E008FCB04 /* ArtistInfoResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtistInfoResponse.h; sourceTree = "<group>"; };
 		4E899A5C18B0E64E008FCB04 /* ArtistInfoResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtistInfoResponse.m; sourceTree = "<group>"; };
+		4E899A5F18B136BD008FCB04 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		4E899A7418B14238008FCB04 /* FavoriteSong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FavoriteSong.h; path = CoreData/FavoriteSong.h; sourceTree = "<group>"; };
+		4E899A7518B14238008FCB04 /* FavoriteSong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FavoriteSong.m; path = CoreData/FavoriteSong.m; sourceTree = "<group>"; };
+		4E899A7718B14238008FCB04 /* Artist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Artist.h; path = CoreData/Artist.h; sourceTree = "<group>"; };
+		4E899A7818B14238008FCB04 /* Artist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Artist.m; path = CoreData/Artist.m; sourceTree = "<group>"; };
+		4E899A7A18B14317008FCB04 /* Artist+Guerrilla.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Artist+Guerrilla.h"; path = "CoreData/Artist+Guerrilla.h"; sourceTree = "<group>"; };
+		4E899A7B18B14317008FCB04 /* Artist+Guerrilla.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Artist+Guerrilla.m"; path = "CoreData/Artist+Guerrilla.m"; sourceTree = "<group>"; };
+		4E899A7D18B14343008FCB04 /* FavoriteSong+Guerrilla.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "FavoriteSong+Guerrilla.h"; path = "CoreData/FavoriteSong+Guerrilla.h"; sourceTree = "<group>"; };
+		4E899A7E18B14343008FCB04 /* FavoriteSong+Guerrilla.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "FavoriteSong+Guerrilla.m"; path = "CoreData/FavoriteSong+Guerrilla.m"; sourceTree = "<group>"; };
+		4E899A8018B166B3008FCB04 /* PlayerErrors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayerErrors.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +165,7 @@
 		4E156DCD18A81E7E009F28C8 /* RadioGuerrillaPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				4E899A6118B136C8008FCB04 /* CoreData */,
 				4E899A5218AFFB2F008FCB04 /* Lastfm */,
 				4E156EE518AEAA22009F28C8 /* Images */,
 				4E156E0318AAD040009F28C8 /* AudioSession */,
@@ -162,6 +178,7 @@
 				4E899A5618AFFD92008FCB04 /* Reachability.m */,
 				4E156DDF18A81E7E009F28C8 /* Images.xcassets */,
 				4E156DCE18A81E7E009F28C8 /* Supporting Files */,
+				4E899A8018B166B3008FCB04 /* PlayerErrors.h */,
 			);
 			path = RadioGuerrillaPlayer;
 			sourceTree = "<group>";
@@ -231,6 +248,22 @@
 				4E899A5C18B0E64E008FCB04 /* ArtistInfoResponse.m */,
 			);
 			name = Lastfm;
+			sourceTree = "<group>";
+		};
+		4E899A6118B136C8008FCB04 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				4E899A5E18B136BD008FCB04 /* Model.xcdatamodeld */,
+				4E899A7718B14238008FCB04 /* Artist.h */,
+				4E899A7818B14238008FCB04 /* Artist.m */,
+				4E899A7418B14238008FCB04 /* FavoriteSong.h */,
+				4E899A7518B14238008FCB04 /* FavoriteSong.m */,
+				4E899A7A18B14317008FCB04 /* Artist+Guerrilla.h */,
+				4E899A7B18B14317008FCB04 /* Artist+Guerrilla.m */,
+				4E899A7D18B14343008FCB04 /* FavoriteSong+Guerrilla.h */,
+				4E899A7E18B14343008FCB04 /* FavoriteSong+Guerrilla.m */,
+			);
+			name = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -336,13 +369,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E156E0218AAD037009F28C8 /* RGAudioSessionManager.m in Sources */,
+				4E899A7618B14238008FCB04 /* FavoriteSong.m in Sources */,
 				4E156DDE18A81E7E009F28C8 /* ViewController.m in Sources */,
 				4E899A5D18B0E64E008FCB04 /* ArtistInfoResponse.m in Sources */,
+				4E899A7C18B14317008FCB04 /* Artist+Guerrilla.m in Sources */,
 				4E899A5A18B0BB1A008FCB04 /* ArtistInfo.m in Sources */,
+				4E899A7F18B14343008FCB04 /* FavoriteSong+Guerrilla.m in Sources */,
 				4E156E0618AAD0CB009F28C8 /* RGPlayController.m in Sources */,
 				4E899A5718AFFD92008FCB04 /* Reachability.m in Sources */,
 				4E899A5118AFFB0A008FCB04 /* LastfmClient.m in Sources */,
+				4E899A6018B136BD008FCB04 /* Model.xcdatamodeld in Sources */,
 				4E156DD818A81E7E009F28C8 /* AppDelegate.m in Sources */,
+				4E899A7918B14239008FCB04 /* Artist.m in Sources */,
 				4E156DD418A81E7E009F28C8 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -564,6 +602,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		4E899A5E18B136BD008FCB04 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4E899A5F18B136BD008FCB04 /* Model.xcdatamodel */,
+			);
+			currentVersion = 4E899A5F18B136BD008FCB04 /* Model.xcdatamodel */;
+			name = Model.xcdatamodeld;
+			path = CoreData/Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 4E156DBC18A81E7E009F28C8 /* Project object */;
 }

@@ -105,6 +105,7 @@ NSString * const lastFmApiUrl = @"http://ws.audioscrobbler.com/2.0/";
         ArtistInfoResponse* artistInfoReponse = [[ArtistInfoResponse alloc] init];
         
         NSString* artistInfoUrl = [NSString stringWithFormat:@"%@?method=artist.getInfo&artist=%@&api_key=%@&format=json", lastFmApiUrl, artistName, self.apiKey];
+        artistInfoUrl = [artistInfoUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         NSURL* url = [NSURL URLWithString:artistInfoUrl];
     
         NSURLRequest* request = [NSURLRequest requestWithURL:url];

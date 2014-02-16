@@ -77,10 +77,14 @@
 {
     LastfmClient* lastfmClient = [[LastfmClient alloc] initWithApiKey:@""];
     
-    [lastfmClient sendGetArtistInfo:@"Cher"
+    [lastfmClient sendGetArtistInfo:self.playController.currentArtist
             withCompletationHandler:^(ArtistInfoResponse* response) {
-                
-        
+                if (response && response.artistInfo)
+                {
+                    NSData* imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:response.artistInfo.mediumImageURL]];
+                    self.artistImage.image = nil;
+                    self.artistImage.image = [[UIImage alloc] initWithData:imageData];
+                }
     }];
 }
 
