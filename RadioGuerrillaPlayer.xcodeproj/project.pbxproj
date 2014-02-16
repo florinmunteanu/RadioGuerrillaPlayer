@@ -29,6 +29,11 @@
 		4E156EEC18AEAA49009F28C8 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E156EE818AEAA49009F28C8 /* play.png */; };
 		4E156EED18AEAA49009F28C8 /* play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E156EE918AEAA49009F28C8 /* play@2x.png */; };
 		4E156EEF18AEAC13009F28C8 /* radio-guerrilla-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E156EEE18AEAC13009F28C8 /* radio-guerrilla-logo.png */; };
+		4E899A5118AFFB0A008FCB04 /* LastfmClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E899A5018AFFB0A008FCB04 /* LastfmClient.m */; };
+		4E899A5418AFFC48008FCB04 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E899A5318AFFC48008FCB04 /* SystemConfiguration.framework */; };
+		4E899A5718AFFD92008FCB04 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E899A5618AFFD92008FCB04 /* Reachability.m */; };
+		4E899A5A18B0BB1A008FCB04 /* ArtistInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E899A5918B0BB1A008FCB04 /* ArtistInfo.m */; };
+		4E899A5D18B0E64E008FCB04 /* ArtistInfoResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E899A5C18B0E64E008FCB04 /* ArtistInfoResponse.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +77,15 @@
 		4E156EE818AEAA49009F28C8 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = play.png; path = Images/play.png; sourceTree = "<group>"; };
 		4E156EE918AEAA49009F28C8 /* play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "play@2x.png"; path = "Images/play@2x.png"; sourceTree = "<group>"; };
 		4E156EEE18AEAC13009F28C8 /* radio-guerrilla-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "radio-guerrilla-logo.png"; path = "Images/radio-guerrilla-logo.png"; sourceTree = "<group>"; };
+		4E899A4F18AFFB0A008FCB04 /* LastfmClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LastfmClient.h; path = ../Lastfm/LastfmClient.h; sourceTree = "<group>"; };
+		4E899A5018AFFB0A008FCB04 /* LastfmClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LastfmClient.m; path = ../Lastfm/LastfmClient.m; sourceTree = "<group>"; };
+		4E899A5318AFFC48008FCB04 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		4E899A5518AFFD92008FCB04 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		4E899A5618AFFD92008FCB04 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		4E899A5818B0BB1A008FCB04 /* ArtistInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtistInfo.h; sourceTree = "<group>"; };
+		4E899A5918B0BB1A008FCB04 /* ArtistInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtistInfo.m; sourceTree = "<group>"; };
+		4E899A5B18B0E64E008FCB04 /* ArtistInfoResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtistInfoResponse.h; sourceTree = "<group>"; };
+		4E899A5C18B0E64E008FCB04 /* ArtistInfoResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtistInfoResponse.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E899A5418AFFC48008FCB04 /* SystemConfiguration.framework in Frameworks */,
 				4E156DFF18A95E67009F28C8 /* AVFoundation.framework in Frameworks */,
 				4E156DCA18A81E7E009F28C8 /* CoreGraphics.framework in Frameworks */,
 				4E156DCC18A81E7E009F28C8 /* UIKit.framework in Frameworks */,
@@ -102,8 +117,6 @@
 		4E156DBB18A81E7E009F28C8 = {
 			isa = PBXGroup;
 			children = (
-				4E156EE518AEAA22009F28C8 /* Images */,
-				4E156E0318AAD040009F28C8 /* AudioSession */,
 				4E156DCD18A81E7E009F28C8 /* RadioGuerrillaPlayer */,
 				4E156DEC18A81E7E009F28C8 /* RadioGuerrillaPlayerTests */,
 				4E156DC618A81E7E009F28C8 /* Frameworks */,
@@ -123,6 +136,7 @@
 		4E156DC618A81E7E009F28C8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4E899A5318AFFC48008FCB04 /* SystemConfiguration.framework */,
 				4E156DFE18A95E67009F28C8 /* AVFoundation.framework */,
 				4E156DFC18A821A3009F28C8 /* MediaPlayer.framework */,
 				4E156DC718A81E7E009F28C8 /* Foundation.framework */,
@@ -136,11 +150,16 @@
 		4E156DCD18A81E7E009F28C8 /* RadioGuerrillaPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				4E899A5218AFFB2F008FCB04 /* Lastfm */,
+				4E156EE518AEAA22009F28C8 /* Images */,
+				4E156E0318AAD040009F28C8 /* AudioSession */,
 				4E156DD618A81E7E009F28C8 /* AppDelegate.h */,
 				4E156DD718A81E7E009F28C8 /* AppDelegate.m */,
 				4E156DD918A81E7E009F28C8 /* Main.storyboard */,
 				4E156DDC18A81E7E009F28C8 /* ViewController.h */,
 				4E156DDD18A81E7E009F28C8 /* ViewController.m */,
+				4E899A5518AFFD92008FCB04 /* Reachability.h */,
+				4E899A5618AFFD92008FCB04 /* Reachability.m */,
 				4E156DDF18A81E7E009F28C8 /* Images.xcassets */,
 				4E156DCE18A81E7E009F28C8 /* Supporting Files */,
 			);
@@ -185,6 +204,7 @@
 				4E156E0518AAD0CB009F28C8 /* RGPlayController.m */,
 			);
 			name = AudioSession;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		4E156EE518AEAA22009F28C8 /* Images */ = {
@@ -197,6 +217,20 @@
 				4E156EE918AEAA49009F28C8 /* play@2x.png */,
 			);
 			name = Images;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		4E899A5218AFFB2F008FCB04 /* Lastfm */ = {
+			isa = PBXGroup;
+			children = (
+				4E899A4F18AFFB0A008FCB04 /* LastfmClient.h */,
+				4E899A5018AFFB0A008FCB04 /* LastfmClient.m */,
+				4E899A5818B0BB1A008FCB04 /* ArtistInfo.h */,
+				4E899A5918B0BB1A008FCB04 /* ArtistInfo.m */,
+				4E899A5B18B0E64E008FCB04 /* ArtistInfoResponse.h */,
+				4E899A5C18B0E64E008FCB04 /* ArtistInfoResponse.m */,
+			);
+			name = Lastfm;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -303,7 +337,11 @@
 			files = (
 				4E156E0218AAD037009F28C8 /* RGAudioSessionManager.m in Sources */,
 				4E156DDE18A81E7E009F28C8 /* ViewController.m in Sources */,
+				4E899A5D18B0E64E008FCB04 /* ArtistInfoResponse.m in Sources */,
+				4E899A5A18B0BB1A008FCB04 /* ArtistInfo.m in Sources */,
 				4E156E0618AAD0CB009F28C8 /* RGPlayController.m in Sources */,
+				4E899A5718AFFD92008FCB04 /* Reachability.m in Sources */,
+				4E899A5118AFFB0A008FCB04 /* LastfmClient.m in Sources */,
 				4E156DD818A81E7E009F28C8 /* AppDelegate.m in Sources */,
 				4E156DD418A81E7E009F28C8 /* main.m in Sources */,
 			);

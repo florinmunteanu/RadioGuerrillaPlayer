@@ -7,9 +7,9 @@
 //
 
 #import "ViewController.h"
-//#import <MediaPlayer/MediaPlayer.h>
 #import "RGPlayController.h"
 #import "RGAudioSessionManager.h"
+#import "LastfmClient.h"
 #import <AVFoundation/AVFoundation.h>
 
 @interface ViewController ()
@@ -50,7 +50,7 @@
     }
 }
 
-- (void)setPlayTitle:(NSS tring *)title
+- (void)setPlayTitle:(NSString *)title
 {
     [self.playActionButton setTitle:title forState:UIControlStateNormal];
     [self.playActionButton setTitle:title forState:UIControlStateSelected];
@@ -71,6 +71,17 @@
     [self.playController removeObserver:self forKeyPath:@"currentArtist"];
     
     [super viewWillDisappear:animated];
+}
+
+- (IBAction)getArtistInfo:(id)sender
+{
+    LastfmClient* lastfmClient = [[LastfmClient alloc] initWithApiKey:@""];
+    
+    [lastfmClient sendGetArtistInfo:@"Cher"
+            withCompletationHandler:^(ArtistInfoResponse* response) {
+                
+        
+    }];
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context

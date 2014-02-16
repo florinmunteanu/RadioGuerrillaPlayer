@@ -34,9 +34,12 @@ typedef enum { NoExtraKnowledge, WillPlay } AudioSessionStateMatchingOptions;
 {
     self = [super init];
     
-    self.playController = playController;
+    if (self != nil)
+    {
+        self.playController = playController;
     
-    [self.playController addObserver:self forKeyPath:playingKeyPath options:NSKeyValueObservingOptionInitial|NSKeyValueObservingOptionPrior context:NULL];
+        [self.playController addObserver:self forKeyPath:playingKeyPath options:NSKeyValueObservingOptionInitial|NSKeyValueObservingOptionPrior context:NULL];
+    }
     return self;
 }
 
