@@ -12,8 +12,10 @@
 
 @property (nonatomic) BOOL playing;
 
-@property (strong, nonatomic) NSString* currentSong;
+@property (strong, nonatomic, readonly) NSString* currentSong;
 
-@property (strong, nonatomic) NSString* currentArtist;
+@property (strong, nonatomic, readonly) NSString* currentArtist;
+
+@property (strong, nonatomic) NSString* streamTitle;
 
 @end

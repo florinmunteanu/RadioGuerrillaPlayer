@@ -7,14 +7,15 @@
 //
 
 #import "FavoriteSong+Guerrilla.h"
+#import "Artist+Guerrilla.h"
 #import "Artist.h"
 
 @implementation FavoriteSong (Guerrilla)
 
-+ (FavoriteSong *)fromArtist:(Artist *)artist
-                        song:(NSString *)song
-      inManagedObjectContext:(NSManagedObjectContext *)context
-                       error:(NSError **)error
++ (FavoriteSong *)getOrAddSong:(NSString *)song
+                    fromArtist:(Artist *)artist
+        inManagedObjectContext:(NSManagedObjectContext *)context
+                         error:(NSError **)error
 {
     if (artist == nil)
     {
@@ -27,10 +28,8 @@
     NSError* favoriteSongError = nil;
     FavoriteSong* favoriteSong = nil;
     
-    NSFetchRequest* artistRequest = [NSFetchRequest fetchRequestWithEntityName:@"FavoriteSong"];
-    artistRequest.predicate = [NSPredicate predicateWithFormat:@"(artist = %@) AND (song = %@)", artist.name, song];
-    
-    NSArray* matches = [context executeFetchRequest:artistRequest error:&favoriteSongError];
+    NSFetchRequest* request = [FavoriteSong createSongFetchRequest:song artist:artist.name];
+    NSArray* matches = [context executeFetchRequest:request error:&favoriteSongError];
     
     if (favoriteSongError)
     {
@@ -42,10 +41,112 @@
         favoriteSong.artist = artist.name;
         favoriteSong.song = song;
         favoriteSong.artistInfo = artist;
+        favoriteSong.savedDate = [NSDate date];
     }
     else
     {
         favoriteSong = [matches lastObject];
+    }
+    return favoriteSong;
+}
+
++ (NSFetchRequest *)createSongFetchRequest:(NSString *)song artist:(NSString *)artist
+{
+    NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:@"FavoriteSong"];
+    request.predicate = [NSPredicate predicateWithFormat:@"(artist = %@) AND (song = %@)", artist, song];
+    
+    return request;
+}
+
++ (NSFetchRequest *)createAllSongsFetchRequest
+{
+    NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:@"FavoriteSong"];
+    
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"savedDate" ascending:NO]];
+    request.predicate = nil; // get all favorite songs
+    
+    return request;
+}
+
++ (BOOL)deleteSongFromFavorites:(NSString *)song
+                     fromArtist:(NSString *)artist
+         inManagedObjectContext:(NSManagedObjectContext *)context
+                          error:(NSError **)error
+{
+    NSError* fetchRequestError = nil;
+    NSFetchRequest* request = [FavoriteSong createSongFetchRequest:song artist:artist];
+    NSArray* matches = [context executeFetchRequest:request error:&fetchRequestError];
+    
+    if (fetchRequestError)
+    {
+        *error = fetchRequestError;
+        return FALSE;
+    }
+    else if (matches.count == 0)
+    {
+        return FALSE;
+    }
+    
+    [context deleteObject:(FavoriteSong *)[matches lastObject]];
+    return TRUE;
+}
+
++ (BOOL)songIsInFavorites:(NSString *)song
+               fromArtist:(NSString *)artist
+   inManagedObjectContext:(NSManagedObjectContext *)context
+                    error:(NSError **)error
+{
+    if (song == nil || [song isEqualToString:@""])
+    {
+        return FALSE;
+    }
+    if (artist == nil || [artist isEqualToString:@""])
+    {
+        return FALSE;
+    }
+    NSError* fetchError = nil;
+    NSFetchRequest* request = [FavoriteSong createSongFetchRequest:song artist:artist];
+
+    NSArray* matches = [context executeFetchRequest:request error:&fetchError];
+    if (fetchError)
+    {
+        *error = fetchError;
+        return FALSE;
+    }
+    return (matches.count > 0);
+}
+
++ (FavoriteSong *)getOrAddSong:(NSString *)song
+                fromArtistName:(NSString *)artistName
+        inManagedObjectContext:(NSManagedObjectContext *)context
+                         error:(NSError **)error
+{
+    if (artistName == nil || [artistName isEqualToString:@""])
+    {
+        return nil;
+    }
+    if (song == nil || [song isEqualToString:@""])
+    {
+        return nil;
+    }
+    
+    NSError* currentError = nil;
+    Artist* artist = [Artist withName:artistName smallImage:nil inManagedObjectContext:context error:&currentError];
+    
+    if (currentError)
+    {
+        *error = currentError;
+        return nil;
+    }
+    
+    FavoriteSong* favoriteSong = [FavoriteSong getOrAddSong:song
+                                                 fromArtist:artist
+                                     inManagedObjectContext:context
+                                                      error:&currentError];
+    if (currentError)
+    {
+        *error = currentError;
+        return nil;
     }
     return favoriteSong;
 }

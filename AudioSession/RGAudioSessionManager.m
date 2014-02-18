@@ -164,22 +164,7 @@ typedef enum { NoExtraKnowledge, WillPlay } AudioSessionStateMatchingOptions;
     {
         if ([metadata.commonKey isEqualToString:@"title"])
         {
-            NSArray* components = [metadata.stringValue componentsSeparatedByString:@" - "];
-            if (components.count == 2)
-            {
-                self.playController.currentArtist = (NSString *)[components objectAtIndex:0];
-                self.playController.currentSong = (NSString *)[components objectAtIndex:1];
-            }
-            else if (components.count == 1)
-            {
-                self.playController.currentArtist = (NSString *)[components objectAtIndex:0];
-                self.playController.currentSong = @"";
-            }
-            else
-            {
-                self.playController.currentArtist = @"";
-                self.playController.currentSong = @"";
-            }
+            self.playController.streamTitle = metadata.stringValue;
         }
     }
 }

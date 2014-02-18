@@ -16,6 +16,7 @@
 
 @property (nonatomic, retain) NSString * artist;
 @property (nonatomic, retain) NSString * song;
+@property (nonatomic, retain) NSDate* savedDate;
 @property (nonatomic, retain) Artist *artistInfo;
 
 @end

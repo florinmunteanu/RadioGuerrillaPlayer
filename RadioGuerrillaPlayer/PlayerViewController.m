@@ -6,13 +6,15 @@
 //  Copyright (c) 2014 Florin Munteanu. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "PlayerViewController.h"
 #import "RGPlayController.h"
 #import "RGAudioSessionManager.h"
 #import "LastfmClient.h"
+#import "FavoriteSong+Guerrilla.h"
+#import "FavoriteSong.h"
 #import <AVFoundation/AVFoundation.h>
 
-@interface ViewController ()
+@interface PlayerViewController ()
 
 @property (strong, nonatomic) RGPlayController* playController;
 
@@ -20,7 +22,7 @@
 
 @end
 
-@implementation ViewController
+@implementation PlayerViewController
 
 - (void)viewDidLoad
 {
@@ -29,6 +31,53 @@
     
     self.playController = [[RGPlayController alloc] init];
     self.audioSessionManager = [[RGAudioSessionManager alloc] initWithPlayController:self.playController];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self.playController addObserver:self forKeyPath:@"streamTitle" options:NSKeyValueObservingOptionNew context:NULL];
+    
+    if (self.managedObjectContext == nil)
+    {
+        [self initManagedDocument];
+    }
+}
+
+/* Creates the NSManagedObjectContext required by Core Data. 
+ */
+- (void)initManagedDocument
+{
+    NSURL* url = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    url = [url URLByAppendingPathComponent:@"RadioDocument"];
+    
+    UIManagedDocument* document = [[UIManagedDocument alloc] initWithFileURL:url];
+    
+    if ([[NSFileManager defaultManager] fileExistsAtPath:[url path]] == NO)
+    {
+        [document saveToURL:url
+           forSaveOperation:UIDocumentSaveForCreating
+          completionHandler:^(BOOL success) {
+             if (success == YES)
+             {
+                 self.managedObjectContext = document.managedObjectContext;
+             }
+          }];
+    }
+    else if (document.documentState == UIDocumentStateClosed)
+    {
+        [document openWithCompletionHandler:^(BOOL success) {
+            if (success == YES)
+            {
+                self.managedObjectContext = document.managedObjectContext;
+            }
+        }];
+    }
+    else
+    {
+        self.managedObjectContext = document.managedObjectContext;
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -57,19 +106,10 @@
     [self.playActionButton setTitle:title forState:UIControlStateHighlighted];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [self.playController addObserver:self forKeyPath:@"currentSong" options:NSKeyValueObservingOptionNew context:NULL];
-    [self.playController addObserver:self forKeyPath:@"currentArtist" options:NSKeyValueObservingOptionNew context:NULL];
-    
-    [super viewWillAppear:animated];
-}
-
 - (void)viewWillDisappear:(BOOL)animated
 {
-    [self.playController removeObserver:self forKeyPath:@"currentSong"];
-    [self.playController removeObserver:self forKeyPath:@"currentArtist"];
-    
+    [self.playController removeObserver:self forKeyPath:@"streamTitle"];
+
     [super viewWillDisappear:animated];
 }
 
@@ -92,13 +132,19 @@
 {
     if (object == self.playController)
     {
-        if ([keyPath isEqualToString:@"currentSong"])
-        {
-            self.songLabel.text = self.playController.currentSong;
-        }
-        else if ([keyPath isEqualToString:@"currentArtist"])
+        if ([keyPath isEqualToString:@"streamTitle"])
         {
             self.artistLabel.text = self.playController.currentArtist;
+            self.songLabel.text = self.playController.currentSong;
+            
+            BOOL isInFavorites = [FavoriteSong songIsInFavorites:self.playController.currentSong
+                                                      fromArtist:self.playController.currentArtist
+                                          inManagedObjectContext:self.managedObjectContext
+                                                           error:nil];
+            if (isInFavorites)
+            {
+                self.isFavoriteImage.image = [UIImage imageNamed:@"filled_star"];
+            }
         }
     }
 }

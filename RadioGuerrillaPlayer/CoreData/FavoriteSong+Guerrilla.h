@@ -10,4 +10,15 @@
 
 @interface FavoriteSong (Guerrilla)
 
++ (NSFetchRequest *)createAllSongsFetchRequest;
+
++ (BOOL)songIsInFavorites:(NSString *)song
+               fromArtist:(NSString *)artist
+   inManagedObjectContext:(NSManagedObjectContext *)context
+                    error:(NSError **)error;
+
++ (FavoriteSong *)getOrAddSong:(NSString *)song
+                fromArtistName:(NSString *)artistName
+        inManagedObjectContext:(NSManagedObjectContext *)context
+                         error:(NSError **)error;
 @end

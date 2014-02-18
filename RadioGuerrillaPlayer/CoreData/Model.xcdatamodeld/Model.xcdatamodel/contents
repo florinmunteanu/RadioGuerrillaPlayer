@@ -6,12 +6,16 @@
     </entity>
     <entity name="FavoriteSong" representedClassName="FavoriteSong" parentEntity="Artist" syncable="YES">
         <attribute name="artist" attributeType="String" syncable="YES"/>
+        <attribute name="savedDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="song" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="artistInfo" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Artist" syncable="YES"/>
         <compoundIndexes>
             <compoundIndex>
                 <index value="artist"/>
                 <index value="song"/>
+            </compoundIndex>
+            <compoundIndex>
+                <index value="savedDate"/>
             </compoundIndex>
         </compoundIndexes>
     </entity>

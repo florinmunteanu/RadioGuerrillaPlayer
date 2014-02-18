@@ -10,7 +10,7 @@
 
 @implementation Artist (Guerrilla)
 
-+ (Artist *)fromString:(NSString *)name
++ (Artist *)withName:(NSString *)name
             smallImage:(NSData *)smallImage
       inManagedObjectContext:(NSManagedObjectContext *)context
                        error:(NSError **)error

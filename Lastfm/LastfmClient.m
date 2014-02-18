@@ -11,6 +11,7 @@
 #import "LastfmClient.h"
 #import "ArtistInfo.h"
 #import "ArtistInfoResponse.h"
+#import "AppDelegate.h"
 
 @interface LastfmClient()
 
@@ -26,8 +27,6 @@
 @end
 
 @implementation LastfmClient
-
-#define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
 
 NSString * const lastFmApiUrl = @"http://ws.audioscrobbler.com/2.0/";
 
