@@ -18,4 +18,6 @@
 
 @property (strong, nonatomic) NSString* streamTitle;
 
+- (BOOL)isStreamTitleASong;
+
 @end

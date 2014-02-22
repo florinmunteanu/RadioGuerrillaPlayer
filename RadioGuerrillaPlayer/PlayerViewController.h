@@ -18,7 +18,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView* artistImage;
 
-@property (weak, nonatomic) IBOutlet UIImageView *isFavoriteImage;
+@property (weak, nonatomic) IBOutlet UIButton *isFavoriteButton;
 
 @property (strong, nonatomic) NSManagedObjectContext* managedObjectContext;
 

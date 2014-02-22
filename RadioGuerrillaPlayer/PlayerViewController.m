@@ -31,6 +31,15 @@
     
     self.playController = [[RGPlayController alloc] init];
     self.audioSessionManager = [[RGAudioSessionManager alloc] initWithPlayController:self.playController];
+    
+    if ([self.artistLabel.text isEqualToString:@"Artist"])
+    {
+        self.artistLabel.text = @"";
+    }
+    if ([self.songLabel.text isEqualToString:@"Song"])
+    {
+        self.songLabel.text = @"";
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -141,12 +150,64 @@
                                                       fromArtist:self.playController.currentArtist
                                           inManagedObjectContext:self.managedObjectContext
                                                            error:nil];
-            if (isInFavorites)
-            {
-                self.isFavoriteImage.image = [UIImage imageNamed:@"filled_star"];
-            }
+            
+            [self.isFavoriteButton setSelected:isInFavorites];
         }
     }
+}
+
+- (IBAction)isFavoriteChanged:(id)sender
+{
+    if (self.playController.isStreamTitleASong == TRUE)
+    {
+        self.isFavoriteButton.enabled = FALSE;
+    
+        NSError* error = nil;
+        BOOL isSongInFavorites = [FavoriteSong songIsInFavorites:self.playController.currentSong
+                                                      fromArtist:self.playController.currentArtist
+                                          inManagedObjectContext:self.managedObjectContext
+                                                           error:&error];
+        if (isSongInFavorites)
+        {
+            [FavoriteSong deleteSongFromFavorites:self.playController.currentSong
+                                       fromArtist:self.playController.currentArtist
+                           inManagedObjectContext:self.managedObjectContext
+                                            error:&error];
+            
+            [self.isFavoriteButton setSelected:FALSE];
+        }
+        else
+        {
+            [FavoriteSong getOrAddSong:self.playController.currentSong
+                        fromArtistName:self.playController.currentArtist
+                inManagedObjectContext:self.managedObjectContext
+                                 error:&error];
+            
+            [self.isFavoriteButton setSelected:TRUE];
+        }
+    
+        self.isFavoriteButton.enabled = TRUE;
+    }
+}
+
+- (IBAction)addSong:(id)sender
+{
+    NSError* error = nil;
+    [FavoriteSong getOrAddSong:@"Take a Chance" fromArtistName:@"ABBA" inManagedObjectContext:self.managedObjectContext error:&error];
+    [FavoriteSong getOrAddSong:@"Bohemian Rhapsody" fromArtistName:@"Queen" inManagedObjectContext:self.managedObjectContext error:&error];
+    [FavoriteSong getOrAddSong:@"Counting Stars" fromArtistName:@"One Republic" inManagedObjectContext:self.managedObjectContext error:&error];
+    [FavoriteSong getOrAddSong:@"Stars" fromArtistName:@"Katy Perry" inManagedObjectContext:self.managedObjectContext error:&error];
+    
+    [self.managedObjectContext save:&error];
+    
+    NSFetchRequest* request = [FavoriteSong createAllSongsFetchRequest];
+    /*self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
+     managedObjectContext:self.managedObjectContext
+     sectionNameKeyPath:nil
+     cacheName:nil];
+     */
+    NSError* fetchRequestError = nil;
+    NSArray* matches = [self.managedObjectContext executeFetchRequest:request error:&fetchRequestError];
 }
 
 @end

@@ -12,6 +12,9 @@
 
 @implementation FavoriteSong (Guerrilla)
 
+/* Get or add a favorite the song. 
+ * If the song already exists, it will return the existing instance, otherwise it will add a new favorite song.
+ */
 + (FavoriteSong *)getOrAddSong:(NSString *)song
                     fromArtist:(Artist *)artist
         inManagedObjectContext:(NSManagedObjectContext *)context
@@ -40,7 +43,7 @@
         favoriteSong = [NSEntityDescription insertNewObjectForEntityForName:@"FavoriteSong" inManagedObjectContext:context];
         favoriteSong.artist = artist.name;
         favoriteSong.song = song;
-        favoriteSong.artistInfo = artist;
+        //favoriteSong.artistInfo = artist;
         favoriteSong.savedDate = [NSDate date];
     }
     else
@@ -64,7 +67,7 @@
     
     request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"savedDate" ascending:NO]];
     request.predicate = nil; // get all favorite songs
-    
+    //request.predicate = [NSPredicate predicateWithFormat:@"artist = %@", @"Queen"]; //
     return request;
 }
 
@@ -84,7 +87,7 @@
     }
     else if (matches.count == 0)
     {
-        return FALSE;
+        return TRUE;
     }
     
     [context deleteObject:(FavoriteSong *)[matches lastObject]];
@@ -131,7 +134,7 @@
     }
     
     NSError* currentError = nil;
-    Artist* artist = [Artist withName:artistName smallImage:nil inManagedObjectContext:context error:&currentError];
+    Artist* artist = [Artist getOrAddWithName:artistName smallImage:nil inManagedObjectContext:context error:&currentError];
     
     if (currentError)
     {

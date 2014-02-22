@@ -26,12 +26,12 @@
     if (components.count > 0)
     {
         self.currentArtist =  (NSString *)[components objectAtIndex:0];
-        self.currentArtist = [self.currentArtist stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@" "]];
+        self.currentArtist = [self.currentArtist stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
         
         if (components.count > 1)
         {
             self.currentSong = (NSString *)[components objectAtIndex:1];
-            self.currentSong = [self.currentSong stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@" "]];
+            self.currentSong = [self.currentSong stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
         }
         else
         {
@@ -44,6 +44,17 @@
         self.currentArtist = @"";
         self.currentSong = @"";
     }
+}
+
+- (BOOL)isStreamTitleASong
+{
+    if ([self.streamTitle isEqualToString:@""])
+    {
+        return FALSE;
+    }
+    
+    NSString* lowerCaseStreamTitle = [self.streamTitle lowercaseString];
+    return [lowerCaseStreamTitle rangeOfString:@"guerrilla"].length == 0;
 }
 
 @end

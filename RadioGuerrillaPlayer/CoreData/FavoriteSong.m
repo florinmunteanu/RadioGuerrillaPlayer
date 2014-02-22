@@ -14,7 +14,6 @@
 
 @dynamic artist;
 @dynamic song;
-@dynamic artistInfo;
 @dynamic savedDate;
 
 @end

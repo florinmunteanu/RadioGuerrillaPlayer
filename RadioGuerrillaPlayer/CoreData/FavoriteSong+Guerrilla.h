@@ -21,4 +21,9 @@
                 fromArtistName:(NSString *)artistName
         inManagedObjectContext:(NSManagedObjectContext *)context
                          error:(NSError **)error;
+
++ (BOOL)deleteSongFromFavorites:(NSString *)song
+                     fromArtist:(NSString *)artist
+         inManagedObjectContext:(NSManagedObjectContext *)context
+                          error:(NSError **)error;
 @end

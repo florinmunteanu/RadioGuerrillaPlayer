@@ -10,28 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RadioGuerrillaPlayer/PlayerViewController.m"
-            timestampString = "414444437.319678"
+            timestampString = "414789088.354324"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
-            landmarkName = "-getArtistInfo:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AudioSession/RGPlayController.m"
-            timestampString = "414451570.932932"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
-            landmarkName = "-setStreamTitle:"
+            startingLineNumber = "176"
+            endingLineNumber = "176"
+            landmarkName = "-isFavoriteChanged:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

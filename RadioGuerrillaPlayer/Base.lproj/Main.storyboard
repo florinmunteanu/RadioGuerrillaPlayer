@@ -65,10 +65,30 @@
                                 <rect key="frame" x="157" y="95" width="163" height="176"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="empty_star.png" translatesAutoresizingMaskIntoConstraints="NO" id="Spg-c2-Igp">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AiB-cN-osd">
                                 <rect key="frame" x="0.0" y="458" width="49" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" none="YES" image="YES"/>
+                                </accessibility>
+                                <state key="normal" title="Button" image="empty_star.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected" image="filled_star.png"/>
+                                <connections>
+                                    <action selector="isFavoriteChanged:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="xx7-mP-XqC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KPk-S7-TXf">
+                                <rect key="frame" x="46" y="341" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addSong:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="7fg-Pw-ZO0"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -76,14 +96,14 @@
                     <connections>
                         <outlet property="artistImage" destination="fyf-Ry-10Y" id="2Je-Zb-5nY"/>
                         <outlet property="artistLabel" destination="Q9s-PD-SOg" id="Hu5-Y2-SnT"/>
-                        <outlet property="isFavoriteImage" destination="Spg-c2-Igp" id="9zh-1m-dgh"/>
+                        <outlet property="isFavoriteButton" destination="AiB-cN-osd" id="C1D-Ih-4ZF"/>
                         <outlet property="playActionButton" destination="Ody-PS-BOw" id="hd5-Ar-urc"/>
                         <outlet property="songLabel" destination="r5f-cn-Efm" id="anl-wQ-029"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="250" y="255"/>
+            <point key="canvasLocation" x="342" y="81"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="dc5-Vb-93u">
@@ -112,6 +132,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FavoriteSong" textLabel="P4t-Cs-9hT" detailTextLabel="xD4-u1-dU4" imageView="2ul-Fg-fUL" style="IBUITableViewCellStyleSubtitle" id="0lD-WY-ExQ">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0lD-WY-ExQ" id="1Tr-66-d78">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="P4t-Cs-9hT">
+                                            <rect key="frame" x="73" y="5" width="32" height="20"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xD4-u1-dU4">
+                                            <rect key="frame" x="73" y="25" width="30" height="14"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="play.png" id="2ul-Fg-fUL">
+                                            <rect key="frame" x="15" y="0.0" width="43" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="nh5-ac-f4s" id="oT2-uh-i3u"/>
                             <outlet property="delegate" destination="nh5-ac-f4s" id="1Su-ue-I60"/>
@@ -121,11 +171,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rVG-Jb-DWu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="206" y="915"/>
+            <point key="canvasLocation" x="350" y="807"/>
         </scene>
     </scenes>
     <resources>
         <image name="empty_star.png" width="128" height="128"/>
+        <image name="filled_star.png" width="128" height="128"/>
         <image name="play.png" width="128" height="128"/>
         <image name="radio-guerrilla-logo.png" width="235" height="181"/>
         <image name="radio.png" width="25" height="25"/>
