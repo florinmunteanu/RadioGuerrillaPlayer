@@ -12,6 +12,10 @@
 #import "LastfmClient.h"
 #import "FavoriteSong+Guerrilla.h"
 #import "FavoriteSong.h"
+#import "Artist.h"
+#import "Artist+Guerrilla.h"
+#import "AppDelegate.h"
+#import "ArtistInfoResponse.h"
 #import <AVFoundation/AVFoundation.h>
 
 @interface PlayerViewController ()
@@ -45,6 +49,10 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    // Because on viewWillDisappear we remove the observer, the current song/artist could have changed.
+    // We must make sure the UI is updated with the current song/artist.
+    [self updateUIOnStreamTitleChanged];
     
     [self.playController addObserver:self forKeyPath:@"streamTitle" options:NSKeyValueObservingOptionNew context:NULL];
     
@@ -92,27 +100,21 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+    
     // Dispose of any resources that can be recreated.
 }
-- (IBAction)changePlayState:(id)sender
+
+- (IBAction)changePlay:(id)sender
 {
-    if (self.playController.playing == YES)
+    if (self.playController.playing)
     {
         self.playController.playing = NO;
-        [self setPlayTitle:@"Play"];
     }
     else
     {
         self.playController.playing = YES;
-        [self setPlayTitle:@"Stop"];
     }
-}
-
-- (void)setPlayTitle:(NSString *)title
-{
-    [self.playActionButton setTitle:title forState:UIControlStateNormal];
-    [self.playActionButton setTitle:title forState:UIControlStateSelected];
-    [self.playActionButton setTitle:title forState:UIControlStateHighlighted];
+    [self.playButton setSelected:self.playController.playing];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -122,38 +124,32 @@
     [super viewWillDisappear:animated];
 }
 
-- (IBAction)getArtistInfo:(id)sender
-{
-    LastfmClient* lastfmClient = [[LastfmClient alloc] initWithApiKey:@""];
-    
-    [lastfmClient sendGetArtistInfo:self.playController.currentArtist
-            withCompletationHandler:^(ArtistInfoResponse* response) {
-                if (response && response.artistInfo)
-                {
-                    NSData* imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:response.artistInfo.mediumImageURL]];
-                    self.artistImage.image = nil;
-                    self.artistImage.image = [[UIImage alloc] initWithData:imageData];
-                }
-    }];
-}
-
--(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
     if (object == self.playController)
     {
         if ([keyPath isEqualToString:@"streamTitle"])
         {
-            self.artistLabel.text = self.playController.currentArtist;
-            self.songLabel.text = self.playController.currentSong;
-            
-            BOOL isInFavorites = [FavoriteSong songIsInFavorites:self.playController.currentSong
-                                                      fromArtist:self.playController.currentArtist
-                                          inManagedObjectContext:self.managedObjectContext
-                                                           error:nil];
-            
-            [self.isFavoriteButton setSelected:isInFavorites];
+            [self updateUIOnStreamTitleChanged];
         }
     }
+}
+
+- (void)updateUIOnStreamTitleChanged
+{
+    self.artistLabel.text = self.playController.currentArtist;
+    self.songLabel.text = self.playController.currentSong;
+    
+    BOOL isInFavorites = [FavoriteSong songIsInFavorites:self.playController.currentSong
+                                              fromArtist:self.playController.currentArtist
+                                  inManagedObjectContext:self.managedObjectContext
+                                                   error:nil];
+    if (self.isFavoriteButton.hidden)
+    {
+        [self.isFavoriteButton setHidden:FALSE];
+    }
+    
+    [self.isFavoriteButton setSelected:isInFavorites];
 }
 
 - (IBAction)isFavoriteChanged:(id)sender
@@ -161,16 +157,22 @@
     if (self.playController.isStreamTitleASong == TRUE)
     {
         self.isFavoriteButton.enabled = FALSE;
-    
-        NSError* error = nil;
-        BOOL isSongInFavorites = [FavoriteSong songIsInFavorites:self.playController.currentSong
-                                                      fromArtist:self.playController.currentArtist
+        
+        /* Get a copy of current artist and song.
+         * In case the current playing song/artist changes then our code won't be affected, we still have the original song/artist.
+         */
+        NSString* artistName = (NSString *)[self.playController.currentSong copy];
+        NSString* songName = (NSString *)[self.playController.currentArtist copy];
+        NSError*  error = nil;
+        
+        BOOL isSongInFavorites = [FavoriteSong songIsInFavorites:songName
+                                                      fromArtist:artistName
                                           inManagedObjectContext:self.managedObjectContext
                                                            error:&error];
         if (isSongInFavorites)
         {
-            [FavoriteSong deleteSongFromFavorites:self.playController.currentSong
-                                       fromArtist:self.playController.currentArtist
+            [FavoriteSong deleteSongFromFavorites:songName
+                                       fromArtist:artistName
                            inManagedObjectContext:self.managedObjectContext
                                             error:&error];
             
@@ -178,10 +180,14 @@
         }
         else
         {
-            [FavoriteSong getOrAddSong:self.playController.currentSong
-                        fromArtistName:self.playController.currentArtist
-                inManagedObjectContext:self.managedObjectContext
-                                 error:&error];
+            FavoriteSong* song = [FavoriteSong getOrAddSong:songName
+                                             fromArtistName:artistName
+                                     inManagedObjectContext:self.managedObjectContext
+                                                      error:&error];
+            if (error == nil && song.artistInfo.smallImage == nil)
+            {
+                [self updateArtistImage:artistName];
+            }
             
             [self.isFavoriteButton setSelected:TRUE];
         }
@@ -190,24 +196,52 @@
     }
 }
 
-- (IBAction)addSong:(id)sender
+- (void)updateArtistImage:(NSString *)artistName
 {
-    NSError* error = nil;
-    [FavoriteSong getOrAddSong:@"Take a Chance" fromArtistName:@"ABBA" inManagedObjectContext:self.managedObjectContext error:&error];
-    [FavoriteSong getOrAddSong:@"Bohemian Rhapsody" fromArtistName:@"Queen" inManagedObjectContext:self.managedObjectContext error:&error];
-    [FavoriteSong getOrAddSong:@"Counting Stars" fromArtistName:@"One Republic" inManagedObjectContext:self.managedObjectContext error:&error];
-    [FavoriteSong getOrAddSong:@"Stars" fromArtistName:@"Katy Perry" inManagedObjectContext:self.managedObjectContext error:&error];
-    
-    [self.managedObjectContext save:&error];
-    
-    NSFetchRequest* request = [FavoriteSong createAllSongsFetchRequest];
-    /*self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
-     managedObjectContext:self.managedObjectContext
-     sectionNameKeyPath:nil
-     cacheName:nil];
-     */
-    NSError* fetchRequestError = nil;
-    NSArray* matches = [self.managedObjectContext executeFetchRequest:request error:&fetchRequestError];
+    if (artistName && artistName.length > 0)
+    {
+        LastfmClient* lastfmClient = [[LastfmClient alloc] initWithApiKey:@""];
+        
+        [lastfmClient sendGetArtistInfo:self.playController.currentArtist
+                  withCompletionHandler:^(ArtistInfoResponse* response) {
+                      if (response && response.artistInfo)
+                      {
+                          dispatch_async(kBgQueue, ^(void) {
+                              NSData* imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:response.artistInfo.mediumImageURL]];
+                              
+                              // Update the image on the main thread.
+                              // It is the only thread valid to work with the managedObjectContext
+                              dispatch_async(dispatch_get_main_queue(), ^(void) {
+                                                            [Artist updateImage:imageData
+                                                                     artistName:response.artistName
+                                                         inManagedObjectContext:self.managedObjectContext
+                                                                          error:nil];
+                                   });
+                          });
+                      }
+                  }];
+
+    }
 }
+
+//- (IBAction)addSong:(id)sender
+//{
+//    NSError* error = nil;
+//    [FavoriteSong getOrAddSong:@"Take a Chance" fromArtistName:@"ABBA" inManagedObjectContext:self.managedObjectContext error:&error];
+//    [FavoriteSong getOrAddSong:@"Bohemian Rhapsody" fromArtistName:@"Queen" inManagedObjectContext:self.managedObjectContext error:&error];
+//    [FavoriteSong getOrAddSong:@"Counting Stars" fromArtistName:@"One Republic" inManagedObjectContext:self.managedObjectContext error:&error];
+//    [FavoriteSong getOrAddSong:@"Stars" fromArtistName:@"Katy Perry" inManagedObjectContext:self.managedObjectContext error:&error];
+    
+//    [self.managedObjectContext save:&error];
+    
+//    NSFetchRequest* request = [FavoriteSong createAllSongsFetchRequest];
+//    /*self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
+//     managedObjectContext:self.managedObjectContext
+//     sectionNameKeyPath:nil
+//     cacheName:nil];
+//     */
+//    NSError* fetchRequestError = nil;
+//    NSArray* matches = [self.managedObjectContext executeFetchRequest:request error:&fetchRequestError];
+//}
 
 @end

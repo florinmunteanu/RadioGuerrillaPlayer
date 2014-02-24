@@ -3,6 +3,7 @@
     <entity name="Artist" representedClassName="Artist" syncable="YES">
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="smallImage" optional="YES" attributeType="Binary" syncable="YES"/>
+        <relationship name="songs" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="FavoriteSong" inverseName="artistInfo" inverseEntity="FavoriteSong" syncable="YES"/>
         <compoundIndexes>
             <compoundIndex>
                 <index value="name"/>
@@ -13,6 +14,7 @@
         <attribute name="artist" attributeType="String" syncable="YES"/>
         <attribute name="savedDate" attributeType="Date" syncable="YES"/>
         <attribute name="song" attributeType="String" syncable="YES"/>
+        <relationship name="artistInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Artist" inverseName="songs" inverseEntity="Artist" syncable="YES"/>
         <compoundIndexes>
             <compoundIndex>
                 <index value="artist"/>
@@ -21,7 +23,7 @@
         </compoundIndexes>
     </entity>
     <elements>
-        <element name="Artist" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="FavoriteSong" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Artist" positionX="-135" positionY="189" width="128" height="88"/>
+        <element name="FavoriteSong" positionX="223" positionY="155" width="128" height="103"/>
     </elements>
 </model>

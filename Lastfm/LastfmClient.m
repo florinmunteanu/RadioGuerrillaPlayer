@@ -87,7 +87,7 @@ NSString * const lastFmApiUrl = @"http://ws.audioscrobbler.com/2.0/";
    }
  
  */
-- (void)sendGetArtistInfo:(NSString *)artistName withCompletationHandler:(void (^)(ArtistInfoResponse *))completionHandler
+- (void)sendGetArtistInfo:(NSString *)artistName withCompletionHandler:(void (^)(ArtistInfoResponse *))completionHandler
 {
     if (artistName == nil || artistName.length == 0)
     {
@@ -124,6 +124,7 @@ NSString * const lastFmApiUrl = @"http://ws.audioscrobbler.com/2.0/";
             if (code == 200 && data != nil)
             {
                 artistInfoReponse = [self parseData:data];
+                artistInfoReponse.artistName = artistName;
             }
         }
         

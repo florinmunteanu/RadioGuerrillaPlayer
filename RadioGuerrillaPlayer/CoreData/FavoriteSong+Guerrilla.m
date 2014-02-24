@@ -43,7 +43,7 @@
         favoriteSong = [NSEntityDescription insertNewObjectForEntityForName:@"FavoriteSong" inManagedObjectContext:context];
         favoriteSong.artist = artist.name;
         favoriteSong.song = song;
-        //favoriteSong.artistInfo = artist;
+        favoriteSong.artistInfo = artist;
         favoriteSong.savedDate = [NSDate date];
     }
     else

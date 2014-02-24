@@ -10,13 +10,11 @@
 
 @interface PlayerViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UIButton* playActionButton;
+@property (weak, nonatomic) IBOutlet UIButton *playButton;
 
 @property (weak, nonatomic) IBOutlet UILabel* songLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel* artistLabel;
-
-@property (weak, nonatomic) IBOutlet UIImageView* artistImage;
 
 @property (weak, nonatomic) IBOutlet UIButton *isFavoriteButton;
 

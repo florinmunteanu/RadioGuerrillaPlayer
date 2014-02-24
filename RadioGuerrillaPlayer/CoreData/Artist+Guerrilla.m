@@ -45,4 +45,29 @@
     return artist;
 }
 
++ (Artist *)updateImage:(NSData *)artistImage
+             artistName:(NSString *)artistName
+ inManagedObjectContext:(NSManagedObjectContext *)context
+                  error:(NSError **)error
+{
+    NSFetchRequest* artistRequest = [NSFetchRequest fetchRequestWithEntityName:@"Artist"];
+    artistRequest.predicate = [NSPredicate predicateWithFormat:@"name = %@", artistName];
+    
+    NSError* fetchError = nil;
+    NSArray* matches = [context executeFetchRequest:artistRequest error:&fetchError];
+    
+    Artist* artist = nil;
+    
+    if (matches == nil)
+    {
+        *error = fetchError;
+    }
+    else if (matches.count == 1)
+    {
+        artist = [matches lastObject];
+        artist.smallImage = artistImage;
+    }
+    return artist;
+}
+
 @end

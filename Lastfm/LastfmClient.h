@@ -13,6 +13,6 @@
 
 - (id)initWithApiKey:(NSString *)apiKey;
 
-- (void)sendGetArtistInfo:(NSString *)artistName withCompletationHandler:(void (^)(ArtistInfoResponse *))completionHandler;
+- (void)sendGetArtistInfo:(NSString *)artistName withCompletionHandler:(void (^)(ArtistInfoResponse *))completionHandler;
 
 @end

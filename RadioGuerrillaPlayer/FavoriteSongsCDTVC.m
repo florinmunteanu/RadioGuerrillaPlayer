@@ -11,6 +11,7 @@
 #import "FavoriteSong+Guerrilla.h"
 #import "FavoriteSong.h"
 #import "PlayerViewController.h"
+#import "Artist.h"
 
 @interface FavoriteSongsCDTVC ()
 
@@ -21,7 +22,8 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
+    if (self)
+    {
         // Custom initialization
     }
     return self;
@@ -30,9 +32,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	[self.refreshControl addTarget:self
-                            action:@selector(refresh)
-                  forControlEvents:UIControlEventValueChanged];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -60,9 +59,6 @@
                                                                             managedObjectContext:self.managedObjectContext
                                                                               sectionNameKeyPath:nil
                                                                                        cacheName:nil];
-        
-        //NSError* fetchRequestError = nil;
-        //NSArray* matches = [managedObjectContext executeFetchRequest:request error:&fetchRequestError];
     }
     else
     {
@@ -73,30 +69,58 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"FavoriteSong"];
-    //NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
-    //[dateFormatter setTimeZone:[NSTimeZone systemTimeZone]];
-    //[dateFormatter setDateFormat:@"dd-MM"];
     
     FavoriteSong* song = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.textLabel.text = song.song;
     cell.detailTextLabel.text = song.artist;
-    
-    //Word *word = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    //cell.textLabel.text = word.title;
-    //cell.detailTextLabel.text = [dateFormatter stringFromDate:word.day];
+    if (song.artistInfo.smallImage == nil)
+    {
+        cell.imageView.image = [UIImage imageNamed:@"empty_star"];
+    }
+    else
+    {
+        cell.imageView.image = [UIImage imageWithData:song.artistInfo.smallImage];
+    }
     
     return cell;
 }
 
-- (IBAction)refresh
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    [self.refreshControl beginRefreshing];
-
-    dispatch_async(kBgQueue, ^{
-       
-    });
+    return 1;
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return @"Songs";
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return UITableViewCellEditingStyleDelete;
+}
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated
+{
+    [super setEditing:editing animated:animated];
+    
+    [self.tableView setEditing:editing animated:animated];
+}
+
+
+- (void) tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete)
+    {
+        NSError* error = nil;
+        FavoriteSong* f = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        
+        [FavoriteSong deleteSongFromFavorites:f.song
+                                   fromArtist:f.artist
+                       inManagedObjectContext:self.managedObjectContext
+                                        error:&error];
+    }
+}
 
 - (void)didReceiveMemoryWarning
 {
