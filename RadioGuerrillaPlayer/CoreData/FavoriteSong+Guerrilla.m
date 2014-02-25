@@ -56,7 +56,7 @@
 + (NSFetchRequest *)createSongFetchRequest:(NSString *)song artist:(NSString *)artist
 {
     NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:@"FavoriteSong"];
-    request.predicate = [NSPredicate predicateWithFormat:@"(artist = %@) AND (song = %@)", artist, song];
+    request.predicate = [NSPredicate predicateWithFormat:@"(artist == %@) AND (song == %@)", artist, song];
     
     return request;
 }
@@ -152,6 +152,11 @@
         return nil;
     }
     return favoriteSong;
+}
+
++ (void)deleteAllSongs:(NSManagedObjectContext *)context error:(NSError **)error
+{
+    
 }
 
 @end

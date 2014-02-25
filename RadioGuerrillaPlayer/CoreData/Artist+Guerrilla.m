@@ -70,4 +70,10 @@
     return artist;
 }
 
++ (void)deleteAllArtists:(NSManagedObjectContext *)context
+                   error:(NSError **)error
+{
+    
+}
+
 @end

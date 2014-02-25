@@ -20,4 +20,7 @@
  inManagedObjectContext:(NSManagedObjectContext *)context
                   error:(NSError **)error;
 
++ (void)deleteAllArtists:(NSManagedObjectContext *)context
+                   error:(NSError **)error;
+
 @end

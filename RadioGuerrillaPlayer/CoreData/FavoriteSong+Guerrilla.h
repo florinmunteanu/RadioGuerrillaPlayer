@@ -26,4 +26,8 @@
                      fromArtist:(NSString *)artist
          inManagedObjectContext:(NSManagedObjectContext *)context
                           error:(NSError **)error;
+
++ (void)deleteAllSongs:(NSManagedObjectContext *)context
+                 error:(NSError **)error;
+
 @end

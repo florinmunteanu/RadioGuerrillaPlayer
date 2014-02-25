@@ -16,15 +16,15 @@
 
 - (BOOL)isInternetAvailable
 {
-    NSString *google = @"www.google.com";
-    SCNetworkReachabilityRef reachabilityRef = SCNetworkReachabilityCreateWithName(NULL, [google UTF8String]);
+    //NSString *google = @"www.google.com";
+    //SCNetworkReachabilityRef reachabilityRef = SCNetworkReachabilityCreateWithName(NULL, [google UTF8String]);
     
     return TRUE;
 }
 
 void (^callbackBlock)(SCNetworkReachabilityFlags) = ^(SCNetworkConnectionFlags flags)
 {
-    BOOL reachable = (flags & kSCNetworkReachabilityFlagsReachable) != 0;
+    //BOOL reachable = (flags & kSCNetworkReachabilityFlagsReachable) != 0;
 };
 
 @end

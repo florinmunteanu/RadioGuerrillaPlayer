@@ -31,6 +31,9 @@
 		4E156EEF18AEAC13009F28C8 /* radio-guerrilla-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E156EEE18AEAC13009F28C8 /* radio-guerrilla-logo.png */; };
 		4E36A2CC18B9F05C0064E613 /* Artist.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E36A2CB18B9F05C0064E613 /* Artist.m */; };
 		4E36A2CF18B9F05C0064E613 /* FavoriteSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E36A2CE18B9F05C0064E613 /* FavoriteSong.m */; };
+		4E36A2D218BB82480064E613 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E36A2D118BB82480064E613 /* SettingsViewController.m */; };
+		4E36A2D518BB85310064E613 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E36A2D318BB85310064E613 /* settings.png */; };
+		4E36A2D618BB85310064E613 /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E36A2D418BB85310064E613 /* settings@2x.png */; };
 		4E899A5118AFFB0A008FCB04 /* LastfmClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E899A5018AFFB0A008FCB04 /* LastfmClient.m */; };
 		4E899A5418AFFC48008FCB04 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E899A5318AFFC48008FCB04 /* SystemConfiguration.framework */; };
 		4E899A5718AFFD92008FCB04 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E899A5618AFFD92008FCB04 /* Reachability.m */; };
@@ -96,6 +99,10 @@
 		4E36A2CB18B9F05C0064E613 /* Artist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Artist.m; sourceTree = "<group>"; };
 		4E36A2CD18B9F05C0064E613 /* FavoriteSong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteSong.h; sourceTree = "<group>"; };
 		4E36A2CE18B9F05C0064E613 /* FavoriteSong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteSong.m; sourceTree = "<group>"; };
+		4E36A2D018BB82480064E613 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		4E36A2D118BB82480064E613 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		4E36A2D318BB85310064E613 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = settings.png; path = Images/settings.png; sourceTree = "<group>"; };
+		4E36A2D418BB85310064E613 /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "settings@2x.png"; path = "Images/settings@2x.png"; sourceTree = "<group>"; };
 		4E899A4F18AFFB0A008FCB04 /* LastfmClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LastfmClient.h; path = ../Lastfm/LastfmClient.h; sourceTree = "<group>"; };
 		4E899A5018AFFB0A008FCB04 /* LastfmClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LastfmClient.m; path = ../Lastfm/LastfmClient.m; sourceTree = "<group>"; };
 		4E899A5318AFFC48008FCB04 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -200,6 +207,8 @@
 				4E899A8518B2A291008FCB04 /* FavoriteSongsCDTVC.m */,
 				4E156DDC18A81E7E009F28C8 /* PlayerViewController.h */,
 				4E156DDD18A81E7E009F28C8 /* PlayerViewController.m */,
+				4E36A2D018BB82480064E613 /* SettingsViewController.h */,
+				4E36A2D118BB82480064E613 /* SettingsViewController.m */,
 				4E899A5518AFFD92008FCB04 /* Reachability.h */,
 				4E899A5618AFFD92008FCB04 /* Reachability.m */,
 				4E156DDF18A81E7E009F28C8 /* Images.xcassets */,
@@ -253,6 +262,8 @@
 		4E156EE518AEAA22009F28C8 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				4E36A2D318BB85310064E613 /* settings.png */,
+				4E36A2D418BB85310064E613 /* settings@2x.png */,
 				4E899A9318B41ADE008FCB04 /* star.png */,
 				4E899A9418B41ADE008FCB04 /* star@2x.png */,
 				4E899A8B18B3EB69008FCB04 /* empty_star.png */,
@@ -377,8 +388,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E899A8918B3EA96008FCB04 /* filled_star.png in Resources */,
+				4E36A2D618BB85310064E613 /* settings@2x.png in Resources */,
 				4E899A8D18B3EB69008FCB04 /* empty_star.png in Resources */,
 				4E899A9618B41ADE008FCB04 /* star@2x.png in Resources */,
+				4E36A2D518BB85310064E613 /* settings.png in Resources */,
 				4E156EED18AEAA49009F28C8 /* play@2x.png in Resources */,
 				4E899A9118B419F8008FCB04 /* radio.png in Resources */,
 				4E899A8A18B3EA96008FCB04 /* filled_star@2x.png in Resources */,
@@ -419,6 +432,7 @@
 				4E899A7F18B14343008FCB04 /* FavoriteSong+Guerrilla.m in Sources */,
 				4E36A2CF18B9F05C0064E613 /* FavoriteSong.m in Sources */,
 				4E156E0618AAD0CB009F28C8 /* RGPlayController.m in Sources */,
+				4E36A2D218BB82480064E613 /* SettingsViewController.m in Sources */,
 				4E899A5718AFFD92008FCB04 /* Reachability.m in Sources */,
 				4E899A5118AFFB0A008FCB04 /* LastfmClient.m in Sources */,
 				4E899A6018B136BD008FCB04 /* Model.xcdatamodeld in Sources */,
