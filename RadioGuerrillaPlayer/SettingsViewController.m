@@ -74,18 +74,19 @@
     }
     else if (indexPath.section == 0 && indexPath.row == 1)
     {
-       cell.textLabel.text = @"Delete all favorite songs";
-        
+       //cell.textLabel.text = @"Delete all favorite songs";
+        //cell.textLabel.textAlignment = UITextAlignmentCenter;
         UIButton* deleteAllSongsButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        deleteAllSongsButton.frame = CGRectMake(0.0f, 0.0f, 60.0f, 25.0f);
+        deleteAllSongsButton.frame = CGRectMake(0.0f, 0.0f, 160.0f, 25.0f);
         deleteAllSongsButton.backgroundColor = [UIColor redColor];
         
         [deleteAllSongsButton setTitleColor:[UIColor whiteColor]
                                    forState:UIControlStateNormal];
-        [deleteAllSongsButton setTitle:@"Delete"
+        [deleteAllSongsButton setTitle:@"Delete all data"
                               forState:UIControlStateNormal];
         
-        cell.accessoryView = deleteAllSongsButton;
+        //cell.accessoryView = deleteAllSongsButton;
+        [cell addSubview:deleteAllSongsButton];
     }
     else if (indexPath.section == 1 && indexPath.row == 0)
     {

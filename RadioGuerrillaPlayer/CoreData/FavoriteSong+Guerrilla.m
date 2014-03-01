@@ -56,7 +56,7 @@
 + (NSFetchRequest *)createSongFetchRequest:(NSString *)song artist:(NSString *)artist
 {
     NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:@"FavoriteSong"];
-    request.predicate = [NSPredicate predicateWithFormat:@"(artist == %@) AND (song == %@)", artist, song];
+    request.predicate = [NSPredicate predicateWithFormat:@"(artist = %@) AND (song = %@)", artist, song];
     
     return request;
 }
@@ -67,7 +67,7 @@
     
     request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"savedDate" ascending:NO]];
     request.predicate = nil; // get all favorite songs
-    //request.predicate = [NSPredicate predicateWithFormat:@"artist = %@", @"Queen"]; //
+    
     return request;
 }
 

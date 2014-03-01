@@ -29,6 +29,9 @@
 		4E156EEC18AEAA49009F28C8 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E156EE818AEAA49009F28C8 /* play.png */; };
 		4E156EED18AEAA49009F28C8 /* play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E156EE918AEAA49009F28C8 /* play@2x.png */; };
 		4E156EEF18AEAC13009F28C8 /* radio-guerrilla-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E156EEE18AEAC13009F28C8 /* radio-guerrilla-logo.png */; };
+		4E229D3A18C1FDF3003F8B5C /* app_icon58.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E229D3718C1FDF3003F8B5C /* app_icon58.png */; };
+		4E229D3B18C1FDF3003F8B5C /* app_icon80.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E229D3818C1FDF3003F8B5C /* app_icon80.png */; };
+		4E229D3C18C1FDF3003F8B5C /* app_icon120.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E229D3918C1FDF3003F8B5C /* app_icon120.png */; };
 		4E36A2CC18B9F05C0064E613 /* Artist.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E36A2CB18B9F05C0064E613 /* Artist.m */; };
 		4E36A2CF18B9F05C0064E613 /* FavoriteSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E36A2CE18B9F05C0064E613 /* FavoriteSong.m */; };
 		4E36A2D218BB82480064E613 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E36A2D118BB82480064E613 /* SettingsViewController.m */; };
@@ -95,6 +98,9 @@
 		4E156EE818AEAA49009F28C8 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = play.png; path = Images/play.png; sourceTree = "<group>"; };
 		4E156EE918AEAA49009F28C8 /* play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "play@2x.png"; path = "Images/play@2x.png"; sourceTree = "<group>"; };
 		4E156EEE18AEAC13009F28C8 /* radio-guerrilla-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "radio-guerrilla-logo.png"; path = "Images/radio-guerrilla-logo.png"; sourceTree = "<group>"; };
+		4E229D3718C1FDF3003F8B5C /* app_icon58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = app_icon58.png; path = Images/app_icon58.png; sourceTree = "<group>"; };
+		4E229D3818C1FDF3003F8B5C /* app_icon80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = app_icon80.png; path = Images/app_icon80.png; sourceTree = "<group>"; };
+		4E229D3918C1FDF3003F8B5C /* app_icon120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = app_icon120.png; path = Images/app_icon120.png; sourceTree = "<group>"; };
 		4E36A2CA18B9F05C0064E613 /* Artist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Artist.h; sourceTree = "<group>"; };
 		4E36A2CB18B9F05C0064E613 /* Artist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Artist.m; sourceTree = "<group>"; };
 		4E36A2CD18B9F05C0064E613 /* FavoriteSong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteSong.h; sourceTree = "<group>"; };
@@ -262,6 +268,9 @@
 		4E156EE518AEAA22009F28C8 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				4E229D3718C1FDF3003F8B5C /* app_icon58.png */,
+				4E229D3818C1FDF3003F8B5C /* app_icon80.png */,
+				4E229D3918C1FDF3003F8B5C /* app_icon120.png */,
 				4E36A2D318BB85310064E613 /* settings.png */,
 				4E36A2D418BB85310064E613 /* settings@2x.png */,
 				4E899A9318B41ADE008FCB04 /* star.png */,
@@ -393,6 +402,9 @@
 				4E899A9618B41ADE008FCB04 /* star@2x.png in Resources */,
 				4E36A2D518BB85310064E613 /* settings.png in Resources */,
 				4E156EED18AEAA49009F28C8 /* play@2x.png in Resources */,
+				4E229D3B18C1FDF3003F8B5C /* app_icon80.png in Resources */,
+				4E229D3A18C1FDF3003F8B5C /* app_icon58.png in Resources */,
+				4E229D3C18C1FDF3003F8B5C /* app_icon120.png in Resources */,
 				4E899A9118B419F8008FCB04 /* radio.png in Resources */,
 				4E899A8A18B3EA96008FCB04 /* filled_star@2x.png in Resources */,
 				4E156DE018A81E7E009F28C8 /* Images.xcassets in Resources */,
@@ -564,7 +576,6 @@
 		4E156DF718A81E7E009F28C8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RadioGuerrillaPlayer/RadioGuerrillaPlayer-Prefix.pch";
@@ -577,7 +588,6 @@
 		4E156DF818A81E7E009F28C8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RadioGuerrillaPlayer/RadioGuerrillaPlayer-Prefix.pch";

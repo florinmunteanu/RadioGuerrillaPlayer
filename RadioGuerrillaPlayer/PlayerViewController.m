@@ -161,8 +161,8 @@
         /* Get a copy of current artist and song.
          * In case the current playing song/artist changes then our code won't be affected, we still have the original song/artist.
          */
-        NSString* artistName = (NSString *)[self.playController.currentSong copy];
-        NSString* songName = (NSString *)[self.playController.currentArtist copy];
+        NSString* artistName = (NSString *)[self.playController.currentArtist copy];
+        NSString* songName = (NSString *)[self.playController.currentSong copy];
         NSError*  error = nil;
         
         BOOL isSongInFavorites = [FavoriteSong songIsInFavorites:songName
@@ -223,6 +223,10 @@
 
     }
 }
+//- (IBAction)butonTest:(id)sender
+//{
+//    [FavoriteSong songIsInFavorites:@"PET SHOP BOYS" fromArtist:@"Suburbia" inManagedObjectContext:self.managedObjectContext error:nil];/
+//}
 
 //- (IBAction)addSong:(id)sender
 //{
