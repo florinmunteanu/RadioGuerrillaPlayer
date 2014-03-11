@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HorizontalScroller.h"
 
 @interface PlayerViewController : UIViewController
 

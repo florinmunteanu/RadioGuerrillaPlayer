@@ -16,9 +16,13 @@
 #import "Artist+Guerrilla.h"
 #import "AppDelegate.h"
 #import "ArtistInfoResponse.h"
+#import "HorizontalScrollerDelegate.h"
 #import <AVFoundation/AVFoundation.h>
 
-@interface PlayerViewController ()
+@interface PlayerViewController () <HorizontalScrollerDelegate>
+{
+    HorizontalScroller* scroller;
+}
 
 @property (strong, nonatomic) RGPlayController* playController;
 
@@ -35,6 +39,13 @@
     
     self.playController = [[RGPlayController alloc] init];
     self.audioSessionManager = [[RGAudioSessionManager alloc] initWithPlayController:self.playController];
+    
+    scroller = [[HorizontalScroller alloc] initWithFrame:CGRectMake(0,0, self.view.frame.size.width, 120)];
+    
+    scroller.delegate = self;
+    [self.view addSubview:scroller];
+    
+    [scroller reload];
     
     if ([self.artistLabel.text isEqualToString:@"Artist"])
     {
@@ -223,6 +234,41 @@
 
     }
 }
+
+#pragma mark - Radio stations horizontal scroller
+
+- (void)horizontalScroller:(HorizontalScroller *)scroller clickedViewAtIndex:(int)index
+{
+    
+}
+
+- (UIView *)horizontalScroller:(HorizontalScroller *)scroller viewAtIndex:(int)index
+{
+    UIImageView* imageView;
+    if (index == 0)
+    {
+        imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"radio-guerrilla-logo"]];
+    }
+    else if (index == 1)
+    {
+        imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"magic-fm-logo.jpg"]];
+    }
+    else if (index == 2)
+    {
+        imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"rock-fm-logo.jpg"]];
+    }
+    else if (index == 3)
+    {
+        imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"romantic-fm-logo.png"]];
+    }
+    return imageView;
+}
+
+- (NSInteger)numberOfViewsForHorizontalScroller:(HorizontalScroller *)scroller
+{
+    return 4;
+}
+
 //- (IBAction)butonTest:(id)sender
 //{
 //    [FavoriteSong songIsInFavorites:@"PET SHOP BOYS" fromArtist:@"Suburbia" inManagedObjectContext:self.managedObjectContext error:nil];/

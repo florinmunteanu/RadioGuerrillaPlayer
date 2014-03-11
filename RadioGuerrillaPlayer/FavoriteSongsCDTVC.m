@@ -12,6 +12,7 @@
 #import "FavoriteSong.h"
 #import "PlayerViewController.h"
 #import "Artist.h"
+#import "FavoriteSongTableViewCell.h"
 
 @interface FavoriteSongsCDTVC ()
 
@@ -68,11 +69,12 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"FavoriteSong"];
+    FavoriteSongTableViewCell* cell = (FavoriteSongTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"FavoriteSong"];
     
     FavoriteSong* song = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.textLabel.text = song.song;
     cell.detailTextLabel.text = song.artist;
+    
     if (song.artistInfo.smallImage == nil)
     {
         cell.imageView.image = [UIImage imageNamed:@"empty_star"];

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="eC5-Ld-cKx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="eC5-Ld-cKx">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
@@ -16,44 +16,54 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdk-uR-vIq">
-                                <rect key="frame" x="98" y="268.5" width="125" height="125"/>
+                            <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="95" placeholderIntrinsicHeight="102" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdk-uR-vIq">
+                                <rect key="frame" x="113" y="326" width="95" height="102"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Play" image="play.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="selected" image="pause.png"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <state key="normal" title="Play"/>
                                 <connections>
                                     <action selector="changePlay:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="G2b-KQ-63U"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="radio-guerrilla-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="ryU-ax-ihr">
-                                <rect key="frame" x="57" y="53" width="235" height="181"/>
+                                <rect key="frame" x="57" y="168" width="235" height="181"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Song" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r5f-cn-Efm">
-                                <rect key="frame" x="57" y="458" width="238" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Song" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r5f-cn-Efm">
+                                <rect key="frame" x="57" y="458" width="243" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="VZ2-M3-9pz"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="YOs-NX-BkJ"/>
+                                    <constraint firstAttribute="width" constant="243" id="pJn-RS-r1L"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="243" id="trK-uy-lYI"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Artist" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q9s-PD-SOg">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q9s-PD-SOg">
                                 <rect key="frame" x="57" y="487" width="243" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="243" id="fzB-Xf-pUV"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AiB-cN-osd">
-                                <rect key="frame" x="0.0" y="458" width="49" height="46"/>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AiB-cN-osd">
+                                <rect key="frame" x="5" y="458" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" none="YES" image="YES"/>
                                 </accessibility>
-                                <state key="normal" title="Button" image="empty_star.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="L8E-JQ-txx"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="hpg-Zc-dAe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" image="empty_star.png"/>
                                 <state key="selected" image="filled_star.png"/>
                                 <connections>
                                     <action selector="isFavoriteChanged:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="xx7-mP-XqC"/>
@@ -61,6 +71,16 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="r5f-cn-Efm" firstAttribute="leading" secondItem="AiB-cN-osd" secondAttribute="trailing" constant="2" id="4n2-b6-dTZ"/>
+                            <constraint firstAttribute="trailing" secondItem="gdk-uR-vIq" secondAttribute="trailing" constant="112" id="6mW-BO-FZQ"/>
+                            <constraint firstItem="Q9s-PD-SOg" firstAttribute="top" secondItem="r5f-cn-Efm" secondAttribute="bottom" constant="8" id="7K7-LA-sc6"/>
+                            <constraint firstAttribute="bottom" secondItem="AiB-cN-osd" secondAttribute="bottom" constant="60" id="JBc-hm-KcO"/>
+                            <constraint firstItem="r5f-cn-Efm" firstAttribute="top" secondItem="gdk-uR-vIq" secondAttribute="bottom" constant="30" id="QFK-YG-1Kp"/>
+                            <constraint firstItem="Q9s-PD-SOg" firstAttribute="leading" secondItem="AiB-cN-osd" secondAttribute="trailing" constant="2" id="QuH-qV-ddc"/>
+                            <constraint firstAttribute="bottom" secondItem="Q9s-PD-SOg" secondAttribute="bottom" constant="60" id="geX-p5-gK5"/>
+                            <constraint firstAttribute="trailing" secondItem="AiB-cN-osd" secondAttribute="trailing" constant="265" id="hhB-w5-5yL"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Radio" image="radio.png" id="IBU-jI-dUw"/>
                     <connections>
@@ -72,7 +92,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="342" y="81"/>
+            <point key="canvasLocation" x="350" y="-17"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="dc5-Vb-93u">
@@ -121,7 +141,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wON-2t-UvJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="350" y="1494"/>
+            <point key="canvasLocation" x="350" y="1418"/>
         </scene>
         <!--Favorite SongsCDTVC - Favorites-->
         <scene sceneID="I4C-rV-r3T">
@@ -132,7 +152,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FavoriteSong" textLabel="P4t-Cs-9hT" detailTextLabel="xD4-u1-dU4" style="IBUITableViewCellStyleSubtitle" id="0lD-WY-ExQ">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FavoriteSong" textLabel="P4t-Cs-9hT" detailTextLabel="xD4-u1-dU4" style="IBUITableViewCellStyleSubtitle" id="0lD-WY-ExQ" customClass="FavoriteSongTableViewCell">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0lD-WY-ExQ" id="1Tr-66-d78">
@@ -166,14 +186,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rVG-Jb-DWu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="350" y="807"/>
+            <point key="canvasLocation" x="350" y="711"/>
         </scene>
     </scenes>
     <resources>
-        <image name="empty_star.png" width="128" height="128"/>
+        <image name="empty_star.png" width="50" height="50"/>
         <image name="filled_star.png" width="128" height="128"/>
-        <image name="pause.png" width="128" height="128"/>
-        <image name="play.png" width="128" height="128"/>
         <image name="radio-guerrilla-logo.png" width="235" height="181"/>
         <image name="radio.png" width="25" height="25"/>
         <image name="settings.png" width="25" height="25"/>
