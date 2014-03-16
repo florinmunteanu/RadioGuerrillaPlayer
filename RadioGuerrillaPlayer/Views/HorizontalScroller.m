@@ -24,19 +24,32 @@
     UIScrollView* scroller;
 }
 
+// Stanford CS193p Developing Applications for iOS Fall 2013-14
+// initWithFrame is NOT called for a UIView coming out of a storyboard!
+// But awakeFromNib is.
+-(void)awakeFromNib
+{
+    [self setupScroller];
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self)
     {
-        scroller = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
-        scroller.delegate = self;
-        [self addSubview:scroller];
-        
-        UITapGestureRecognizer* tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scrollerTapped:)];
-        [scroller addGestureRecognizer:tapRecognizer];
+        [self setupScroller];
     }
     return self;
+}
+
+- (void)setupScroller
+{
+    scroller = [[UIScrollView alloc] initWithFrame:CGRectMake(self.bounds.origin.x, self.bounds.origin.y, self.bounds.size.width, self.bounds.size.height)];
+    scroller.delegate = self;
+    [self addSubview:scroller];
+    
+    UITapGestureRecognizer* tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scrollerTapped:)];
+    [scroller addGestureRecognizer:tapRecognizer];
 }
 
 - (void)scrollerTapped:(UITapGestureRecognizer *)gesture

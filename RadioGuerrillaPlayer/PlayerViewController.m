@@ -21,7 +21,8 @@
 
 @interface PlayerViewController () <HorizontalScrollerDelegate>
 {
-    HorizontalScroller* scroller;
+    __weak IBOutlet HorizontalScroller *scroller;
+    //HorizontalScroller* scroller;
 }
 
 @property (strong, nonatomic) RGPlayController* playController;
@@ -40,8 +41,8 @@
     self.playController = [[RGPlayController alloc] init];
     self.audioSessionManager = [[RGAudioSessionManager alloc] initWithPlayController:self.playController];
     
-    scroller = [[HorizontalScroller alloc] initWithFrame:CGRectMake(0,0, self.view.frame.size.width, 120)];
-    
+    //scroller = [[HorizontalScroller alloc] initWithFrame:CGRectMake(0,0, self.view.frame.size.width, 120)];
+    //[scroller initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 120)];
     scroller.delegate = self;
     [self.view addSubview:scroller];
     
@@ -268,30 +269,5 @@
 {
     return 4;
 }
-
-//- (IBAction)butonTest:(id)sender
-//{
-//    [FavoriteSong songIsInFavorites:@"PET SHOP BOYS" fromArtist:@"Suburbia" inManagedObjectContext:self.managedObjectContext error:nil];/
-//}
-
-//- (IBAction)addSong:(id)sender
-//{
-//    NSError* error = nil;
-//    [FavoriteSong getOrAddSong:@"Take a Chance" fromArtistName:@"ABBA" inManagedObjectContext:self.managedObjectContext error:&error];
-//    [FavoriteSong getOrAddSong:@"Bohemian Rhapsody" fromArtistName:@"Queen" inManagedObjectContext:self.managedObjectContext error:&error];
-//    [FavoriteSong getOrAddSong:@"Counting Stars" fromArtistName:@"One Republic" inManagedObjectContext:self.managedObjectContext error:&error];
-//    [FavoriteSong getOrAddSong:@"Stars" fromArtistName:@"Katy Perry" inManagedObjectContext:self.managedObjectContext error:&error];
-    
-//    [self.managedObjectContext save:&error];
-    
-//    NSFetchRequest* request = [FavoriteSong createAllSongsFetchRequest];
-//    /*self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
-//     managedObjectContext:self.managedObjectContext
-//     sectionNameKeyPath:nil
-//     cacheName:nil];
-//     */
-//    NSError* fetchRequestError = nil;
-//    NSArray* matches = [self.managedObjectContext executeFetchRequest:request error:&fetchRequestError];
-//}
 
 @end

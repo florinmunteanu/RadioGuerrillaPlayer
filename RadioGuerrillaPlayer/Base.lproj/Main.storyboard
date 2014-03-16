@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="eC5-Ld-cKx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="eC5-Ld-cKx">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--Player View Controller - Radio-->
@@ -69,6 +69,11 @@
                                     <action selector="isFavoriteChanged:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="xx7-mP-XqC"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VvN-Cv-7Pi" customClass="HorizontalScroller">
+                                <rect key="frame" x="0.0" y="25" width="320" height="111"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -87,6 +92,7 @@
                         <outlet property="artistLabel" destination="Q9s-PD-SOg" id="Hu5-Y2-SnT"/>
                         <outlet property="isFavoriteButton" destination="AiB-cN-osd" id="C1D-Ih-4ZF"/>
                         <outlet property="playButton" destination="gdk-uR-vIq" id="Pze-Rd-txR"/>
+                        <outlet property="scroller" destination="VvN-Cv-7Pi" id="nrN-Jt-Ie9"/>
                         <outlet property="songLabel" destination="r5f-cn-Efm" id="anl-wQ-029"/>
                     </connections>
                 </viewController>
