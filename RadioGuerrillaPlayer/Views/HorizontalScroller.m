@@ -62,8 +62,6 @@
         if (CGRectContainsPoint(view.frame, location))
         {
             [self.delegate horizontalScroller:self clickedViewAtIndex:index];
-            //[scroller setContentOffset:CGPointMake(view.frame.origin.x - self.frame.size.width / 2 + view.frame.size.width / 2, 0)
-            //                  animated:YES];
         }
     }
 }
@@ -89,40 +87,16 @@
     }
     
     [scroller setContentSize:CGSizeMake(x + VIEW_OFFSET, self.frame.size.height)];
-    
-    // If an initial view is defined, center the scroller on it
-    //if ([self.delegate respondsToSelector:@selector(initialViewIndexForHorizontalScroller:)])
-    //{
-    //    NSInteger initialView = [self.delegate initialViewIndexForHorizontalScroller:self];
-    //    [scroller setContentOffset:CGPointMake(initialView * (VIEW_DIMENSIONS + 2 * VIEW_PADDING), 0) animated:YES];
-    //}
 }
 
 - (void)didMoveToSuperview
 {
     [self reload];
 }
-/*
-- (void)centerCurrentView
-{
-    int x = scroller.contentOffset.x + (VIEW_OFFSET / 2) + VIEW_PADDING;
-    int viewIndex = x / (VIEW_DIMENSIONS + 2 * VIEW_PADDING);
-    x = viewIndex * (VIEW_DIMENSIONS + 2 * VIEW_PADDING);
-    
-    [scroller setContentOffset:CGPointMake(x, 0) animated:YES];
-}
 
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+- (void)drawRect:(CGRect)rect
 {
-    if (decelerate == FALSE)
-    {
-        [self centerCurrentView];
-    }
+    [scroller setFrame:CGRectMake(self.bounds.origin.x, self.bounds.origin.y, self.bounds.size.width, self.bounds.size.height)];
 }
-
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
-{
-    [self centerCurrentView];
-}*/
 
 @end

@@ -41,8 +41,6 @@
     self.playController = [[RGPlayController alloc] init];
     self.audioSessionManager = [[RGAudioSessionManager alloc] initWithPlayController:self.playController];
     
-    //scroller = [[HorizontalScroller alloc] initWithFrame:CGRectMake(0,0, self.view.frame.size.width, 120)];
-    //[scroller initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 120)];
     scroller.delegate = self;
     [self.view addSubview:scroller];
     
@@ -234,6 +232,13 @@
                   }];
 
     }
+}
+
+#pragma mark - Orientation
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskAllButUpsideDown;
 }
 
 #pragma mark - Radio stations horizontal scroller
