@@ -17,17 +17,18 @@
 #import "AppDelegate.h"
 #import "ArtistInfoResponse.h"
 #import "HorizontalScrollerDelegate.h"
+#import "RadioStationsPopUpViewController.h"
 #import <AVFoundation/AVFoundation.h>
 
-@interface PlayerViewController () <HorizontalScrollerDelegate>
-{
-    __weak IBOutlet HorizontalScroller *scroller;
-    //HorizontalScroller* scroller;
-}
+@interface PlayerViewController ()
 
 @property (strong, nonatomic) RGPlayController* playController;
 
 @property (strong, nonatomic) RGAudioSessionManager* audioSessionManager;
+
+@property (strong, nonatomic) RadioStationsPopUpViewController* radioStationsPopup;
+
+@property (strong, nonatomic) UIImageView* imageViewBackground;
 
 @end
 
@@ -40,11 +41,12 @@
     
     self.playController = [[RGPlayController alloc] init];
     self.audioSessionManager = [[RGAudioSessionManager alloc] initWithPlayController:self.playController];
-    
-    scroller.delegate = self;
-    [self.view addSubview:scroller];
-    
-    [scroller reload];
+   
+    //http://thedesigninspiration.com/patterns/sprinkles/
+    self.imageViewBackground = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"theme.jpg"]];
+    self.imageViewBackground.frame = self.view.bounds;
+    [[self view] addSubview:self.imageViewBackground];
+    [self.imageViewBackground.superview sendSubviewToBack:self.imageViewBackground];
     
     if ([self.artistLabel.text isEqualToString:@"Artist"])
     {
@@ -234,45 +236,13 @@
     }
 }
 
-#pragma mark - Orientation
+#pragma mark - Change radio stations
 
-- (NSUInteger)supportedInterfaceOrientations
+- (IBAction)showRadioStationsPopup:(id)sender
 {
-    return UIInterfaceOrientationMaskAllButUpsideDown;
-}
-
-#pragma mark - Radio stations horizontal scroller
-
-- (void)horizontalScroller:(HorizontalScroller *)scroller clickedViewAtIndex:(int)index
-{
+    self.radioStationsPopup = [[RadioStationsPopUpViewController alloc] initWithNibName:@"RadioStationsPopUpViewController" bundle:nil];
     
-}
-
-- (UIView *)horizontalScroller:(HorizontalScroller *)scroller viewAtIndex:(int)index
-{
-    UIImageView* imageView;
-    if (index == 0)
-    {
-        imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"radio-guerrilla-logo"]];
-    }
-    else if (index == 1)
-    {
-        imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"magic-fm-logo.jpg"]];
-    }
-    else if (index == 2)
-    {
-        imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"rock-fm-logo.jpg"]];
-    }
-    else if (index == 3)
-    {
-        imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"romantic-fm-logo.png"]];
-    }
-    return imageView;
-}
-
-- (NSInteger)numberOfViewsForHorizontalScroller:(HorizontalScroller *)scroller
-{
-    return 4;
+    [self.radioStationsPopup showInView:self.view animated:YES];
 }
 
 @end

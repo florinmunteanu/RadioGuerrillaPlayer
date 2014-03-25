@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" placeholderIntrinsicWidth="95" placeholderIntrinsicHeight="102" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdk-uR-vIq">
-                                <rect key="frame" x="113" y="348" width="95" height="102"/>
+                                <rect key="frame" x="124" y="309" width="72" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <state key="normal" title="Play"/>
@@ -26,42 +26,29 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="radio-guerrilla-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="ryU-ax-ihr">
-                                <rect key="frame" x="57" y="168" width="235" height="181"/>
+                                <rect key="frame" x="57" y="103" width="235" height="181"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Song" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r5f-cn-Efm">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Song" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r5f-cn-Efm">
                                 <rect key="frame" x="57" y="458" width="243" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="VZ2-M3-9pz"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="YOs-NX-BkJ"/>
-                                    <constraint firstAttribute="width" constant="243" id="pJn-RS-r1L"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="243" id="trK-uy-lYI"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Artist" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q9s-PD-SOg">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Artist" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q9s-PD-SOg">
                                 <rect key="frame" x="57" y="487" width="243" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="243" id="fzB-Xf-pUV"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AiB-cN-osd">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AiB-cN-osd">
                                 <rect key="frame" x="5" y="458" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" none="YES" image="YES"/>
                                 </accessibility>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="L8E-JQ-txx"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="hpg-Zc-dAe"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" image="empty_star.png"/>
                                 <state key="selected" image="filled_star.png"/>
@@ -69,25 +56,24 @@
                                     <action selector="isFavoriteChanged:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="xx7-mP-XqC"/>
                                 </connections>
                             </button>
-                            <view contentMode="redraw" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VvN-Cv-7Pi" customClass="HorizontalScroller">
-                                <rect key="frame" x="0.0" y="25" width="320" height="111"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vGV-y1-KDm">
+                                <rect key="frame" x="9" y="20" width="106" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
+                                <state key="normal" title="Change station">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="showRadioStationsPopup:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="h6A-8F-r2j"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="VvN-Cv-7Pi" secondAttribute="trailing" id="2SB-Fc-Qpr"/>
-                            <constraint firstItem="VvN-Cv-7Pi" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="ewt-1i-BbO"/>
-                            <constraint firstItem="VvN-Cv-7Pi" firstAttribute="top" secondItem="Kwa-Pz-cJX" secondAttribute="bottom" constant="5" id="nMJ-VY-eaU"/>
-                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Radio" image="radio.png" id="IBU-jI-dUw"/>
                     <connections>
                         <outlet property="artistLabel" destination="Q9s-PD-SOg" id="Hu5-Y2-SnT"/>
                         <outlet property="isFavoriteButton" destination="AiB-cN-osd" id="C1D-Ih-4ZF"/>
                         <outlet property="playButton" destination="gdk-uR-vIq" id="Pze-Rd-txR"/>
-                        <outlet property="scroller" destination="VvN-Cv-7Pi" id="nrN-Jt-Ie9"/>
                         <outlet property="songLabel" destination="r5f-cn-Efm" id="anl-wQ-029"/>
                     </connections>
                 </viewController>
@@ -95,10 +81,10 @@
             </objects>
             <point key="canvasLocation" x="350" y="-17"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Radio Tab Bar Controller-->
         <scene sceneID="dc5-Vb-93u">
             <objects>
-                <tabBarController definesPresentationContext="YES" id="eC5-Ld-cKx" sceneMemberID="viewController">
+                <tabBarController definesPresentationContext="YES" id="eC5-Ld-cKx" customClass="RadioTabBarController" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Ji8-19-d3k">
                         <rect key="frame" x="129" y="330" width="163" height="49"/>
