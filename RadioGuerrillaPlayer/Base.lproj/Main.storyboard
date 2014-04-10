@@ -16,17 +16,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" placeholderIntrinsicWidth="95" placeholderIntrinsicHeight="102" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdk-uR-vIq">
-                                <rect key="frame" x="124" y="309" width="72" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
-                                <state key="normal" title="Play"/>
-                                <connections>
-                                    <action selector="changePlay:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="G2b-KQ-63U"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="radio-guerrilla-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="ryU-ax-ihr">
-                                <rect key="frame" x="57" y="103" width="235" height="181"/>
+                                <rect key="frame" x="57" y="96" width="235" height="181"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Song" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r5f-cn-Efm">
@@ -66,6 +57,16 @@
                                     <action selector="showRadioStationsPopup:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="h6A-8F-r2j"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7F9-sc-Yis" customClass="PlayButton">
+                                <rect key="frame" x="120" y="285" width="80" height="82"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="changePlayState:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Vup-Ha-dY3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -73,7 +74,7 @@
                     <connections>
                         <outlet property="artistLabel" destination="Q9s-PD-SOg" id="Hu5-Y2-SnT"/>
                         <outlet property="isFavoriteButton" destination="AiB-cN-osd" id="C1D-Ih-4ZF"/>
-                        <outlet property="playButton" destination="gdk-uR-vIq" id="Pze-Rd-txR"/>
+                        <outlet property="playButton" destination="7F9-sc-Yis" id="D2u-wi-J8h"/>
                         <outlet property="songLabel" destination="r5f-cn-Efm" id="anl-wQ-029"/>
                     </connections>
                 </viewController>
@@ -139,7 +140,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FavoriteSong" textLabel="P4t-Cs-9hT" detailTextLabel="xD4-u1-dU4" style="IBUITableViewCellStyleSubtitle" id="0lD-WY-ExQ" customClass="FavoriteSongTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FavoriteSongCell" textLabel="P4t-Cs-9hT" detailTextLabel="xD4-u1-dU4" style="IBUITableViewCellStyleSubtitle" id="0lD-WY-ExQ" customClass="FavoriteSongTableViewCell">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0lD-WY-ExQ" id="1Tr-66-d78">

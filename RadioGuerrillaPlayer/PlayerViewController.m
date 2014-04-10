@@ -19,6 +19,7 @@
 #import "HorizontalScrollerDelegate.h"
 #import "RadioStationsPopUpViewController.h"
 #import <AVFoundation/AVFoundation.h>
+#import "PlayButton.h"
 
 @interface PlayerViewController ()
 
@@ -29,6 +30,8 @@
 @property (strong, nonatomic) RadioStationsPopUpViewController* radioStationsPopup;
 
 @property (strong, nonatomic) UIImageView* imageViewBackground;
+
+@property (weak, nonatomic) IBOutlet PlayButton *playButton;
 
 @end
 
@@ -46,6 +49,7 @@
     self.imageViewBackground = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"theme.jpg"]];
     self.imageViewBackground.frame = self.view.bounds;
     [[self view] addSubview:self.imageViewBackground];
+
     [self.imageViewBackground.superview sendSubviewToBack:self.imageViewBackground];
     
     if ([self.artistLabel.text isEqualToString:@"Artist"])
@@ -72,9 +76,13 @@
     {
         [self initManagedDocument];
     }
+    if (self.playController.isStreamTitleASong == NO)
+    {
+        self.isFavoriteButton.hidden = YES;
+    }
 }
 
-/* Creates the NSManagedObjectContext required by Core Data. 
+/* Creates the NSManagedObjectContext required by Core Data.
  */
 - (void)initManagedDocument
 {
@@ -116,7 +124,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)changePlay:(id)sender
+- (IBAction)changePlayState:(id)sender
 {
     if (self.playController.playing)
     {
@@ -149,26 +157,29 @@
 
 - (void)updateUIOnStreamTitleChanged
 {
-    self.artistLabel.text = self.playController.currentArtist;
-    self.songLabel.text = self.playController.currentSong;
-    
-    BOOL isInFavorites = [FavoriteSong songIsInFavorites:self.playController.currentSong
-                                              fromArtist:self.playController.currentArtist
-                                  inManagedObjectContext:self.managedObjectContext
-                                                   error:nil];
-    if (self.isFavoriteButton.hidden)
+    if (self.playController.isStreamTitleASong == YES)
     {
-        [self.isFavoriteButton setHidden:FALSE];
-    }
+        self.artistLabel.text = self.playController.currentArtist;
+        self.songLabel.text = self.playController.currentSong;
+        
+        BOOL isInFavorites = [FavoriteSong songIsInFavorites:self.playController.currentSong
+                                                  fromArtist:self.playController.currentArtist
+                                      inManagedObjectContext:self.managedObjectContext
+                                                       error:nil];
+        if (self.isFavoriteButton.hidden)
+        {
+            [self.isFavoriteButton setHidden:NO];
+        }
     
-    [self.isFavoriteButton setSelected:isInFavorites];
+        [self.isFavoriteButton setSelected:isInFavorites];
+    }
 }
 
 - (IBAction)isFavoriteChanged:(id)sender
 {
-    if (self.playController.isStreamTitleASong == TRUE)
+    if (self.playController.isStreamTitleASong == YES)
     {
-        self.isFavoriteButton.enabled = FALSE;
+        self.isFavoriteButton.enabled = NO;
         
         /* Get a copy of current artist and song.
          * In case the current playing song/artist changes then our code won't be affected, we still have the original song/artist.
@@ -188,7 +199,7 @@
                            inManagedObjectContext:self.managedObjectContext
                                             error:&error];
             
-            [self.isFavoriteButton setSelected:FALSE];
+            [self.isFavoriteButton setSelected:NO];
         }
         else
         {
@@ -201,10 +212,10 @@
                 [self updateArtistImage:artistName];
             }
             
-            [self.isFavoriteButton setSelected:TRUE];
+            [self.isFavoriteButton setSelected:YES];
         }
     
-        self.isFavoriteButton.enabled = TRUE;
+        self.isFavoriteButton.enabled = YES;
     }
 }
 

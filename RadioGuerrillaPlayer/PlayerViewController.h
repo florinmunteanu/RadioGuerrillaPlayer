@@ -11,8 +11,6 @@
 
 @interface PlayerViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UIButton *playButton;
-
 @property (weak, nonatomic) IBOutlet UILabel* songLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel* artistLabel;

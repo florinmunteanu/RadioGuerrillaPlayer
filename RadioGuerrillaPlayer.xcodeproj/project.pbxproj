@@ -33,6 +33,7 @@
 		4E229D3A18C1FDF3003F8B5C /* app_icon58.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E229D3718C1FDF3003F8B5C /* app_icon58.png */; };
 		4E229D3B18C1FDF3003F8B5C /* app_icon80.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E229D3818C1FDF3003F8B5C /* app_icon80.png */; };
 		4E229D3C18C1FDF3003F8B5C /* app_icon120.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E229D3918C1FDF3003F8B5C /* app_icon120.png */; };
+		4E2EF15A18F49CD60010077F /* PlayButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E2EF15918F49CD60010077F /* PlayButton.m */; };
 		4E36A2CC18B9F05C0064E613 /* Artist.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E36A2CB18B9F05C0064E613 /* Artist.m */; };
 		4E36A2CF18B9F05C0064E613 /* FavoriteSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E36A2CE18B9F05C0064E613 /* FavoriteSong.m */; };
 		4E36A2D218BB82480064E613 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E36A2D118BB82480064E613 /* SettingsViewController.m */; };
@@ -111,6 +112,8 @@
 		4E229D3718C1FDF3003F8B5C /* app_icon58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = app_icon58.png; path = Images/app_icon58.png; sourceTree = "<group>"; };
 		4E229D3818C1FDF3003F8B5C /* app_icon80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = app_icon80.png; path = Images/app_icon80.png; sourceTree = "<group>"; };
 		4E229D3918C1FDF3003F8B5C /* app_icon120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = app_icon120.png; path = Images/app_icon120.png; sourceTree = "<group>"; };
+		4E2EF15818F49CD60010077F /* PlayButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayButton.h; path = Views/PlayButton.h; sourceTree = "<group>"; };
+		4E2EF15918F49CD60010077F /* PlayButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayButton.m; path = Views/PlayButton.m; sourceTree = "<group>"; };
 		4E36A2CA18B9F05C0064E613 /* Artist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Artist.h; sourceTree = "<group>"; };
 		4E36A2CB18B9F05C0064E613 /* Artist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Artist.m; sourceTree = "<group>"; };
 		4E36A2CD18B9F05C0064E613 /* FavoriteSong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteSong.h; sourceTree = "<group>"; };
@@ -332,6 +335,8 @@
 				4E3D167918CA604800FB1B07 /* HorizontalScrollerDelegate.h */,
 				4E95C0E718CE611C009ED01D /* FavoriteSongTableViewCell.h */,
 				4E95C0E818CE611C009ED01D /* FavoriteSongTableViewCell.m */,
+				4E2EF15818F49CD60010077F /* PlayButton.h */,
+				4E2EF15918F49CD60010077F /* PlayButton.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -500,6 +505,7 @@
 				4E899A5718AFFD92008FCB04 /* Reachability.m in Sources */,
 				4E8E91C218DC129300BB6770 /* RadioStationsPopUpViewController.m in Sources */,
 				4E899A5118AFFB0A008FCB04 /* LastfmClient.m in Sources */,
+				4E2EF15A18F49CD60010077F /* PlayButton.m in Sources */,
 				4E899A6018B136BD008FCB04 /* Model.xcdatamodeld in Sources */,
 				4E95C0E918CE611C009ED01D /* FavoriteSongTableViewCell.m in Sources */,
 				4E156DD818A81E7E009F28C8 /* AppDelegate.m in Sources */,
@@ -628,6 +634,7 @@
 		4E156DF718A81E7E009F28C8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RadioGuerrillaPlayer/RadioGuerrillaPlayer-Prefix.pch";
@@ -640,6 +647,7 @@
 		4E156DF818A81E7E009F28C8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RadioGuerrillaPlayer/RadioGuerrillaPlayer-Prefix.pch";

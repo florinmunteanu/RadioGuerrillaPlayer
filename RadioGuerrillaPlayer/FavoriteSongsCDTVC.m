@@ -69,7 +69,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    FavoriteSongTableViewCell* cell = (FavoriteSongTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"FavoriteSong"];
+    FavoriteSongTableViewCell* cell = (FavoriteSongTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"FavoriteSongCell"];
     
     FavoriteSong* song = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.textLabel.text = song.song;

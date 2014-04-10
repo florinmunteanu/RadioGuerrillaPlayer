@@ -48,9 +48,9 @@
 
 - (BOOL)isStreamTitleASong
 {
-    if ([self.streamTitle isEqualToString:@""])
+    if (self.streamTitle == nil || [self.streamTitle isEqualToString:@""])
     {
-        return FALSE;
+        return NO;
     }
     
     NSString* lowerCaseStreamTitle = [self.streamTitle lowercaseString];

@@ -10,6 +10,4 @@
 
 @implementation ArtistInfo
 
-//- (id)initWithLastfmXml:
-
 @end
