@@ -20,6 +20,8 @@
 #import "RadioStationsPopUpViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import "PlayButton.h"
+#import "FavoriteSongResult.h"
+#import <TSMessages/TSMessage.h>
 
 @interface PlayerViewController ()
 
@@ -27,7 +29,7 @@
 
 @property (strong, nonatomic) RGAudioSessionManager* audioSessionManager;
 
-@property (strong, nonatomic) RadioStationsPopUpViewController* radioStationsPopup;
+//@property (strong, nonatomic) RadioStationsPopUpViewController* radioStationsPopup;
 
 @property (strong, nonatomic) UIImageView* imageViewBackground;
 
@@ -80,6 +82,11 @@
     {
         self.isFavoriteButton.hidden = YES;
     }
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
 }
 
 /* Creates the NSManagedObjectContext required by Core Data.
@@ -203,13 +210,17 @@
         }
         else
         {
-            FavoriteSong* song = [FavoriteSong getOrAddSong:songName
-                                             fromArtistName:artistName
-                                     inManagedObjectContext:self.managedObjectContext
-                                                      error:&error];
-            if (error == nil && song.artistInfo.smallImage == nil)
+            FavoriteSongResult* result = [FavoriteSong getOrAddSong:songName
+                                                     fromArtistName:artistName
+                                             inManagedObjectContext:self.managedObjectContext
+                                                              error:&error];
+            if (error == nil && result.song != nil && result.song.artistInfo.smallImage == nil)
             {
                 [self updateArtistImage:artistName];
+            }
+            if (result.resultState == FavoriteSongSavedSuccessfully)
+            {
+                [TSMessage showNotificationWithTitle:@"Favorite" subtitle:@"Song added to favorites." type:TSMessageNotificationTypeSuccess];
             }
             
             [self.isFavoriteButton setSelected:YES];
@@ -247,6 +258,7 @@
     }
 }
 
+/*
 #pragma mark - Change radio stations
 
 - (IBAction)showRadioStationsPopup:(id)sender
@@ -255,5 +267,5 @@
     
     [self.radioStationsPopup showInView:self.view animated:YES];
 }
-
+*/
 @end

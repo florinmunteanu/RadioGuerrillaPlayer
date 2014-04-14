@@ -9,16 +9,17 @@
 #import "FavoriteSong+Guerrilla.h"
 #import "Artist+Guerrilla.h"
 #import "Artist.h"
+#import "FavoriteSongResult.h"
 
 @implementation FavoriteSong (Guerrilla)
 
 /* Get or add a favorite the song. 
  * If the song already exists, it will return the existing instance, otherwise it will add a new favorite song.
  */
-+ (FavoriteSong *)getOrAddSong:(NSString *)song
-                    fromArtist:(Artist *)artist
-        inManagedObjectContext:(NSManagedObjectContext *)context
-                         error:(NSError **)error
++ (FavoriteSongResult *)getOrAddSong:(NSString *)song
+                          fromArtist:(Artist *)artist
+              inManagedObjectContext:(NSManagedObjectContext *)context
+                               error:(NSError **)error
 {
     if (artist == nil)
     {
@@ -33,6 +34,7 @@
     
     NSFetchRequest* request = [FavoriteSong createSongFetchRequest:song artist:artist.name];
     NSArray* matches = [context executeFetchRequest:request error:&favoriteSongError];
+    FavoriteSongState state = FavoriteSongNoState;
     
     if (favoriteSongError)
     {
@@ -45,12 +47,15 @@
         favoriteSong.song = song;
         favoriteSong.artistInfo = artist;
         favoriteSong.savedDate = [NSDate date];
+        
+        state = FavoriteSongSavedSuccessfully;
     }
     else
     {
         favoriteSong = [matches lastObject];
+        state = FavoriteSongAlreadyAdded;
     }
-    return favoriteSong;
+    return [[FavoriteSongResult alloc] initWithFavoriteSong:favoriteSong andState:state];
 }
 
 + (NSFetchRequest *)createSongFetchRequest:(NSString *)song artist:(NSString *)artist
@@ -119,10 +124,10 @@
     return (matches.count > 0);
 }
 
-+ (FavoriteSong *)getOrAddSong:(NSString *)song
-                fromArtistName:(NSString *)artistName
-        inManagedObjectContext:(NSManagedObjectContext *)context
-                         error:(NSError **)error
++ (FavoriteSongResult *)getOrAddSong:(NSString *)song
+                      fromArtistName:(NSString *)artistName
+              inManagedObjectContext:(NSManagedObjectContext *)context
+                               error:(NSError **)error
 {
     if (artistName == nil || [artistName isEqualToString:@""])
     {
@@ -142,16 +147,16 @@
         return nil;
     }
     
-    FavoriteSong* favoriteSong = [FavoriteSong getOrAddSong:song
-                                                 fromArtist:artist
-                                     inManagedObjectContext:context
-                                                      error:&currentError];
+    FavoriteSongResult* favoriteSongResult = [FavoriteSong getOrAddSong:song
+                                                             fromArtist:artist
+                                                 inManagedObjectContext:context
+                                                                  error:&currentError];
     if (currentError)
     {
         *error = currentError;
         return nil;
     }
-    return favoriteSong;
+    return favoriteSongResult;
 }
 
 + (void)deleteAllSongs:(NSManagedObjectContext *)context error:(NSError **)error

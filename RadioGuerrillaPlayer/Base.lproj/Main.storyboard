@@ -16,25 +16,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="radio-guerrilla-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="ryU-ax-ihr">
-                                <rect key="frame" x="57" y="96" width="235" height="181"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="radio-guerrilla-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="ryU-ax-ihr">
+                                <rect key="frame" x="57" y="42" width="235" height="181"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Song" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r5f-cn-Efm">
-                                <rect key="frame" x="57" y="458" width="243" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Song" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r5f-cn-Efm">
+                                <rect key="frame" x="57" y="458" width="41" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Artist" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q9s-PD-SOg">
-                                <rect key="frame" x="57" y="487" width="243" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q9s-PD-SOg">
+                                <rect key="frame" x="57" y="487" width="41" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AiB-cN-osd">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AiB-cN-osd">
                                 <rect key="frame" x="5" y="458" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration">
@@ -47,18 +47,8 @@
                                     <action selector="isFavoriteChanged:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="xx7-mP-XqC"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vGV-y1-KDm">
-                                <rect key="frame" x="9" y="20" width="106" height="27"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Change station">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="showRadioStationsPopup:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="h6A-8F-r2j"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7F9-sc-Yis" customClass="PlayButton">
-                                <rect key="frame" x="120" y="285" width="80" height="82"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7F9-sc-Yis" customClass="PlayButton">
+                                <rect key="frame" x="120" y="243" width="30" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -69,6 +59,18 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ryU-ax-ihr" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="57" id="4zQ-gj-9tg"/>
+                            <constraint firstItem="AiB-cN-osd" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="5" id="5lF-h7-6Er"/>
+                            <constraint firstItem="7F9-sc-Yis" firstAttribute="top" secondItem="ryU-ax-ihr" secondAttribute="bottom" constant="20" id="98a-Sk-RzS"/>
+                            <constraint firstItem="r5f-cn-Efm" firstAttribute="leading" secondItem="AiB-cN-osd" secondAttribute="trailing" constant="2" id="GNo-TM-rSI"/>
+                            <constraint firstItem="7F9-sc-Yis" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="120" id="PHk-xm-Ey5"/>
+                            <constraint firstItem="uSo-MG-6xn" firstAttribute="top" secondItem="AiB-cN-osd" secondAttribute="bottom" constant="11" id="cnC-Ir-rGy"/>
+                            <constraint firstItem="ryU-ax-ihr" firstAttribute="top" secondItem="Kwa-Pz-cJX" secondAttribute="bottom" constant="22" id="rEn-O1-gOK"/>
+                            <constraint firstItem="Q9s-PD-SOg" firstAttribute="top" secondItem="r5f-cn-Efm" secondAttribute="bottom" constant="8" id="tEd-I3-f7Q"/>
+                            <constraint firstItem="uSo-MG-6xn" firstAttribute="top" secondItem="Q9s-PD-SOg" secondAttribute="bottom" constant="11" id="uSx-ai-ugE"/>
+                            <constraint firstItem="Q9s-PD-SOg" firstAttribute="leading" secondItem="AiB-cN-osd" secondAttribute="trailing" constant="2" id="wRx-Ps-7zw"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Radio" image="radio.png" id="IBU-jI-dUw"/>
                     <connections>
@@ -100,7 +102,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RPI-Ek-XLF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-274" y="454"/>
+            <point key="canvasLocation" x="-272" y="507"/>
         </scene>
         <!--Settings View Controller - Settings-->
         <scene sceneID="RH6-NR-jJU">
@@ -131,7 +133,7 @@
             </objects>
             <point key="canvasLocation" x="350" y="1418"/>
         </scene>
-        <!--Favorite SongsCDTVC - Favorites-->
+        <!--Favorite SongsCDTVC - Favorite songs-->
         <scene sceneID="I4C-rV-r3T">
             <objects>
                 <viewController id="nh5-ac-f4s" customClass="FavoriteSongsCDTVC" sceneMemberID="viewController">
@@ -170,7 +172,7 @@
                             <outlet property="delegate" destination="nh5-ac-f4s" id="1Su-ue-I60"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Favorites" image="star.png" id="mkE-Fc-L5h"/>
+                    <tabBarItem key="tabBarItem" title="Favorite songs" image="star.png" id="mkE-Fc-L5h"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rVG-Jb-DWu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

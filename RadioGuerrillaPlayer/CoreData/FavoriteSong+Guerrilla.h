@@ -7,6 +7,7 @@
 //
 
 #import "FavoriteSong.h"
+#import "FavoriteSongResult.h"
 
 @interface FavoriteSong (Guerrilla)
 
@@ -17,10 +18,10 @@
    inManagedObjectContext:(NSManagedObjectContext *)context
                     error:(NSError **)error;
 
-+ (FavoriteSong *)getOrAddSong:(NSString *)song
-                fromArtistName:(NSString *)artistName
-        inManagedObjectContext:(NSManagedObjectContext *)context
-                         error:(NSError **)error;
++ (FavoriteSongResult *)getOrAddSong:(NSString *)song
+                      fromArtistName:(NSString *)artistName
+              inManagedObjectContext:(NSManagedObjectContext *)context
+                               error:(NSError **)error;
 
 + (BOOL)deleteSongFromFavorites:(NSString *)song
                      fromArtist:(NSString *)artist

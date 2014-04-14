@@ -13,8 +13,7 @@
 -(void)layoutSubviews
 {
     [super layoutSubviews];
-    //self.imageView.contentMode = UIViewContentModeScaleAspectFill;
-    //int ratio = self.imageView.image.size.width / 60;
+    
     CGFloat width = MIN(self.imageView.image.size.width, 60);
     
     self.imageView.frame = CGRectMake(self.imageView.frame.origin.x, self.imageView.frame.origin.y, width, self.imageView.frame.size.height);
