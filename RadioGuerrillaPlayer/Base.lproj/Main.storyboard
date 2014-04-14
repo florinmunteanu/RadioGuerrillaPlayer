@@ -102,7 +102,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RPI-Ek-XLF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-272" y="507"/>
+            <point key="canvasLocation" x="-264" y="461"/>
         </scene>
         <!--Settings View Controller - Settings-->
         <scene sceneID="RH6-NR-jJU">

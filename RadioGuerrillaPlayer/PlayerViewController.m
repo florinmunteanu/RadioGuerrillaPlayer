@@ -74,10 +74,6 @@
     
     [self.playController addObserver:self forKeyPath:@"streamTitle" options:NSKeyValueObservingOptionNew context:NULL];
     
-    if (self.managedObjectContext == nil)
-    {
-        [self initManagedDocument];
-    }
     if (self.playController.isStreamTitleASong == NO)
     {
         self.isFavoriteButton.hidden = YES;
@@ -87,41 +83,6 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-}
-
-/* Creates the NSManagedObjectContext required by Core Data.
- */
-- (void)initManagedDocument
-{
-    NSURL* url = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
-    url = [url URLByAppendingPathComponent:@"RadioDocument"];
-    
-    UIManagedDocument* document = [[UIManagedDocument alloc] initWithFileURL:url];
-    
-    if ([[NSFileManager defaultManager] fileExistsAtPath:[url path]] == NO)
-    {
-        [document saveToURL:url
-           forSaveOperation:UIDocumentSaveForCreating
-          completionHandler:^(BOOL success) {
-             if (success == YES)
-             {
-                 self.managedObjectContext = document.managedObjectContext;
-             }
-          }];
-    }
-    else if (document.documentState == UIDocumentStateClosed)
-    {
-        [document openWithCompletionHandler:^(BOOL success) {
-            if (success == YES)
-            {
-                self.managedObjectContext = document.managedObjectContext;
-            }
-        }];
-    }
-    else
-    {
-        self.managedObjectContext = document.managedObjectContext;
-    }
 }
 
 - (void)didReceiveMemoryWarning

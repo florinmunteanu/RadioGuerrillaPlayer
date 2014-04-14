@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RadioTabBarController : UITabBarController
+@interface RadioTabBarController : UITabBarController<UITabBarControllerDelegate>
 
 @end

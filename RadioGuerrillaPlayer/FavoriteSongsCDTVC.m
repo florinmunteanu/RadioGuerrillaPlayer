@@ -33,23 +33,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    //((UITableView *)self.view).contentInset = UIEdgeInsetsMake(0, 0, self.bottomLayoutGuide.length, 0);
-    //[self.tableView setContentInset:UIEdgeInsetsMake(20, self.tableView.contentInset.left, self.tableView.contentInset.bottom + 50, self.tableView.contentInset.right)];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    if (self.managedObjectContext == nil)
-    {
-        NSArray* vc = self.tabBarController.viewControllers;
-        if ([vc[0] isKindOfClass:[PlayerViewController class]])
-        {
-            PlayerViewController* nc = (PlayerViewController *)vc[0];
-            
-            self.managedObjectContext = nc.managedObjectContext;
-        }
-    }
     [super viewWillAppear:animated];
 }
 

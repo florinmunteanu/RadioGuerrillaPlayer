@@ -7,6 +7,9 @@
 //
 
 #import "SettingsViewController.h"
+#import "FavoriteSong+Guerrilla.h"
+#import "Artist+Guerrilla.h"
+#import "PlayerViewController.h"
 
 @interface SettingsViewController ()
 
@@ -17,8 +20,9 @@
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
+    if (self)
+    {
+        
     }
     return self;
 }
@@ -27,11 +31,13 @@
 {
     [super viewDidLoad];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.tableView.delaysContentTouches = NO;
+    [self.tableView setContentInset:UIEdgeInsetsMake(20,0,0,0)];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning
@@ -65,58 +71,98 @@
     
     if (indexPath.section == 0 && indexPath.row == 0)
     {
-        cell.textLabel.text = @"Auto play when app starts";
-        
-        UISwitch* autoPlaysSwitch = [[UISwitch alloc] init];
-        autoPlaysSwitch.frame = CGRectMake(0.0f, 0.0f, 150, 25.0f);
-    
-        cell.accessoryView = autoPlaysSwitch;
+        [self setAutoPlayCell:cell];
     }
     else if (indexPath.section == 0 && indexPath.row == 1)
     {
-       //cell.textLabel.text = @"Delete all favorite songs";
-        //cell.textLabel.textAlignment = UITextAlignmentCenter;
-        UIButton* deleteAllSongsButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        deleteAllSongsButton.frame = CGRectMake(0.0f, 0.0f, 160.0f, 25.0f);
-        deleteAllSongsButton.backgroundColor = [UIColor redColor];
-        
-        [deleteAllSongsButton setTitleColor:[UIColor whiteColor]
-                                   forState:UIControlStateNormal];
-        [deleteAllSongsButton setTitle:@"Delete all data"
-                              forState:UIControlStateNormal];
-        
-        //cell.accessoryView = deleteAllSongsButton;
-        [cell addSubview:deleteAllSongsButton];
+        [self setDeleteDataCell:cell];
     }
     else if (indexPath.section == 1 && indexPath.row == 0)
     {
-        cell.textLabel.text = @"Icons by icon8";
-        
-        UIButton* icon8Link = [UIButton buttonWithType:UIButtonTypeSystem];
-        icon8Link.frame = CGRectMake(0.0f, 0.0f, 60.0f, 25.0f);
-        [icon8Link setTitle:@"Link"
-                   forState:UIControlStateNormal];
-        [icon8Link addTarget:self
-                      action:@selector(openLinkToIcon8)
-            forControlEvents:UIControlEventTouchUpInside];
-        
-        cell.accessoryView = icon8Link;
+        [self setIcon8Cell:cell];
     }
     else if (indexPath.section == 1 && indexPath.row == 1)
     {
-        cell.textLabel.text = @"Images by Last.fm";
-        
-        UIButton* lastFmLink = [UIButton buttonWithType:UIButtonTypeSystem];
-        lastFmLink.frame = CGRectMake(0.0f, 0.0f, 60.0f, 25.0f);
-        [lastFmLink setTitle:@"Link" forState:UIControlStateNormal];
-        [lastFmLink addTarget:self
-                       action:@selector(openLinkToLastfm)
-             forControlEvents:UIControlEventTouchUpInside];
-        
-        cell.accessoryView = lastFmLink;
+        [self setLastFmCell:cell];
     }
     
+    [self delayContentTouches:cell];
+    
     return cell;
+}
+
+- (void)delayContentTouches:(UITableViewCell *)cell
+{
+    //http://stackoverflow.com/questions/19256996/uibutton-not-showing-highlight-on-tap-in-ios7
+    
+    // https://developer.apple.com/library/ios/documentation/uikit/reference/uiscrollview_class/Reference/UIScrollView.html#//apple_ref/occ/instp/UIScrollView/delaysContentTouches
+    // delaysContentTouches
+    // A Boolean value that determines whether the scroll view delays the handling of touch-down gestures.
+    for (id obj in cell.subviews)
+    {
+        if ([NSStringFromClass([obj class]) isEqualToString:@"UITableViewCellScrollView"])
+        {
+            UIScrollView *scroll = (UIScrollView *) obj;
+            scroll.delaysContentTouches = NO;
+            break;
+        }
+    }
+}
+
+- (void)setLastFmCell:(UITableViewCell *) cell
+{
+    cell.textLabel.text = @"Images by Last.fm";
+    
+    UIButton* lastFmLink = [UIButton buttonWithType:UIButtonTypeSystem];
+    lastFmLink.frame = CGRectMake(0.0f, 0.0f, 60.0f, 25.0f);
+    [lastFmLink setTitle:@"Link" forState:UIControlStateNormal];
+    [lastFmLink addTarget:self
+                   action:@selector(openLinkToLastfm)
+         forControlEvents:UIControlEventTouchUpInside];
+    
+    cell.accessoryView = lastFmLink;
+}
+
+- (void)setIcon8Cell:(UITableViewCell *)cell
+{
+    cell.textLabel.text = @"Icons by icon8";
+    
+    UIButton* icon8Link = [UIButton buttonWithType:UIButtonTypeSystem];
+    icon8Link.frame = CGRectMake(0.0f, 0.0f, 60.0f, 25.0f);
+    [icon8Link setTitle:@"Link"
+               forState:UIControlStateNormal];
+    [icon8Link addTarget:self
+                  action:@selector(openLinkToIcon8)
+        forControlEvents:UIControlEventTouchUpInside];
+    
+    cell.accessoryView = icon8Link;
+}
+
+- (void)setDeleteDataCell:(UITableViewCell *)cell
+{
+    UIButton* deleteAllSongsButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    deleteAllSongsButton.frame = cell.bounds;//CGRectMake(0.0f, 0.0f, 160.0f, 25.0f);
+    deleteAllSongsButton.backgroundColor = [UIColor redColor];
+    
+    [deleteAllSongsButton setTitleColor:[UIColor whiteColor]
+                               forState:UIControlStateNormal];
+    [deleteAllSongsButton setTitle:@"Delete all data"
+                          forState:UIControlStateNormal];
+    [deleteAllSongsButton addTarget:self
+                             action:@selector(deleteAllData)
+                   forControlEvents:UIControlEventTouchUpInside];
+    
+    [cell.contentView addSubview:deleteAllSongsButton];
+}
+
+- (void)setAutoPlayCell:(UITableViewCell *)cell
+{
+    cell.textLabel.text = @"Auto play when app starts";
+    
+    UISwitch* autoPlaysSwitch = [[UISwitch alloc] init];
+    autoPlaysSwitch.frame = CGRectMake(0.0f, 0.0f, 150, 25.0f);
+    
+    cell.accessoryView = autoPlaysSwitch;
 }
 
 - (void)openLinkToIcon8
@@ -127,6 +173,12 @@
 - (void)openLinkToLastfm
 {
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"http://www.lastfm.com"]];
+}
+
+- (void)deleteAllData
+{
+    [FavoriteSong deleteAllSongs:self.managedObjectContext error:nil];
+    [Artist deleteAllArtists:self.managedObjectContext error:nil];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
@@ -141,56 +193,5 @@
     }
     return @"";
 }
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-
- */
 
 @end

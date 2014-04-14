@@ -161,7 +161,23 @@
 
 + (void)deleteAllSongs:(NSManagedObjectContext *)context error:(NSError **)error
 {
+    NSError* fetchError = nil;
+    NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:@"FavoriteSong"];
+    request.predicate = nil;
     
+    NSArray* matches = [context executeFetchRequest:request error:&fetchError];
+    
+    if (fetchError)
+    {
+        *error = fetchError;
+    }
+    else if (matches.count > 0)
+    {
+        for (NSManagedObject* song in matches)
+        {
+            [context deleteObject:song];
+        }
+    }
 }
 
 @end

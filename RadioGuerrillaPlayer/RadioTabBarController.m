@@ -7,8 +7,13 @@
 //
 
 #import "RadioTabBarController.h"
+#import "FavoriteSongsCDTVC.h"
+#import "SettingsViewController.h"
+#import "PlayerViewController.h"
 
 @interface RadioTabBarController ()
+
+@property (strong, nonatomic) NSManagedObjectContext* managedObjectContext;
 
 @end
 
@@ -20,6 +25,7 @@
     if (self)
     {
         // Custom initialization
+        
     }
     return self;
 }
@@ -28,6 +34,9 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    UITabBarController* tabBarController = (UITabBarController *)self;
+    tabBarController.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning
@@ -53,6 +62,11 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    if (self.managedObjectContext == nil)
+    {
+        [self initManagedDocument];
+    }
+    
     [super viewWillAppear:animated];
 }
 
@@ -63,15 +77,59 @@
     self.tabBar.translucent = NO;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
 }
-*/
+
+/* Creates the NSManagedObjectContext required by Core Data.
+ */
+- (void)initManagedDocument
+{
+    NSURL* url = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    url = [url URLByAppendingPathComponent:@"RadioDocument"];
+    
+    UIManagedDocument* document = [[UIManagedDocument alloc] initWithFileURL:url];
+    
+    if ([[NSFileManager defaultManager] fileExistsAtPath:[url path]] == NO)
+    {
+        [document saveToURL:url
+           forSaveOperation:UIDocumentSaveForCreating
+          completionHandler:^(BOOL success) {
+              if (success == YES)
+              {
+                  self.managedObjectContext = document.managedObjectContext;
+              }
+          }];
+    }
+    else if (document.documentState == UIDocumentStateClosed)
+    {
+        [document openWithCompletionHandler:^(BOOL success) {
+            if (success == YES)
+            {
+                self.managedObjectContext = document.managedObjectContext;
+            }
+        }];
+    }
+    else
+    {
+        self.managedObjectContext = document.managedObjectContext;
+    }
+}
+
+- (void)setManagedObjectContext:(NSManagedObjectContext *)managedObjectContext
+{
+    _managedObjectContext = managedObjectContext;
+    if (managedObjectContext)
+    {
+        for (id viewController in self.viewControllers)
+        {
+            if ([viewController respondsToSelector:@selector(managedObjectContext)])
+            {
+                [viewController setManagedObjectContext:self.managedObjectContext];
+            }
+        }
+    }
+}
 
 @end

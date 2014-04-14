@@ -73,7 +73,23 @@
 + (void)deleteAllArtists:(NSManagedObjectContext *)context
                    error:(NSError **)error
 {
+    NSError* fetchError = nil;
+    NSFetchRequest* request = [NSFetchRequest fetchRequestWithEntityName:@"Artist"];
+    request.predicate = nil;
     
+    NSArray* matches = [context executeFetchRequest:request error:&fetchError];
+    
+    if (fetchError)
+    {
+        *error = fetchError;
+    }
+    else if (matches.count > 0)
+    {
+        for (NSManagedObject* artist in matches)
+        {
+            [context deleteObject:artist];
+        }
+    }
 }
 
 @end
