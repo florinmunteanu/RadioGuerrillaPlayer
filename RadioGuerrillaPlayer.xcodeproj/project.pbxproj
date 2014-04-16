@@ -36,15 +36,14 @@
 		4E229D3C18C1FDF3003F8B5C /* app_icon120.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E229D3918C1FDF3003F8B5C /* app_icon120.png */; };
 		4E2EF15A18F49CD60010077F /* PlayButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E2EF15918F49CD60010077F /* PlayButton.m */; };
 		4E2EF15D18FB19EF0010077F /* FavoriteSongResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E2EF15C18FB19EF0010077F /* FavoriteSongResult.m */; };
+		4E2EF15F18FE4FB60010077F /* api_keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4E2EF15E18FE4FB60010077F /* api_keys.plist */; };
 		4E36A2CC18B9F05C0064E613 /* Artist.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E36A2CB18B9F05C0064E613 /* Artist.m */; };
 		4E36A2CF18B9F05C0064E613 /* FavoriteSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E36A2CE18B9F05C0064E613 /* FavoriteSong.m */; };
 		4E36A2D218BB82480064E613 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E36A2D118BB82480064E613 /* SettingsViewController.m */; };
 		4E36A2D518BB85310064E613 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E36A2D318BB85310064E613 /* settings.png */; };
 		4E36A2D618BB85310064E613 /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E36A2D418BB85310064E613 /* settings@2x.png */; };
-		4E3D167818CA5FEE00FB1B07 /* HorizontalScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E3D167718CA5FEE00FB1B07 /* HorizontalScroller.m */; };
 		4E899A5118AFFB0A008FCB04 /* LastfmClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E899A5018AFFB0A008FCB04 /* LastfmClient.m */; };
 		4E899A5418AFFC48008FCB04 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E899A5318AFFC48008FCB04 /* SystemConfiguration.framework */; };
-		4E899A5718AFFD92008FCB04 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E899A5618AFFD92008FCB04 /* Reachability.m */; };
 		4E899A5A18B0BB1A008FCB04 /* ArtistInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E899A5918B0BB1A008FCB04 /* ArtistInfo.m */; };
 		4E899A5D18B0E64E008FCB04 /* ArtistInfoResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E899A5C18B0E64E008FCB04 /* ArtistInfoResponse.m */; };
 		4E899A6018B136BD008FCB04 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4E899A5E18B136BD008FCB04 /* Model.xcdatamodeld */; };
@@ -60,12 +59,7 @@
 		4E899A9218B419F8008FCB04 /* radio@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E899A9018B419F8008FCB04 /* radio@2x.png */; };
 		4E899A9518B41ADE008FCB04 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E899A9318B41ADE008FCB04 /* star.png */; };
 		4E899A9618B41ADE008FCB04 /* star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E899A9418B41ADE008FCB04 /* star@2x.png */; };
-		4E8E91C218DC129300BB6770 /* RadioStationsPopUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8E91C018DC129300BB6770 /* RadioStationsPopUpViewController.m */; };
-		4E8E91C318DC129300BB6770 /* RadioStationsPopUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E8E91C118DC129300BB6770 /* RadioStationsPopUpViewController.xib */; };
 		4E8E91C618E2178A00BB6770 /* RadioTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8E91C518E2178A00BB6770 /* RadioTabBarController.m */; };
-		4E95C0E218CE4144009ED01D /* magic-fm-logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4E95C0E118CE4144009ED01D /* magic-fm-logo.jpg */; };
-		4E95C0E418CE43F8009ED01D /* rock-fm-logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4E95C0E318CE43F8009ED01D /* rock-fm-logo.jpg */; };
-		4E95C0E618CE4E54009ED01D /* romantic-fm-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E95C0E518CE4E54009ED01D /* romantic-fm-logo.png */; };
 		4E95C0E918CE611C009ED01D /* FavoriteSongTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E95C0E818CE611C009ED01D /* FavoriteSongTableViewCell.m */; };
 /* End PBXBuildFile section */
 
@@ -118,6 +112,7 @@
 		4E2EF15918F49CD60010077F /* PlayButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayButton.m; path = Views/PlayButton.m; sourceTree = "<group>"; };
 		4E2EF15B18FB19EF0010077F /* FavoriteSongResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteSongResult.h; sourceTree = "<group>"; };
 		4E2EF15C18FB19EF0010077F /* FavoriteSongResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteSongResult.m; sourceTree = "<group>"; };
+		4E2EF15E18FE4FB60010077F /* api_keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = api_keys.plist; sourceTree = "<group>"; };
 		4E36A2CA18B9F05C0064E613 /* Artist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Artist.h; sourceTree = "<group>"; };
 		4E36A2CB18B9F05C0064E613 /* Artist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Artist.m; sourceTree = "<group>"; };
 		4E36A2CD18B9F05C0064E613 /* FavoriteSong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteSong.h; sourceTree = "<group>"; };
@@ -126,14 +121,9 @@
 		4E36A2D118BB82480064E613 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		4E36A2D318BB85310064E613 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = settings.png; path = Images/settings.png; sourceTree = "<group>"; };
 		4E36A2D418BB85310064E613 /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "settings@2x.png"; path = "Images/settings@2x.png"; sourceTree = "<group>"; };
-		4E3D167618CA5FEE00FB1B07 /* HorizontalScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HorizontalScroller.h; path = Views/HorizontalScroller.h; sourceTree = "<group>"; };
-		4E3D167718CA5FEE00FB1B07 /* HorizontalScroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HorizontalScroller.m; path = Views/HorizontalScroller.m; sourceTree = "<group>"; };
-		4E3D167918CA604800FB1B07 /* HorizontalScrollerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HorizontalScrollerDelegate.h; path = Views/HorizontalScrollerDelegate.h; sourceTree = "<group>"; };
 		4E899A4F18AFFB0A008FCB04 /* LastfmClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LastfmClient.h; path = ../Lastfm/LastfmClient.h; sourceTree = "<group>"; };
 		4E899A5018AFFB0A008FCB04 /* LastfmClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LastfmClient.m; path = ../Lastfm/LastfmClient.m; sourceTree = "<group>"; };
 		4E899A5318AFFC48008FCB04 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		4E899A5518AFFD92008FCB04 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
-		4E899A5618AFFD92008FCB04 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		4E899A5818B0BB1A008FCB04 /* ArtistInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtistInfo.h; sourceTree = "<group>"; };
 		4E899A5918B0BB1A008FCB04 /* ArtistInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArtistInfo.m; sourceTree = "<group>"; };
 		4E899A5B18B0E64E008FCB04 /* ArtistInfoResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtistInfoResponse.h; sourceTree = "<group>"; };
@@ -143,7 +133,6 @@
 		4E899A7B18B14317008FCB04 /* Artist+Guerrilla.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Artist+Guerrilla.m"; path = "CoreData/Artist+Guerrilla.m"; sourceTree = "<group>"; };
 		4E899A7D18B14343008FCB04 /* FavoriteSong+Guerrilla.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "FavoriteSong+Guerrilla.h"; path = "CoreData/FavoriteSong+Guerrilla.h"; sourceTree = "<group>"; };
 		4E899A7E18B14343008FCB04 /* FavoriteSong+Guerrilla.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "FavoriteSong+Guerrilla.m"; path = "CoreData/FavoriteSong+Guerrilla.m"; sourceTree = "<group>"; };
-		4E899A8018B166B3008FCB04 /* PlayerErrors.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayerErrors.h; sourceTree = "<group>"; };
 		4E899A8118B2A1BB008FCB04 /* CoreDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataTableViewController.h; sourceTree = "<group>"; };
 		4E899A8218B2A1BB008FCB04 /* CoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataTableViewController.m; sourceTree = "<group>"; };
 		4E899A8418B2A291008FCB04 /* FavoriteSongsCDTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteSongsCDTVC.h; sourceTree = "<group>"; };
@@ -156,14 +145,8 @@
 		4E899A9018B419F8008FCB04 /* radio@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "radio@2x.png"; path = "Images/radio@2x.png"; sourceTree = "<group>"; };
 		4E899A9318B41ADE008FCB04 /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = star.png; path = Images/star.png; sourceTree = "<group>"; };
 		4E899A9418B41ADE008FCB04 /* star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "star@2x.png"; path = "Images/star@2x.png"; sourceTree = "<group>"; };
-		4E8E91BF18DC129300BB6770 /* RadioStationsPopUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioStationsPopUpViewController.h; sourceTree = "<group>"; };
-		4E8E91C018DC129300BB6770 /* RadioStationsPopUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioStationsPopUpViewController.m; sourceTree = "<group>"; };
-		4E8E91C118DC129300BB6770 /* RadioStationsPopUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RadioStationsPopUpViewController.xib; sourceTree = "<group>"; };
 		4E8E91C418E2178A00BB6770 /* RadioTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioTabBarController.h; sourceTree = "<group>"; };
 		4E8E91C518E2178A00BB6770 /* RadioTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioTabBarController.m; sourceTree = "<group>"; };
-		4E95C0E118CE4144009ED01D /* magic-fm-logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "magic-fm-logo.jpg"; path = "Images/magic-fm-logo.jpg"; sourceTree = "<group>"; };
-		4E95C0E318CE43F8009ED01D /* rock-fm-logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "rock-fm-logo.jpg"; path = "Images/rock-fm-logo.jpg"; sourceTree = "<group>"; };
-		4E95C0E518CE4E54009ED01D /* romantic-fm-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "romantic-fm-logo.png"; path = "Images/romantic-fm-logo.png"; sourceTree = "<group>"; };
 		4E95C0E718CE611C009ED01D /* FavoriteSongTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FavoriteSongTableViewCell.h; path = Views/FavoriteSongTableViewCell.h; sourceTree = "<group>"; };
 		4E95C0E818CE611C009ED01D /* FavoriteSongTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FavoriteSongTableViewCell.m; path = Views/FavoriteSongTableViewCell.m; sourceTree = "<group>"; };
 		A63AC87E9B9D4510819D3EB2 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
@@ -200,6 +183,7 @@
 		4E156DBB18A81E7E009F28C8 = {
 			isa = PBXGroup;
 			children = (
+				4E2EF15E18FE4FB60010077F /* api_keys.plist */,
 				4E156DCD18A81E7E009F28C8 /* RadioGuerrillaPlayer */,
 				4E156DEC18A81E7E009F28C8 /* RadioGuerrillaPlayerTests */,
 				4E156DC618A81E7E009F28C8 /* Frameworks */,
@@ -253,11 +237,8 @@
 				4E36A2D118BB82480064E613 /* SettingsViewController.m */,
 				4E8E91C418E2178A00BB6770 /* RadioTabBarController.h */,
 				4E8E91C518E2178A00BB6770 /* RadioTabBarController.m */,
-				4E899A5518AFFD92008FCB04 /* Reachability.h */,
-				4E899A5618AFFD92008FCB04 /* Reachability.m */,
 				4E156DDF18A81E7E009F28C8 /* Images.xcassets */,
 				4E156DCE18A81E7E009F28C8 /* Supporting Files */,
-				4E899A8018B166B3008FCB04 /* PlayerErrors.h */,
 			);
 			path = RadioGuerrillaPlayer;
 			sourceTree = "<group>";
@@ -307,9 +288,6 @@
 			isa = PBXGroup;
 			children = (
 				4E025DCB18E21EAA00730655 /* theme.jpg */,
-				4E95C0E518CE4E54009ED01D /* romantic-fm-logo.png */,
-				4E95C0E318CE43F8009ED01D /* rock-fm-logo.jpg */,
-				4E95C0E118CE4144009ED01D /* magic-fm-logo.jpg */,
 				4E229D3718C1FDF3003F8B5C /* app_icon58.png */,
 				4E229D3818C1FDF3003F8B5C /* app_icon80.png */,
 				4E229D3918C1FDF3003F8B5C /* app_icon120.png */,
@@ -336,12 +314,6 @@
 		4E3D167518CA5F1100FB1B07 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				4E8E91BF18DC129300BB6770 /* RadioStationsPopUpViewController.h */,
-				4E8E91C018DC129300BB6770 /* RadioStationsPopUpViewController.m */,
-				4E8E91C118DC129300BB6770 /* RadioStationsPopUpViewController.xib */,
-				4E3D167618CA5FEE00FB1B07 /* HorizontalScroller.h */,
-				4E3D167718CA5FEE00FB1B07 /* HorizontalScroller.m */,
-				4E3D167918CA604800FB1B07 /* HorizontalScrollerDelegate.h */,
 				4E95C0E718CE611C009ED01D /* FavoriteSongTableViewCell.h */,
 				4E95C0E818CE611C009ED01D /* FavoriteSongTableViewCell.m */,
 				4E2EF15818F49CD60010077F /* PlayButton.h */,
@@ -461,7 +433,6 @@
 			files = (
 				4E899A8918B3EA96008FCB04 /* filled_star.png in Resources */,
 				4E36A2D618BB85310064E613 /* settings@2x.png in Resources */,
-				4E95C0E618CE4E54009ED01D /* romantic-fm-logo.png in Resources */,
 				4E899A8D18B3EB69008FCB04 /* empty_star.png in Resources */,
 				4E899A9618B41ADE008FCB04 /* star@2x.png in Resources */,
 				4E36A2D518BB85310064E613 /* settings.png in Resources */,
@@ -471,12 +442,11 @@
 				4E229D3C18C1FDF3003F8B5C /* app_icon120.png in Resources */,
 				4E899A9118B419F8008FCB04 /* radio.png in Resources */,
 				4E025DCC18E21EAA00730655 /* theme.jpg in Resources */,
-				4E8E91C318DC129300BB6770 /* RadioStationsPopUpViewController.xib in Resources */,
-				4E95C0E418CE43F8009ED01D /* rock-fm-logo.jpg in Resources */,
 				4E899A8A18B3EA96008FCB04 /* filled_star@2x.png in Resources */,
 				4E156DE018A81E7E009F28C8 /* Images.xcassets in Resources */,
 				4E156DD218A81E7E009F28C8 /* InfoPlist.strings in Resources */,
 				4E156EEB18AEAA49009F28C8 /* pause@2x.png in Resources */,
+				4E2EF15F18FE4FB60010077F /* api_keys.plist in Resources */,
 				4E156EEF18AEAC13009F28C8 /* radio-guerrilla-logo.png in Resources */,
 				4E156EEA18AEAA49009F28C8 /* pause.png in Resources */,
 				4E899A9218B419F8008FCB04 /* radio@2x.png in Resources */,
@@ -484,7 +454,6 @@
 				4E156DDB18A81E7E009F28C8 /* Main.storyboard in Resources */,
 				4E899A8E18B3EB69008FCB04 /* empty_star@2x.png in Resources */,
 				4E156EEC18AEAA49009F28C8 /* play.png in Resources */,
-				4E95C0E218CE4144009ED01D /* magic-fm-logo.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -543,14 +512,11 @@
 				4E36A2CC18B9F05C0064E613 /* Artist.m in Sources */,
 				4E2EF15D18FB19EF0010077F /* FavoriteSongResult.m in Sources */,
 				4E899A7C18B14317008FCB04 /* Artist+Guerrilla.m in Sources */,
-				4E3D167818CA5FEE00FB1B07 /* HorizontalScroller.m in Sources */,
 				4E899A5A18B0BB1A008FCB04 /* ArtistInfo.m in Sources */,
 				4E899A7F18B14343008FCB04 /* FavoriteSong+Guerrilla.m in Sources */,
 				4E36A2CF18B9F05C0064E613 /* FavoriteSong.m in Sources */,
 				4E156E0618AAD0CB009F28C8 /* RGPlayController.m in Sources */,
 				4E36A2D218BB82480064E613 /* SettingsViewController.m in Sources */,
-				4E899A5718AFFD92008FCB04 /* Reachability.m in Sources */,
-				4E8E91C218DC129300BB6770 /* RadioStationsPopUpViewController.m in Sources */,
 				4E899A5118AFFB0A008FCB04 /* LastfmClient.m in Sources */,
 				4E2EF15A18F49CD60010077F /* PlayButton.m in Sources */,
 				4E899A6018B136BD008FCB04 /* Model.xcdatamodeld in Sources */,

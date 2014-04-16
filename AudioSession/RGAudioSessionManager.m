@@ -1,10 +1,3 @@
-//
-//  RGAudioSessionManager.m
-//  RadioGuerrillaPlayer
-//
-//  Created by Florin Munteanu on 11/02/14.
-//  Copyright (c) 2014 Florin Munteanu. All rights reserved.
-//
 
 #import "RGAudioSessionManager.h"
 #import "RGPlayController.h"
@@ -30,7 +23,7 @@ NSString* const metadataKeyPath = @"timedMetadata";
 
 typedef enum { NoExtraKnowledge, WillPlay } AudioSessionStateMatchingOptions;
 
-- (id)initWithPlayController:(RGPlayController *)playController
+- (instancetype)initWithPlayController:(RGPlayController *)playController
 {
     self = [super init];
     

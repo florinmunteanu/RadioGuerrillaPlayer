@@ -1,10 +1,3 @@
-//
-//  ViewController.m
-//  RadioGuerrillaPlayer
-//
-//  Created by Florin Munteanu on 09/02/14.
-//  Copyright (c) 2014 Florin Munteanu. All rights reserved.
-//
 
 #import "PlayerViewController.h"
 #import "RGPlayController.h"
@@ -16,8 +9,6 @@
 #import "Artist+Guerrilla.h"
 #import "AppDelegate.h"
 #import "ArtistInfoResponse.h"
-#import "HorizontalScrollerDelegate.h"
-#import "RadioStationsPopUpViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import "PlayButton.h"
 #import "FavoriteSongResult.h"
@@ -25,15 +16,21 @@
 
 @interface PlayerViewController ()
 
+@property (weak, nonatomic) IBOutlet UILabel* songLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel* artistLabel;
+
+@property (weak, nonatomic) IBOutlet UIButton* isFavoriteButton;
+
 @property (strong, nonatomic) RGPlayController* playController;
 
 @property (strong, nonatomic) RGAudioSessionManager* audioSessionManager;
 
-//@property (strong, nonatomic) RadioStationsPopUpViewController* radioStationsPopup;
-
 @property (strong, nonatomic) UIImageView* imageViewBackground;
 
 @property (weak, nonatomic) IBOutlet PlayButton *playButton;
+
+@property (strong, nonatomic) NSString* lastfmApiKey;
 
 @end
 
@@ -62,6 +59,11 @@
     {
         self.songLabel.text = @"";
     }
+    
+    NSString* apiKeysFile = [[NSBundle mainBundle] pathForResource:@"api_keys" ofType:@"plist"];
+    NSDictionary* fileContent = [[NSDictionary alloc] initWithContentsOfFile:apiKeysFile];
+    
+    self.lastfmApiKey = [(NSString *)[fileContent valueForKey:@"LastfmApiKey"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -195,7 +197,7 @@
 {
     if (artistName && artistName.length > 0)
     {
-        LastfmClient* lastfmClient = [[LastfmClient alloc] initWithApiKey:@""];
+        LastfmClient* lastfmClient = [[LastfmClient alloc] initWithApiKey:self.lastfmApiKey];
         
         [lastfmClient sendGetArtistInfo:self.playController.currentArtist
                   withCompletionHandler:^(ArtistInfoResponse* response) {
@@ -219,14 +221,4 @@
     }
 }
 
-/*
-#pragma mark - Change radio stations
-
-- (IBAction)showRadioStationsPopup:(id)sender
-{
-    self.radioStationsPopup = [[RadioStationsPopUpViewController alloc] initWithNibName:@"RadioStationsPopUpViewController" bundle:nil];
-    
-    [self.radioStationsPopup showInView:self.view animated:YES];
-}
-*/
 @end

@@ -1,0 +1,3 @@
+# Ignore these file from git.
+# Will contain api keys (Last fm)
+api_keys.plist

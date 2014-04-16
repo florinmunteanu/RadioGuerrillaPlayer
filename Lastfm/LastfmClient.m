@@ -1,12 +1,3 @@
-//
-//  LastfmClient.m
-//  RadioGuerrillaPlayer
-//
-//  Created by Florin Munteanu on 15/02/14.
-//  Copyright (c) 2014 Florin Munteanu. All rights reserved.
-//
-//  Client for REST calls to Last.fm public API.
-//  Documentation for available at http://www.last.fm/api
 
 #import "LastfmClient.h"
 #import "ArtistInfo.h"

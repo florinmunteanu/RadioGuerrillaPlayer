@@ -1,10 +1,3 @@
-//
-//  SettingsViewController.m
-//  RadioGuerrillaPlayer
-//
-//  Created by Florin Munteanu on 24/02/14.
-//  Copyright (c) 2014 Florin Munteanu. All rights reserved.
-//
 
 #import "SettingsViewController.h"
 #import "FavoriteSong+Guerrilla.h"
@@ -141,7 +134,7 @@
 - (void)setDeleteDataCell:(UITableViewCell *)cell
 {
     UIButton* deleteAllSongsButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    deleteAllSongsButton.frame = cell.bounds;//CGRectMake(0.0f, 0.0f, 160.0f, 25.0f);
+    deleteAllSongsButton.frame = cell.bounds;
     deleteAllSongsButton.backgroundColor = [UIColor redColor];
     
     [deleteAllSongsButton setTitleColor:[UIColor whiteColor]
