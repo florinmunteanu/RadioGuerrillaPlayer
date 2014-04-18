@@ -12,6 +12,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "PlayButton.h"
 #import "FavoriteSongResult.h"
+#import "RadioUserSettings.h"
 #import <TSMessages/TSMessage.h>
 
 @interface PlayerViewController ()
@@ -60,10 +61,7 @@
         self.songLabel.text = @"";
     }
     
-    NSString* apiKeysFile = [[NSBundle mainBundle] pathForResource:@"api_keys" ofType:@"plist"];
-    NSDictionary* fileContent = [[NSDictionary alloc] initWithContentsOfFile:apiKeysFile];
-    
-    self.lastfmApiKey = [(NSString *)[fileContent valueForKey:@"LastfmApiKey"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    [self readLastfmApiKey];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -85,6 +83,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    [self startPlayingIfNecessary];
 }
 
 - (void)didReceiveMemoryWarning
@@ -95,6 +94,11 @@
 }
 
 - (IBAction)changePlayState:(id)sender
+{
+    [self changePlayState];
+}
+
+- (void)changePlayState
 {
     if (self.playController.playing)
     {
@@ -219,6 +223,22 @@
                   }];
 
     }
+}
+
+- (void)startPlayingIfNecessary
+{
+    if ([RadioUserSettings sharedInstance].autoPlay && self.playController.playing == NO)
+    {
+        [self changePlayState];
+    }
+}
+
+- (void)readLastfmApiKey
+{
+    NSString* apiKeysFile = [[NSBundle mainBundle] pathForResource:@"api_keys" ofType:@"plist"];
+    NSDictionary* fileContent = [[NSDictionary alloc] initWithContentsOfFile:apiKeysFile];
+    
+    self.lastfmApiKey = [(NSString *)[fileContent valueForKey:@"LastfmApiKey"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
 
 @end

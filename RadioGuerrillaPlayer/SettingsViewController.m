@@ -3,6 +3,7 @@
 #import "FavoriteSong+Guerrilla.h"
 #import "Artist+Guerrilla.h"
 #import "PlayerViewController.h"
+#import "RadioUserSettings.h"
 
 @interface SettingsViewController ()
 
@@ -152,10 +153,24 @@
 {
     cell.textLabel.text = @"Auto play when app starts";
     
-    UISwitch* autoPlaysSwitch = [[UISwitch alloc] init];
-    autoPlaysSwitch.frame = CGRectMake(0.0f, 0.0f, 150, 25.0f);
+    UISwitch* autoPlaySwitch = [[UISwitch alloc] init];
+    autoPlaySwitch.frame = CGRectMake(0.0f, 0.0f, 150, 25.0f);
     
-    cell.accessoryView = autoPlaysSwitch;
+    [autoPlaySwitch setOn:[RadioUserSettings sharedInstance].autoPlay];
+    
+    cell.accessoryView = autoPlaySwitch;
+    
+    [autoPlaySwitch addTarget:self
+                       action:@selector(setAutoStart:)
+             forControlEvents:UIControlEventValueChanged];
+}
+
+- (void)setAutoStart:(id)sender
+{
+    BOOL isAutoPlayOn = ((UISwitch *)sender).isOn;
+
+    [RadioUserSettings sharedInstance].autoPlay = isAutoPlayOn;
+    [[RadioUserSettings sharedInstance] synchronize];
 }
 
 - (void)openLinkToIcon8

@@ -61,6 +61,7 @@
 		4E899A9618B41ADE008FCB04 /* star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E899A9418B41ADE008FCB04 /* star@2x.png */; };
 		4E8E91C618E2178A00BB6770 /* RadioTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8E91C518E2178A00BB6770 /* RadioTabBarController.m */; };
 		4E95C0E918CE611C009ED01D /* FavoriteSongTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E95C0E818CE611C009ED01D /* FavoriteSongTableViewCell.m */; };
+		4EED23C019006885001729EB /* RadioUserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EED23BF19006885001729EB /* RadioUserSettings.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -149,6 +150,8 @@
 		4E8E91C518E2178A00BB6770 /* RadioTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioTabBarController.m; sourceTree = "<group>"; };
 		4E95C0E718CE611C009ED01D /* FavoriteSongTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FavoriteSongTableViewCell.h; path = Views/FavoriteSongTableViewCell.h; sourceTree = "<group>"; };
 		4E95C0E818CE611C009ED01D /* FavoriteSongTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FavoriteSongTableViewCell.m; path = Views/FavoriteSongTableViewCell.m; sourceTree = "<group>"; };
+		4EED23BE19006885001729EB /* RadioUserSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioUserSettings.h; sourceTree = "<group>"; };
+		4EED23BF19006885001729EB /* RadioUserSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioUserSettings.m; sourceTree = "<group>"; };
 		A63AC87E9B9D4510819D3EB2 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		B632F909E9EE4479BFB3ABCF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -235,6 +238,8 @@
 				4E156DDD18A81E7E009F28C8 /* PlayerViewController.m */,
 				4E36A2D018BB82480064E613 /* SettingsViewController.h */,
 				4E36A2D118BB82480064E613 /* SettingsViewController.m */,
+				4EED23BE19006885001729EB /* RadioUserSettings.h */,
+				4EED23BF19006885001729EB /* RadioUserSettings.m */,
 				4E8E91C418E2178A00BB6770 /* RadioTabBarController.h */,
 				4E8E91C518E2178A00BB6770 /* RadioTabBarController.m */,
 				4E156DDF18A81E7E009F28C8 /* Images.xcassets */,
@@ -505,6 +510,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EED23C019006885001729EB /* RadioUserSettings.m in Sources */,
 				4E156E0218AAD037009F28C8 /* RGAudioSessionManager.m in Sources */,
 				4E8E91C618E2178A00BB6770 /* RadioTabBarController.m in Sources */,
 				4E156DDE18A81E7E009F28C8 /* PlayerViewController.m in Sources */,
