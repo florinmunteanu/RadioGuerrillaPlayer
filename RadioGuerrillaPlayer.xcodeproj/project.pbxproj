@@ -24,8 +24,8 @@
 		4E156DF118A81E7E009F28C8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E156DEF18A81E7E009F28C8 /* InfoPlist.strings */; };
 		4E156DF318A81E7E009F28C8 /* RadioGuerrillaPlayerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E156DF218A81E7E009F28C8 /* RadioGuerrillaPlayerTests.m */; };
 		4E156DFF18A95E67009F28C8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E156DFE18A95E67009F28C8 /* AVFoundation.framework */; };
-		4E156E0218AAD037009F28C8 /* RGAudioSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E156E0118AAD037009F28C8 /* RGAudioSessionManager.m */; };
-		4E156E0618AAD0CB009F28C8 /* RGPlayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E156E0518AAD0CB009F28C8 /* RGPlayController.m */; };
+		4E156E0218AAD037009F28C8 /* AudioStreamSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E156E0118AAD037009F28C8 /* AudioStreamSessionManager.m */; };
+		4E156E0618AAD0CB009F28C8 /* AudioStreamPlayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E156E0518AAD0CB009F28C8 /* AudioStreamPlayController.m */; };
 		4E156EEA18AEAA49009F28C8 /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E156EE618AEAA49009F28C8 /* pause.png */; };
 		4E156EEB18AEAA49009F28C8 /* pause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E156EE718AEAA49009F28C8 /* pause@2x.png */; };
 		4E156EEC18AEAA49009F28C8 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E156EE818AEAA49009F28C8 /* play.png */; };
@@ -61,6 +61,7 @@
 		4E899A9618B41ADE008FCB04 /* star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E899A9418B41ADE008FCB04 /* star@2x.png */; };
 		4E8E91C618E2178A00BB6770 /* RadioTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8E91C518E2178A00BB6770 /* RadioTabBarController.m */; };
 		4E95C0E918CE611C009ED01D /* FavoriteSongTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E95C0E818CE611C009ED01D /* FavoriteSongTableViewCell.m */; };
+		4EE39BCE1907153E005930AD /* FavoritesNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE39BCD1907153E005930AD /* FavoritesNavigationViewController.m */; };
 		4EED23C019006885001729EB /* RadioUserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EED23BF19006885001729EB /* RadioUserSettings.m */; };
 /* End PBXBuildFile section */
 
@@ -97,10 +98,10 @@
 		4E156DF218A81E7E009F28C8 /* RadioGuerrillaPlayerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RadioGuerrillaPlayerTests.m; sourceTree = "<group>"; };
 		4E156DFC18A821A3009F28C8 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		4E156DFE18A95E67009F28C8 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		4E156E0018AAD037009F28C8 /* RGAudioSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RGAudioSessionManager.h; path = AudioSession/RGAudioSessionManager.h; sourceTree = "<group>"; };
-		4E156E0118AAD037009F28C8 /* RGAudioSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RGAudioSessionManager.m; path = AudioSession/RGAudioSessionManager.m; sourceTree = "<group>"; };
-		4E156E0418AAD0CB009F28C8 /* RGPlayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RGPlayController.h; path = AudioSession/RGPlayController.h; sourceTree = "<group>"; };
-		4E156E0518AAD0CB009F28C8 /* RGPlayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RGPlayController.m; path = AudioSession/RGPlayController.m; sourceTree = "<group>"; };
+		4E156E0018AAD037009F28C8 /* AudioStreamSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioStreamSessionManager.h; path = AudioSession/AudioStreamSessionManager.h; sourceTree = "<group>"; };
+		4E156E0118AAD037009F28C8 /* AudioStreamSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AudioStreamSessionManager.m; path = AudioSession/AudioStreamSessionManager.m; sourceTree = "<group>"; };
+		4E156E0418AAD0CB009F28C8 /* AudioStreamPlayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioStreamPlayController.h; path = AudioSession/AudioStreamPlayController.h; sourceTree = "<group>"; };
+		4E156E0518AAD0CB009F28C8 /* AudioStreamPlayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AudioStreamPlayController.m; path = AudioSession/AudioStreamPlayController.m; sourceTree = "<group>"; };
 		4E156EE618AEAA49009F28C8 /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pause.png; path = Images/pause.png; sourceTree = "<group>"; };
 		4E156EE718AEAA49009F28C8 /* pause@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pause@2x.png"; path = "Images/pause@2x.png"; sourceTree = "<group>"; };
 		4E156EE818AEAA49009F28C8 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = play.png; path = Images/play.png; sourceTree = "<group>"; };
@@ -150,6 +151,8 @@
 		4E8E91C518E2178A00BB6770 /* RadioTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioTabBarController.m; sourceTree = "<group>"; };
 		4E95C0E718CE611C009ED01D /* FavoriteSongTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FavoriteSongTableViewCell.h; path = Views/FavoriteSongTableViewCell.h; sourceTree = "<group>"; };
 		4E95C0E818CE611C009ED01D /* FavoriteSongTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FavoriteSongTableViewCell.m; path = Views/FavoriteSongTableViewCell.m; sourceTree = "<group>"; };
+		4EE39BCC1907153E005930AD /* FavoritesNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesNavigationViewController.h; sourceTree = "<group>"; };
+		4EE39BCD1907153E005930AD /* FavoritesNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesNavigationViewController.m; sourceTree = "<group>"; };
 		4EED23BE19006885001729EB /* RadioUserSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadioUserSettings.h; sourceTree = "<group>"; };
 		4EED23BF19006885001729EB /* RadioUserSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadioUserSettings.m; sourceTree = "<group>"; };
 		A63AC87E9B9D4510819D3EB2 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
@@ -236,6 +239,8 @@
 				4E899A8518B2A291008FCB04 /* FavoriteSongsCDTVC.m */,
 				4E156DDC18A81E7E009F28C8 /* PlayerViewController.h */,
 				4E156DDD18A81E7E009F28C8 /* PlayerViewController.m */,
+				4EE39BCC1907153E005930AD /* FavoritesNavigationViewController.h */,
+				4EE39BCD1907153E005930AD /* FavoritesNavigationViewController.m */,
 				4E36A2D018BB82480064E613 /* SettingsViewController.h */,
 				4E36A2D118BB82480064E613 /* SettingsViewController.m */,
 				4EED23BE19006885001729EB /* RadioUserSettings.h */,
@@ -280,10 +285,10 @@
 		4E156E0318AAD040009F28C8 /* AudioSession */ = {
 			isa = PBXGroup;
 			children = (
-				4E156E0018AAD037009F28C8 /* RGAudioSessionManager.h */,
-				4E156E0118AAD037009F28C8 /* RGAudioSessionManager.m */,
-				4E156E0418AAD0CB009F28C8 /* RGPlayController.h */,
-				4E156E0518AAD0CB009F28C8 /* RGPlayController.m */,
+				4E156E0018AAD037009F28C8 /* AudioStreamSessionManager.h */,
+				4E156E0118AAD037009F28C8 /* AudioStreamSessionManager.m */,
+				4E156E0418AAD0CB009F28C8 /* AudioStreamPlayController.h */,
+				4E156E0518AAD0CB009F28C8 /* AudioStreamPlayController.m */,
 			);
 			name = AudioSession;
 			path = ..;
@@ -407,6 +412,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Florin Munteanu";
 				TargetAttributes = {
+					4E156DC318A81E7E009F28C8 = {
+						DevelopmentTeam = R7H8HFB8JC;
+					};
 					4E156DE418A81E7E009F28C8 = {
 						TestTargetID = 4E156DC318A81E7E009F28C8;
 					};
@@ -510,8 +518,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EE39BCE1907153E005930AD /* FavoritesNavigationViewController.m in Sources */,
 				4EED23C019006885001729EB /* RadioUserSettings.m in Sources */,
-				4E156E0218AAD037009F28C8 /* RGAudioSessionManager.m in Sources */,
+				4E156E0218AAD037009F28C8 /* AudioStreamSessionManager.m in Sources */,
 				4E8E91C618E2178A00BB6770 /* RadioTabBarController.m in Sources */,
 				4E156DDE18A81E7E009F28C8 /* PlayerViewController.m in Sources */,
 				4E899A5D18B0E64E008FCB04 /* ArtistInfoResponse.m in Sources */,
@@ -521,7 +530,7 @@
 				4E899A5A18B0BB1A008FCB04 /* ArtistInfo.m in Sources */,
 				4E899A7F18B14343008FCB04 /* FavoriteSong+Guerrilla.m in Sources */,
 				4E36A2CF18B9F05C0064E613 /* FavoriteSong.m in Sources */,
-				4E156E0618AAD0CB009F28C8 /* RGPlayController.m in Sources */,
+				4E156E0618AAD0CB009F28C8 /* AudioStreamPlayController.m in Sources */,
 				4E36A2D218BB82480064E613 /* SettingsViewController.m in Sources */,
 				4E899A5118AFFB0A008FCB04 /* LastfmClient.m in Sources */,
 				4E2EF15A18F49CD60010077F /* PlayButton.m in Sources */,
@@ -614,6 +623,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "Radio Guerrilla";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -634,7 +644,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Florin Dan Munteanu (65B5689N87)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Florin Dan Munteanu (65B5689N87)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -645,6 +656,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_NAME = "Radio Guerrilla";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -656,10 +668,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RadioGuerrillaPlayer/RadioGuerrillaPlayer-Prefix.pch";
 				INFOPLIST_FILE = "RadioGuerrillaPlayer/RadioGuerrillaPlayer-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = RadioGuerrillaPlayer;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -670,10 +683,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RadioGuerrillaPlayer/RadioGuerrillaPlayer-Prefix.pch";
 				INFOPLIST_FILE = "RadioGuerrillaPlayer/RadioGuerrillaPlayer-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = RadioGuerrillaPlayer;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -694,7 +708,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "RadioGuerrillaPlayerTests/RadioGuerrillaPlayerTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = RadioGuerrillaPlayerTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -712,7 +726,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RadioGuerrillaPlayer/RadioGuerrillaPlayer-Prefix.pch";
 				INFOPLIST_FILE = "RadioGuerrillaPlayerTests/RadioGuerrillaPlayerTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = RadioGuerrillaPlayerTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};

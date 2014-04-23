@@ -1,12 +1,7 @@
-//
-//  AppDelegate.m
-//  RadioGuerrillaPlayer
-//
-//  Created by Florin Munteanu on 09/02/14.
-//  Copyright (c) 2014 Florin Munteanu. All rights reserved.
-//
 
 #import "AppDelegate.h"
+#import "RadioUserSettings.h"
+#import "AudioStreamPlayController.h"
 #import <TSMessage.h>
 
 @implementation AppDelegate

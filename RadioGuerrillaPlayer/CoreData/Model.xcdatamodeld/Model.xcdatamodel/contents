@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13B42" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13C1021" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Artist" representedClassName="Artist" syncable="YES">
-        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="name" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="smallImage" optional="YES" attributeType="Binary" syncable="YES"/>
         <relationship name="songs" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="FavoriteSong" inverseName="artistInfo" inverseEntity="FavoriteSong" syncable="YES"/>
         <compoundIndexes>
@@ -11,9 +11,9 @@
         </compoundIndexes>
     </entity>
     <entity name="FavoriteSong" representedClassName="FavoriteSong" syncable="YES">
-        <attribute name="artist" attributeType="String" syncable="YES"/>
+        <attribute name="artist" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="savedDate" attributeType="Date" syncable="YES"/>
-        <attribute name="song" attributeType="String" syncable="YES"/>
+        <attribute name="song" attributeType="String" indexed="YES" syncable="YES"/>
         <relationship name="artistInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Artist" inverseName="songs" inverseEntity="Artist" syncable="YES"/>
         <compoundIndexes>
             <compoundIndex>

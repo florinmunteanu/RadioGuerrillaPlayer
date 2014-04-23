@@ -1,7 +1,7 @@
 
 #import "PlayerViewController.h"
-#import "RGPlayController.h"
-#import "RGAudioSessionManager.h"
+#import "AudioStreamPlayController.h"
+#import "AudioStreamSessionManager.h"
 #import "LastfmClient.h"
 #import "FavoriteSong+Guerrilla.h"
 #import "FavoriteSong.h"
@@ -23,10 +23,6 @@
 
 @property (weak, nonatomic) IBOutlet UIButton* isFavoriteButton;
 
-@property (strong, nonatomic) RGPlayController* playController;
-
-@property (strong, nonatomic) RGAudioSessionManager* audioSessionManager;
-
 @property (strong, nonatomic) UIImageView* imageViewBackground;
 
 @property (weak, nonatomic) IBOutlet PlayButton *playButton;
@@ -40,11 +36,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-    
-    self.playController = [[RGPlayController alloc] init];
-    self.audioSessionManager = [[RGAudioSessionManager alloc] initWithPlayController:self.playController];
-   
+
     //http://thedesigninspiration.com/patterns/sprinkles/
     self.imageViewBackground = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"theme.jpg"]];
     self.imageViewBackground.frame = self.view.bounds;
@@ -62,6 +54,13 @@
     }
     
     [self readLastfmApiKey];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playOnApplicationActivated) name:UIApplicationDidBecomeActiveNotification object:nil];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidBecomeActiveNotification object:nil];
+    [[AudioStreamPlayController sharedInstance] removeObserver:self forKeyPath:@"streamTitle"];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -72,9 +71,9 @@
     // We must make sure the UI is updated with the current song/artist.
     [self updateUIOnStreamTitleChanged];
     
-    [self.playController addObserver:self forKeyPath:@"streamTitle" options:NSKeyValueObservingOptionNew context:NULL];
+    [[AudioStreamPlayController sharedInstance] addObserver:self forKeyPath:@"streamTitle" options:NSKeyValueObservingOptionNew context:NULL];
     
-    if (self.playController.isStreamTitleASong == NO)
+    if ([AudioStreamPlayController sharedInstance].isStreamTitleASong == NO)
     {
         self.isFavoriteButton.hidden = YES;
     }
@@ -83,14 +82,11 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self startPlayingIfNecessary];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)changePlayState:(id)sender
@@ -98,29 +94,38 @@
     [self changePlayState];
 }
 
+- (void)playOnApplicationActivated
+{
+    if ([AudioStreamPlayController sharedInstance].playing == NO && [RadioUserSettings sharedInstance].autoPlay)
+    {
+        [AudioStreamPlayController sharedInstance].playing = YES;
+        self.playButton.selected = YES;
+    }
+}
+
 - (void)changePlayState
 {
-    if (self.playController.playing)
+    if ([AudioStreamPlayController sharedInstance].playing)
     {
-        self.playController.playing = NO;
+        [AudioStreamPlayController sharedInstance].playing = NO;
     }
     else
     {
-        self.playController.playing = YES;
+        [AudioStreamPlayController sharedInstance].playing = YES;
     }
-    [self.playButton setSelected:self.playController.playing];
+    [self.playButton setSelected:[AudioStreamPlayController sharedInstance].playing];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    [self.playController removeObserver:self forKeyPath:@"streamTitle"];
+    [[AudioStreamPlayController sharedInstance] removeObserver:self forKeyPath:@"streamTitle"];
 
     [super viewWillDisappear:animated];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-    if (object == self.playController)
+    if (object == [AudioStreamPlayController sharedInstance])
     {
         if ([keyPath isEqualToString:@"streamTitle"])
         {
@@ -131,13 +136,13 @@
 
 - (void)updateUIOnStreamTitleChanged
 {
-    if (self.playController.isStreamTitleASong == YES)
+    if ([AudioStreamPlayController sharedInstance].isStreamTitleASong == YES)
     {
-        self.artistLabel.text = self.playController.currentArtist;
-        self.songLabel.text = self.playController.currentSong;
+        self.artistLabel.text = [AudioStreamPlayController sharedInstance].currentArtist;
+        self.songLabel.text = [AudioStreamPlayController sharedInstance].currentSong;
         
-        BOOL isInFavorites = [FavoriteSong songIsInFavorites:self.playController.currentSong
-                                                  fromArtist:self.playController.currentArtist
+        BOOL isInFavorites = [FavoriteSong songIsInFavorites:[AudioStreamPlayController sharedInstance].currentSong
+                                                  fromArtist:[AudioStreamPlayController sharedInstance].currentArtist
                                       inManagedObjectContext:self.managedObjectContext
                                                        error:nil];
         if (self.isFavoriteButton.hidden)
@@ -151,15 +156,15 @@
 
 - (IBAction)isFavoriteChanged:(id)sender
 {
-    if (self.playController.isStreamTitleASong == YES)
+    if ([AudioStreamPlayController sharedInstance].isStreamTitleASong == YES)
     {
         self.isFavoriteButton.enabled = NO;
         
         /* Get a copy of current artist and song.
          * In case the current playing song/artist changes then our code won't be affected, we still have the original song/artist.
          */
-        NSString* artistName = (NSString *)[self.playController.currentArtist copy];
-        NSString* songName = (NSString *)[self.playController.currentSong copy];
+        NSString* artistName = (NSString *)[[AudioStreamPlayController sharedInstance].currentArtist copy];
+        NSString* songName = (NSString *)[[AudioStreamPlayController sharedInstance].currentSong copy];
         NSError*  error = nil;
         
         BOOL isSongInFavorites = [FavoriteSong songIsInFavorites:songName
@@ -203,7 +208,7 @@
     {
         LastfmClient* lastfmClient = [[LastfmClient alloc] initWithApiKey:self.lastfmApiKey];
         
-        [lastfmClient sendGetArtistInfo:self.playController.currentArtist
+        [lastfmClient sendGetArtistInfo:[AudioStreamPlayController sharedInstance].currentArtist
                   withCompletionHandler:^(ArtistInfoResponse* response) {
                       if (response && response.artistInfo)
                       {
@@ -222,14 +227,6 @@
                       }
                   }];
 
-    }
-}
-
-- (void)startPlayingIfNecessary
-{
-    if ([RadioUserSettings sharedInstance].autoPlay && self.playController.playing == NO)
-    {
-        [self changePlayState];
     }
 }
 

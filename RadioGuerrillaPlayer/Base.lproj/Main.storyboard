@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="eC5-Ld-cKx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="eC5-Ld-cKx">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -96,7 +96,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="vXZ-lx-hvc" kind="relationship" relationship="viewControllers" id="IDr-cu-4kc"/>
-                        <segue destination="nh5-ac-f4s" kind="relationship" relationship="viewControllers" id="bwj-Eb-LSf"/>
+                        <segue destination="1nz-va-5bm" kind="relationship" relationship="viewControllers" id="bwj-Eb-LSf"/>
                         <segue destination="nei-if-c0i" kind="relationship" relationship="viewControllers" id="enr-bU-DdF"/>
                     </connections>
                 </tabBarController>
@@ -133,7 +133,7 @@
             </objects>
             <point key="canvasLocation" x="350" y="1418"/>
         </scene>
-        <!--Favorite SongsCDTVC - Favorite songs-->
+        <!--Favorite SongsCDTVC - Songs-->
         <scene sceneID="I4C-rV-r3T">
             <objects>
                 <viewController id="nh5-ac-f4s" customClass="FavoriteSongsCDTVC" sceneMemberID="viewController">
@@ -141,9 +141,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <rect key="contentStretch" x="0.0" y="1" width="1" height="1"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FavoriteSongCell" textLabel="P4t-Cs-9hT" detailTextLabel="xD4-u1-dU4" style="IBUITableViewCellStyleSubtitle" id="0lD-WY-ExQ" customClass="FavoriteSongTableViewCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0lD-WY-ExQ" id="1Tr-66-d78">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -172,11 +173,30 @@
                             <outlet property="delegate" destination="nh5-ac-f4s" id="1Su-ue-I60"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Favorite songs" image="star.png" id="mkE-Fc-L5h"/>
+                    <navigationItem key="navigationItem" title="Songs" id="88A-HO-8GZ"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rVG-Jb-DWu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="350" y="711"/>
+            <point key="canvasLocation" x="864" y="703"/>
+        </scene>
+        <!--Favorites Navigation View Controller - Favorite songs-->
+        <scene sceneID="Apd-zL-fsu">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1nz-va-5bm" customClass="FavoritesNavigationViewController" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Favorite songs" image="star.png" id="mkE-Fc-L5h"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="UGA-ts-qYC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="nh5-ac-f4s" kind="relationship" relationship="rootViewController" id="G97-Yi-Saa"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jci-dR-TcO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="338" y="703"/>
         </scene>
     </scenes>
     <resources>
