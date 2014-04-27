@@ -10,7 +10,7 @@
 #import "RGApplication.h"
 #import "RGAppDelegate.h"
 
-#import "AppDelegate.h"
+#import "RGAppDelegate.h"
 
 int main(int argc, char * argv[])
 {

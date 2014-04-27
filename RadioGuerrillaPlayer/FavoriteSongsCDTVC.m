@@ -1,6 +1,6 @@
 
 #import "FavoriteSongsCDTVC.h"
-#import "AppDelegate.h"
+#import "RGAppDelegate.h"
 #import "FavoriteSong+Guerrilla.h"
 #import "FavoriteSong.h"
 #import "PlayerViewController.h"
