@@ -9,12 +9,13 @@
 /* Begin PBXBuildFile section */
 		0BD6FFA6CC464AFCAF5C63A0 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B632F909E9EE4479BFB3ABCF /* libPods.a */; };
 		4E025DCC18E21EAA00730655 /* theme.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4E025DCB18E21EAA00730655 /* theme.jpg */; };
+		4E0CAB8E190C6195006F5736 /* RGAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0CAB8D190C6195006F5736 /* RGAppDelegate.m */; };
+		4E0CAB91190C6255006F5736 /* RGApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E0CAB90190C6255006F5736 /* RGApplication.m */; };
 		4E156DC818A81E7E009F28C8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E156DC718A81E7E009F28C8 /* Foundation.framework */; };
 		4E156DCA18A81E7E009F28C8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E156DC918A81E7E009F28C8 /* CoreGraphics.framework */; };
 		4E156DCC18A81E7E009F28C8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E156DCB18A81E7E009F28C8 /* UIKit.framework */; };
 		4E156DD218A81E7E009F28C8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E156DD018A81E7E009F28C8 /* InfoPlist.strings */; };
 		4E156DD418A81E7E009F28C8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E156DD318A81E7E009F28C8 /* main.m */; };
-		4E156DD818A81E7E009F28C8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E156DD718A81E7E009F28C8 /* AppDelegate.m */; };
 		4E156DDB18A81E7E009F28C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E156DD918A81E7E009F28C8 /* Main.storyboard */; };
 		4E156DDE18A81E7E009F28C8 /* PlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E156DDD18A81E7E009F28C8 /* PlayerViewController.m */; };
 		4E156DE018A81E7E009F28C8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E156DDF18A81E7E009F28C8 /* Images.xcassets */; };
@@ -77,6 +78,11 @@
 
 /* Begin PBXFileReference section */
 		4E025DCB18E21EAA00730655 /* theme.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = theme.jpg; path = Images/theme.jpg; sourceTree = "<group>"; };
+		4E0CAB8C190C6195006F5736 /* RGAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGAppDelegate.h; sourceTree = "<group>"; };
+		4E0CAB8D190C6195006F5736 /* RGAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGAppDelegate.m; sourceTree = "<group>"; };
+		4E0CAB8F190C6255006F5736 /* RGApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RGApplication.h; sourceTree = "<group>"; };
+		4E0CAB90190C6255006F5736 /* RGApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RGApplication.m; sourceTree = "<group>"; };
+		4E0CAB92190C65D0006F5736 /* RemoteControlEvents.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RemoteControlEvents.h; sourceTree = "<group>"; };
 		4E156DC418A81E7E009F28C8 /* Radio Guerrilla.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Radio Guerrilla.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E156DC718A81E7E009F28C8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4E156DC918A81E7E009F28C8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -85,8 +91,6 @@
 		4E156DD118A81E7E009F28C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4E156DD318A81E7E009F28C8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4E156DD518A81E7E009F28C8 /* Radio Guerrilla-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Radio Guerrilla-Prefix.pch"; sourceTree = "<group>"; };
-		4E156DD618A81E7E009F28C8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		4E156DD718A81E7E009F28C8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		4E156DDA18A81E7E009F28C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4E156DDC18A81E7E009F28C8 /* PlayerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayerViewController.h; sourceTree = "<group>"; };
 		4E156DDD18A81E7E009F28C8 /* PlayerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayerViewController.m; sourceTree = "<group>"; };
@@ -232,8 +236,6 @@
 				4E156EE518AEAA22009F28C8 /* Images */,
 				4E899A5218AFFB2F008FCB04 /* Lastfm */,
 				4E3D167518CA5F1100FB1B07 /* Views */,
-				4E156DD618A81E7E009F28C8 /* AppDelegate.h */,
-				4E156DD718A81E7E009F28C8 /* AppDelegate.m */,
 				4E156DD918A81E7E009F28C8 /* Main.storyboard */,
 				4E899A8418B2A291008FCB04 /* FavoriteSongsCDTVC.h */,
 				4E899A8518B2A291008FCB04 /* FavoriteSongsCDTVC.m */,
@@ -249,6 +251,11 @@
 				4E8E91C518E2178A00BB6770 /* RadioTabBarController.m */,
 				4E156DDF18A81E7E009F28C8 /* Images.xcassets */,
 				4E156DCE18A81E7E009F28C8 /* Supporting Files */,
+				4E0CAB8C190C6195006F5736 /* RGAppDelegate.h */,
+				4E0CAB8D190C6195006F5736 /* RGAppDelegate.m */,
+				4E0CAB8F190C6255006F5736 /* RGApplication.h */,
+				4E0CAB90190C6255006F5736 /* RGApplication.m */,
+				4E0CAB92190C65D0006F5736 /* RemoteControlEvents.h */,
 			);
 			path = RadioGuerrillaPlayer;
 			sourceTree = "<group>";
@@ -523,6 +530,7 @@
 				4E156E0218AAD037009F28C8 /* AudioStreamSessionManager.m in Sources */,
 				4E8E91C618E2178A00BB6770 /* RadioTabBarController.m in Sources */,
 				4E156DDE18A81E7E009F28C8 /* PlayerViewController.m in Sources */,
+				4E0CAB8E190C6195006F5736 /* RGAppDelegate.m in Sources */,
 				4E899A5D18B0E64E008FCB04 /* ArtistInfoResponse.m in Sources */,
 				4E36A2CC18B9F05C0064E613 /* Artist.m in Sources */,
 				4E2EF15D18FB19EF0010077F /* FavoriteSongResult.m in Sources */,
@@ -536,10 +544,10 @@
 				4E2EF15A18F49CD60010077F /* PlayButton.m in Sources */,
 				4E899A6018B136BD008FCB04 /* Model.xcdatamodeld in Sources */,
 				4E95C0E918CE611C009ED01D /* FavoriteSongTableViewCell.m in Sources */,
-				4E156DD818A81E7E009F28C8 /* AppDelegate.m in Sources */,
 				4E899A8618B2A291008FCB04 /* FavoriteSongsCDTVC.m in Sources */,
 				4E156DD418A81E7E009F28C8 /* main.m in Sources */,
 				4E899A8318B2A1BB008FCB04 /* CoreDataTableViewController.m in Sources */,
+				4E0CAB91190C6255006F5736 /* RGApplication.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

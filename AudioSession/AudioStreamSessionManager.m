@@ -73,7 +73,12 @@ typedef enum { NoExtraKnowledge, WillPlay } AudioSessionStateMatchingOptions;
 - (void)startAudioSession:(AVAudioSession *)audioSession
 {
     NSError* errors = nil;
-    [audioSession setCategory:AVAudioSessionCategoryPlayback withOptions:AVAudioSessionCategoryOptionMixWithOthers error:&errors];
+    /*
+     AVAudioSessionCategoryPlayback
+      For playing recorded music or other sounds that are central to the successful use of your app.
+      When using this category, your app audio continues with the Silent switch set to silent or when the screen locks.
+    */
+    [audioSession setCategory:AVAudioSessionCategoryPlayback error:&errors];
     if (errors)
     {
         NSLog(@"An error occurred while setting category to playback on audio session: %@", errors);

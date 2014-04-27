@@ -7,13 +7,17 @@
 #import "FavoriteSong.h"
 #import "Artist.h"
 #import "Artist+Guerrilla.h"
-#import "AppDelegate.h"
+#import "RGAppDelegate.h"
 #import "ArtistInfoResponse.h"
 #import <AVFoundation/AVFoundation.h>
 #import "PlayButton.h"
 #import "FavoriteSongResult.h"
 #import "RadioUserSettings.h"
 #import <TSMessages/TSMessage.h>
+
+extern NSString* RGRemoteControlPlayButtonTapped;
+extern NSString* RGRemoteControlPauseButtonTapped;
+extern NSString* RGRemoteControlStopButtonTapped;
 
 @interface PlayerViewController ()
 
@@ -53,14 +57,51 @@
         self.songLabel.text = @"";
     }
     
+    /* Read the lastfm api key from api_keys.plist.
+       This file is included in gitignore file, so it's not available on github.
+     */
     [self readLastfmApiKey];
+    
+    /* Add observer for when the application is activated so we can play music if "auto start" setting is on.
+     */
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playOnApplicationActivated) name:UIApplicationDidBecomeActiveNotification object:nil];
+    
+    /* Add observers to Remote control events in iOS. 
+     */
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(remoteControlEventReceived:) name:RGRemoteControlPlayButtonTapped object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(remoteControlEventReceived:) name:RGRemoteControlPauseButtonTapped object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(remoteControlEventReceived:) name:RGRemoteControlStopButtonTapped object:nil];
+    
+    /* Add observer for interruptions that cause the audio session to stop (e.g. phone call). 
+     */
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAudioSessionEvent:) name:AVAudioSessionInterruptionNotification object:nil];
+}
+
+- (void) onAudioSessionEvent: (NSNotification *) notification
+{
+    if ([notification.name isEqualToString:AVAudioSessionInterruptionNotification])
+    {
+        if ([[notification.userInfo valueForKey:AVAudioSessionInterruptionTypeKey] isEqualToNumber:[NSNumber numberWithInt:AVAudioSessionInterruptionTypeBegan]])
+        {
+            [self pausePlay];
+        }
+        else
+        {
+            [self resumePlay];
+        }
+    }
 }
 
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidBecomeActiveNotification object:nil];
     [[AudioStreamPlayController sharedInstance] removeObserver:self forKeyPath:@"streamTitle"];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:RGRemoteControlPlayButtonTapped object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:RGRemoteControlPauseButtonTapped object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:RGRemoteControlStopButtonTapped object:nil];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:AVAudioSessionInterruptionNotification object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -98,8 +139,20 @@
 {
     if ([AudioStreamPlayController sharedInstance].playing == NO && [RadioUserSettings sharedInstance].autoPlay)
     {
-        [AudioStreamPlayController sharedInstance].playing = YES;
-        self.playButton.selected = YES;
+        [self resumePlay];
+    }
+}
+
+- (void)remoteControlEventReceived:(NSNotification *)notification
+{
+    if ([notification.name isEqualToString:RGRemoteControlPlayButtonTapped])
+    {
+        [self resumePlay];
+    }
+    else if ([notification.name isEqualToString:RGRemoteControlPauseButtonTapped] ||
+             [notification.name isEqualToString:RGRemoteControlStopButtonTapped])
+    {
+        [self pausePlay];
     }
 }
 
@@ -107,13 +160,24 @@
 {
     if ([AudioStreamPlayController sharedInstance].playing)
     {
-        [AudioStreamPlayController sharedInstance].playing = NO;
+        [self pausePlay];
     }
     else
     {
-        [AudioStreamPlayController sharedInstance].playing = YES;
+        [self resumePlay];
     }
-    [self.playButton setSelected:[AudioStreamPlayController sharedInstance].playing];
+}
+
+- (void)resumePlay
+{
+    [AudioStreamPlayController sharedInstance].playing = YES;
+    self.playButton.selected = YES;
+}
+
+- (void)pausePlay
+{
+    [AudioStreamPlayController sharedInstance].playing = NO;
+    self.playButton.selected = NO;
 }
 
 - (void)viewWillDisappear:(BOOL)animated

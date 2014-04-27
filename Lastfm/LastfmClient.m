@@ -2,7 +2,7 @@
 #import "LastfmClient.h"
 #import "ArtistInfo.h"
 #import "ArtistInfoResponse.h"
-#import "AppDelegate.h"
+#import "RGAppDelegate.h"
 
 @interface LastfmClient()
 
