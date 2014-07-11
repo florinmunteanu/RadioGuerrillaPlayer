@@ -282,10 +282,12 @@ extern NSString* RGRemoteControlStopButtonTapped;
                               // Update the image on the main thread.
                               // It is the only thread valid to work with the managedObjectContext
                               dispatch_async(dispatch_get_main_queue(), ^(void) {
+                                                            NSError* error;
+                                  
                                                             [Artist updateImage:imageData
                                                                      artistName:response.artistName
                                                          inManagedObjectContext:self.managedObjectContext
-                                                                          error:nil];
+                                                                          error:&error];
                                    });
                           });
                       }

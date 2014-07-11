@@ -6,8 +6,8 @@
 
 @implementation FavoriteSong (Guerrilla)
 
-/* Get or add a favorite the song. 
- * If the song already exists, it will return the existing instance, otherwise it will add a new favorite song.
+/* Get or add a favorite song.
+ * If the song already exists, it will return the existing one, otherwise it will add a new favorite song.
  */
 + (FavoriteSongResult *)getOrAddSong:(NSString *)song
                           fromArtist:(Artist *)artist
@@ -31,7 +31,10 @@
     
     if (favoriteSongError)
     {
-        *error = favoriteSongError;
+        if (error)
+        {
+            *error = favoriteSongError;
+        }
     }
     else if (matches.count == 0)
     {
@@ -40,6 +43,8 @@
         favoriteSong.song = song;
         favoriteSong.artistInfo = artist;
         favoriteSong.savedDate = [NSDate date];
+        
+        [context save:nil]; // hopefully it will save :)
         
         state = FavoriteSongSavedSuccessfully;
     }
@@ -80,7 +85,10 @@
     
     if (fetchRequestError)
     {
-        *error = fetchRequestError;
+        if (error)
+        {
+            *error = fetchRequestError;
+        }
         return FALSE;
     }
     else if (matches.count == 0)
@@ -89,6 +97,17 @@
     }
     
     [context deleteObject:(FavoriteSong *)[matches lastObject]];
+    
+    NSError* saveError = nil;
+    [context save:&saveError];
+    if (saveError)
+    {
+        if (error)
+        {
+            *error = saveError;
+        }
+        return FALSE;
+    }
     return TRUE;
 }
 
@@ -111,7 +130,10 @@
     NSArray* matches = [context executeFetchRequest:request error:&fetchError];
     if (fetchError)
     {
-        *error = fetchError;
+        if (error)
+        {
+            *error = fetchError;
+        }
         return FALSE;
     }
     return (matches.count > 0);
@@ -136,7 +158,10 @@
     
     if (currentError)
     {
-        *error = currentError;
+        if (error)
+        {
+            *error = currentError;
+        }
         return nil;
     }
     
@@ -146,7 +171,10 @@
                                                                   error:&currentError];
     if (currentError)
     {
-        *error = currentError;
+        if (error)
+        {
+            *error = currentError;
+        }
         return nil;
     }
     return favoriteSongResult;
@@ -162,13 +190,23 @@
     
     if (fetchError)
     {
-        *error = fetchError;
+        if (error)
+        {
+            *error = fetchError;
+        }
     }
     else if (matches.count > 0)
     {
         for (NSManagedObject* song in matches)
         {
             [context deleteObject:song];
+        }
+        
+        NSError* saveError = nil;
+        [context save:&saveError];
+        if (error)
+        {
+            *error = saveError;
         }
     }
 }

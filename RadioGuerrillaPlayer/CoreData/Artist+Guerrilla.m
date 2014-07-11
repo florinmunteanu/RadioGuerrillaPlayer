@@ -23,13 +23,23 @@
     
     if (matches == nil)
     {
-        *error = fetchError;
+        if (error)
+        {
+            *error = fetchError;
+        }
     }
     else if (matches.count == 0)
     {
         artist = [NSEntityDescription insertNewObjectForEntityForName:@"Artist" inManagedObjectContext:context];
         artist.name = name;
         artist.smallImage = smallImage;
+        
+        NSError* saveError = nil;
+        [context save:&saveError];
+        if (error)
+        {
+            *error = saveError;
+        }
     }
     else
     {
@@ -50,15 +60,24 @@
     NSArray* matches = [context executeFetchRequest:artistRequest error:&fetchError];
     
     Artist* artist = nil;
-    
     if (matches == nil)
     {
-        *error = fetchError;
+        if (error)
+        {
+            *error = fetchError;
+        }
     }
     else if (matches.count == 1)
     {
         artist = [matches lastObject];
         artist.smallImage = artistImage;
+        
+        NSError* saveError = nil;
+        [context save:&saveError];
+        if (error)
+        {
+            *error = saveError;
+        }
     }
     return artist;
 }
@@ -74,13 +93,23 @@
     
     if (fetchError)
     {
-        *error = fetchError;
+        if (error)
+        {
+            *error = fetchError;
+        }
     }
     else if (matches.count > 0)
     {
         for (NSManagedObject* artist in matches)
         {
             [context deleteObject:artist];
+        }
+        
+        NSError* saveError = nil;
+        [context save:&saveError];
+        if (error)
+        {
+            *error = saveError;
         }
     }
 }
